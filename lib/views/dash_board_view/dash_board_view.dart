@@ -1,7 +1,9 @@
 import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
+import 'package:attandence_admin_panel/views/profile_view/profile_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DashBoardView extends StatefulWidget {
   DashBoardView({Key? key}) : super(key: key);
@@ -338,10 +340,13 @@ class _DashBoardViewState extends State<DashBoardView> {
                                   width: 10,
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 5,bottom: 5),
+                                  padding:
+                                      const EdgeInsets.only(top: 5, bottom: 5),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         "01",
@@ -358,15 +363,15 @@ class _DashBoardViewState extends State<DashBoardView> {
                                             width: size.width * 0.17,
                                             color:
                                                 secondaryColor.withOpacity(0.2),
-                                                child: Row(
-                                                  children: [
-                                                    Container(
-                                                      height: 5,
-                                                      width: size.width * 0.06,
-                                                      color: primaryColor,
-                                                    ),
-                                                  ],
+                                            child: Row(
+                                              children: [
+                                                Container(
+                                                  height: 5,
+                                                  width: size.width * 0.06,
+                                                  color: primaryColor,
                                                 ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -401,7 +406,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                                   color: Colors.grey.withOpacity(0.8),
                                 )
                               ]),
-                               child: Padding(
+                          child: Padding(
                             padding: const EdgeInsets.only(left: 15, right: 15),
                             child: Row(
                               children: [
@@ -490,7 +495,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                                   color: Colors.grey.withOpacity(0.8),
                                 )
                               ]),
-                               child: Padding(
+                          child: Padding(
                             padding: const EdgeInsets.only(left: 15, right: 15),
                             child: Row(
                               children: [
@@ -570,7 +575,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                 const SizedBox(
                   height: 15,
                 ),
-                         Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Expanded(
@@ -851,6 +856,38 @@ class _DashBoardViewState extends State<DashBoardView> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              Padding(
+                padding: const EdgeInsets.only(right: 10, top: 20),
+                child: InkWell(
+                  onTap: () {
+                    Get.to(()=> ProfileView());
+                  },
+                  child: Container(
+                    height: 30,
+                    width: 130,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: Colors.yellow.withOpacity(0.5)),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.person,
+                            color: Colors.blue[300],
+                            size: 16,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Icon(
+                            Icons.settings_outlined,
+                            color: Colors.blue[300],
+                            size: 16,
+                          )
+                        ]),
+                  ),
+                ),
+              ),
               const SizedBox(
                 height: 60,
               ),

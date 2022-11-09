@@ -1,6 +1,7 @@
 import 'package:attandence_admin_panel/views/sign_in_view/sign_in_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'views/profile_view/profile_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.grey,
       ),
       home: SignINView(),
+      // home: ProfileView(),
     );
   }
 }
