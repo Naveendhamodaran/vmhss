@@ -1,6 +1,7 @@
 import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/views/profile_view/profile_view.dart';
+import 'package:attandence_admin_panel/views/sections_view/section_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -118,29 +119,34 @@ class _DashBoardViewState extends State<DashBoardView> {
                   )
                 ],
               ),
-              Column(
-                children: [
-                  Container(
-                    height: 30,
-                    width: 55,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: secondaryColor.withOpacity(0.4),
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Icon(
-                      Icons.photo_size_select_small_outlined,
-                      color: primaryColor,
-                      size: 17,
+              InkWell(
+                onTap: () {
+                  Get.to(() => SetionView());
+                },
+                child: Column(
+                  children: [
+                    Container(
+                      height: 30,
+                      width: 55,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: secondaryColor.withOpacity(0.4),
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Icon(
+                        Icons.photo_size_select_small_outlined,
+                        color: primaryColor,
+                        size: 17,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Section",
-                    style: primaryFonts.copyWith(
-                        fontSize: 10,
-                        color: const Color.fromARGB(255, 4, 63, 110),
-                        fontWeight: FontWeight.w600),
-                  )
-                ],
+                    Text(
+                      "Section",
+                      style: primaryFonts.copyWith(
+                          fontSize: 10,
+                          color: const Color.fromARGB(255, 4, 63, 110),
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
               ),
               Column(
                 children: [
@@ -860,7 +866,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                 padding: const EdgeInsets.only(right: 10, top: 20),
                 child: InkWell(
                   onTap: () {
-                    Get.to(()=> ProfileView());
+                    Get.to(() => ProfileView());
                   },
                   child: Container(
                     height: 30,
