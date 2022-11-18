@@ -21,8 +21,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      // home: SignINView(),
-      home: SetionView(),
+      home: SignINView(),
+      // home: SetionView(),
     );
   }
 }

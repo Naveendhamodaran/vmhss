@@ -2,6 +2,8 @@ import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/views/profile_view/profile_view.dart';
 import 'package:attandence_admin_panel/views/sections_view/section_view.dart';
+import 'package:attandence_admin_panel/views/staff_management/staff_management.dart';
+import 'package:attandence_admin_panel/views/student_management/student_management_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -148,53 +150,63 @@ class _DashBoardViewState extends State<DashBoardView> {
                   ],
                 ),
               ),
-              Column(
-                children: [
-                  Container(
-                    height: 30,
-                    width: 55,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: secondaryColor.withOpacity(0.4),
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Icon(
-                      Icons.portrait_rounded,
-                      color: primaryColor,
-                      size: 17,
+              InkWell(
+                onTap: () {
+                  Get.to(() => const StudentManagementView());
+                },
+                child: Column(
+                  children: [
+                    Container(
+                      height: 30,
+                      width: 55,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: secondaryColor.withOpacity(0.4),
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Icon(
+                        Icons.portrait_rounded,
+                        color: primaryColor,
+                        size: 17,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Student",
-                    style: primaryFonts.copyWith(
-                        fontSize: 10,
-                        color: const Color.fromARGB(255, 4, 63, 110),
-                        fontWeight: FontWeight.w600),
-                  )
-                ],
+                    Text(
+                      "Student",
+                      style: primaryFonts.copyWith(
+                          fontSize: 10,
+                          color: const Color.fromARGB(255, 4, 63, 110),
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
               ),
-              Column(
-                children: [
-                  Container(
-                    height: 30,
-                    width: 55,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: secondaryColor.withOpacity(0.4),
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Icon(
-                      Icons.person_pin,
-                      color: primaryColor,
-                      size: 17,
+              InkWell(
+                onTap: () {
+                  Get.to(() => StaffManageView());
+                },
+                child: Column(
+                  children: [
+                    Container(
+                      height: 30,
+                      width: 55,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: secondaryColor.withOpacity(0.4),
+                          borderRadius: BorderRadius.circular(30)),
+                      child: Icon(
+                        Icons.person_pin,
+                        color: primaryColor,
+                        size: 17,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Staf",
-                    style: primaryFonts.copyWith(
-                        fontSize: 10,
-                        color: const Color.fromARGB(255, 4, 63, 110),
-                        fontWeight: FontWeight.w600),
-                  )
-                ],
+                    Text(
+                      "Staf",
+                      style: primaryFonts.copyWith(
+                          fontSize: 10,
+                          color: const Color.fromARGB(255, 4, 63, 110),
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
               ),
               Column(
                 children: [
