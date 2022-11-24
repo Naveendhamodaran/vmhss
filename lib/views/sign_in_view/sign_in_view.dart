@@ -1,6 +1,7 @@
 import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/constants/app_styles.dart';
+import 'package:attandence_admin_panel/controllers/auth_controllers/auth_controller.dart';
 import 'package:attandence_admin_panel/views/dash_board_view/dash_board_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,8 @@ class SignINView extends StatefulWidget {
 class _SignINViewState extends State<SignINView> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+
+  final authController = Get.find<AuthController>();
 
   bool isObsecure = true;
 
@@ -110,37 +113,73 @@ class _SignINViewState extends State<SignINView> {
                   const SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    width: 330,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          height: 5,
+                  Obx(() => Container(
+                        width: 330,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              height: 5,
+                            ),
+                            authController.isLoading.isFalse
+                                ? InkWell(
+                                    onTap: () {
+                                      if (emailController.text.isNotEmpty &&
+                                          passwordController.text.isNotEmpty) {
+                                        authController.signIn(
+                                            context,
+                                            emailController.text,
+                                            passwordController.text);
+                                      } else {
+                                        Get.snackbar(
+                                            "Please Enter Email and Password to Continue",
+                                            "",
+                                            colorText: Colors.white,
+                                            backgroundColor: Colors.red);
+                                      }
+                                    },
+                                    child: Container(
+                                      height: 30,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: primaryColor,
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 15, right: 15),
+                                        child: Text("Sign in",
+                                            style: primaryFonts.copyWith(
+                                                color: Colors.white)),
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: primaryColor,
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 15, right: 15),
+                                      child: Container(
+                                        width: 40,
+                                        height: 25,
+                                        child: Container(
+                                          height: 25,
+                                          width: 25,
+                                          child: CircularProgressIndicator(
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                          ],
                         ),
-                        InkWell(
-                          onTap: () {
-                            Get.offAll(DashBoardView());
-                          },
-                          child: Container(
-                            height: 30,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: primaryColor,
-                            ),
-                            alignment: Alignment.center,
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 15, right: 15),
-                              child: Text("Sign in",
-                                  style: primaryFonts.copyWith(
-                                      color: Colors.white)),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                  )
+                      ))
                 ],
               ),
             ),
