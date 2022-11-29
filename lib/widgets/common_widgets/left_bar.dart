@@ -1,5 +1,7 @@
 import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
+import 'package:attandence_admin_panel/views/dash_board_view/dash_board_view.dart';
+import 'package:attandence_admin_panel/views/staff_management/staff_detsils_list_view.dart';
 import 'package:attandence_admin_panel/views/staff_management/staff_management.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,17 +42,22 @@ class LeftBar extends StatelessWidget {
           ),
           Column(
             children: [
-              Container(
-                height: 30,
-                width: 55,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: secondaryColor.withOpacity(0.4),
-                    borderRadius: BorderRadius.circular(30)),
-                child: Icon(
-                  Icons.dashboard_outlined,
-                  color: primaryColor,
-                  size: 17,
+              InkWell(
+                onTap: () {
+                  Get.to(() => DashBoardView());
+                },
+                child: Container(
+                  height: 30,
+                  width: 55,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: secondaryColor.withOpacity(0.4),
+                      borderRadius: BorderRadius.circular(30)),
+                  child: Icon(
+                    Icons.dashboard_outlined,
+                    color: primaryColor,
+                    size: 17,
+                  ),
                 ),
               ),
               Text(
@@ -165,7 +172,7 @@ class LeftBar extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Get.to(() => StaffManageView());
+              Get.to(() => StaffListView());
             },
             child: Column(
               children: [

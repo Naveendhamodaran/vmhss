@@ -1,11 +1,16 @@
+import 'dart:io';
+
 import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/constants/app_styles.dart';
+import 'package:attandence_admin_panel/controllers/staff_management_controller.dart';
+import 'package:attandence_admin_panel/models/staff_model.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/left_bar.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class StaffManageView extends StatefulWidget {
   const StaffManageView({super.key});
@@ -21,8 +26,20 @@ class _StaffManageViewState extends State<StaffManageView> {
   var startdateController = TextEditingController();
   var enddateController = TextEditingController();
 
+  var fullNameTextController = TextEditingController();
+  var mobileNumberTextController = TextEditingController();
+  var addressTextController = TextEditingController();
+  var emailTextController = TextEditingController();
+  var qualificationTextController = TextEditingController();
+  var totalExperienceTextController = TextEditingController();
+  var esiTextController = TextEditingController();
+  var aadharnumberTextController = TextEditingController();
+  var panCardTextController = TextEditingController();
+
   var gender;
   var designation;
+
+  final staffmanageController = Get.find<StaffManagementController>();
 
   List<String> genderList = ["Male", "Female"];
 
@@ -70,6 +87,20 @@ class _StaffManageViewState extends State<StaffManageView> {
     }
   }
 
+  String imagePath = "";
+  String imageName = "";
+
+  chooseImage() async {
+    final ImagePicker _picker = ImagePicker();
+    // Pick an image
+    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      imagePath = image!.path;
+      imageName = image.name;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,17 +141,33 @@ class _StaffManageViewState extends State<StaffManageView> {
                           Padding(
                             padding:
                                 const EdgeInsets.only(left: 15, bottom: 15),
-                            child: Container(
-                              height: 150,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey[300]),
-                              alignment: Alignment.center,
-                              child: const Icon(
-                                Icons.add_a_photo,
-                                color: Colors.white,
-                              ),
+                            child: InkWell(
+                              onTap: () {
+                                chooseImage();
+                              },
+                              child: imagePath == ""
+                                  ? Container(
+                                      height: 150,
+                                      width: 150,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Colors.grey[300]),
+                                      alignment: Alignment.center,
+                                      child: const Icon(
+                                        Icons.add_a_photo,
+                                        color: Colors.white,
+                                      ),
+                                    )
+                                  : Container(
+                                      height: 150,
+                                      width: 150,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Image.network(imagePath),
+                                    ),
                             ),
                           ),
                           Padding(
@@ -150,6 +197,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                       width: 300,
                                       height: 50,
                                       child: TextField(
+                                        controller: fullNameTextController,
                                         decoration: InputDecoration(
                                             enabledBorder: borderstyle,
                                             focusedBorder: borderstyle),
@@ -177,6 +225,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                     Container(
                                       width: 350,
                                       child: TextField(
+                                        controller: mobileNumberTextController,
                                         decoration: InputDecoration(
                                             enabledBorder: borderstyle,
                                             focusedBorder: borderstyle),
@@ -267,6 +316,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                       width: 350,
                                       child: TextField(
                                         maxLines: 2,
+                                        controller: addressTextController,
                                         decoration: InputDecoration(
                                             enabledBorder: borderstyle,
                                             focusedBorder: borderstyle),
@@ -307,6 +357,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                       Container(
                                         width: 350,
                                         child: TextField(
+                                          controller: emailTextController,
                                           decoration: InputDecoration(
                                               enabledBorder: borderstyle,
                                               focusedBorder: borderstyle),
@@ -418,6 +469,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                       width: 300,
                                       height: 50,
                                       child: TextField(
+                                        controller: qualificationTextController,
                                         decoration: InputDecoration(
                                             enabledBorder: borderstyle,
                                             focusedBorder: borderstyle),
@@ -445,6 +497,8 @@ class _StaffManageViewState extends State<StaffManageView> {
                                     Container(
                                       width: 350,
                                       child: TextField(
+                                        controller:
+                                            totalExperienceTextController,
                                         decoration: InputDecoration(
                                             enabledBorder: borderstyle,
                                             focusedBorder: borderstyle),
@@ -534,6 +588,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                     Container(
                                       width: 350,
                                       child: TextField(
+                                        controller: esiTextController,
                                         decoration: InputDecoration(
                                             enabledBorder: borderstyle,
                                             focusedBorder: borderstyle),
@@ -582,6 +637,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                       width: 200,
                                       height: 50,
                                       child: TextField(
+                                        controller: aadharnumberTextController,
                                         decoration: InputDecoration(
                                             enabledBorder: borderstyle,
                                             focusedBorder: borderstyle),
@@ -604,6 +660,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                     Container(
                                       width: 200,
                                       child: TextField(
+                                        controller: panCardTextController,
                                         decoration: InputDecoration(
                                             enabledBorder: borderstyle,
                                             focusedBorder: borderstyle),
@@ -620,8 +677,38 @@ class _StaffManageViewState extends State<StaffManageView> {
                           Padding(
                             padding: const EdgeInsets.only(left: 15),
                             child: InkWell(
-                              onTap: () {
-                                Get.back();
+                              onTap: () async {
+                                // var imageUrl =
+                                //     await staffmanageController.storeImage(
+                                //         images: imagePath,
+                                //         employeename:
+                                //             fullNameTextController.text,
+                                //         imageName: imageName);
+
+                                StaffModel staffModel = StaffModel(
+                                    image: "imageUrl",
+                                    fullName: fullNameTextController.text,
+                                    mobileNumber:
+                                        mobileNumberTextController.text,
+                                    gender: gender,
+                                    address: addressTextController.text,
+                                    email: emailTextController.text,
+                                    dob: _date2,
+                                    joiningDate: _date,
+                                    qualification:
+                                        qualificationTextController.text,
+                                    totalExperience:
+                                        totalExperienceTextController.text,
+                                    designation: designation,
+                                    esi: esiTextController.text,
+                                    aadharCardNumber:
+                                        aadharnumberTextController.text,
+                                    panCardNumber: panCardTextController.text,
+                                    aadharCardImage: "null",
+                                    panCardImage: "null");
+
+                                staffmanageController
+                                    .writeToStaffmanagement(staffModel);
                               },
                               child: Container(
                                 height: 50,

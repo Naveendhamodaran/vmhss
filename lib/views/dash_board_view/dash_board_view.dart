@@ -2,6 +2,7 @@ import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/views/profile_view/profile_view.dart';
 import 'package:attandence_admin_panel/views/sections_view/section_view.dart';
+import 'package:attandence_admin_panel/views/staff_management/staff_detsils_list_view.dart';
 import 'package:attandence_admin_panel/views/staff_management/staff_management.dart';
 import 'package:attandence_admin_panel/views/student_management/student_management_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -181,7 +182,7 @@ class _DashBoardViewState extends State<DashBoardView> {
               ),
               InkWell(
                 onTap: () {
-                  Get.to(() => StaffManageView());
+                  Get.to(() => StaffListView());
                 },
                 child: Column(
                   children: [
