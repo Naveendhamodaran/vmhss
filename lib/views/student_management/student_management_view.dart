@@ -1,6 +1,7 @@
 import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/constants/app_styles.dart';
+import 'package:attandence_admin_panel/constants/helper_widgets.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/left_bar.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
 import 'package:date_format/date_format.dart';
@@ -114,153 +115,124 @@ class _StudentManagementViewState extends State<StudentManagementView> {
           Expanded(
             child: ListView(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 100, right: 100),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border:
-                            Border.all(color: Colors.grey.withOpacity(0.6))),
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 20, top: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Text(
-                              'Student details',
-                              style: primaryFonts.copyWith(
-                                  fontWeight: FontWeight.w600),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: Colors.grey.withOpacity(0.6))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 20, top: 20,left: 50,right: 50),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text(
+                            'Student details',
+                            style: primaryFonts.copyWith(
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 15, right: 15),
+                          child: Divider(),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15, bottom: 15),
+                          child: Container(
+                            height: 150,
+                            width: 150,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.grey[300]),
+                            alignment: Alignment.center,
+                            child: const Icon(
+                              Icons.add_a_photo,
+                              color: Colors.white,
                             ),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 15, right: 15),
-                            child: Divider(),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 15, bottom: 15),
-                            child: Container(
-                              height: 150,
-                              width: 150,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.grey[300]),
-                              alignment: Alignment.center,
-                              child: const Icon(
-                                Icons.add_a_photo,
-                                color: Colors.white,
+                        ),
+                        h15,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    height: 50,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          labelText: "Full Name",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
+                                    ),
+                                  )
+                                ],
                               ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Full Name",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          labelText: "Admission No",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      width: 300,
-                                      height: 50,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Admission No",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      width: 350,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Gender",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      height: 50,
-                                      width: 300,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 330,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.black54
+                                                .withOpacity(0.5))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10, top: 10),
                                       child: DropdownButton<String>(
                                         value: gender,
+                                        hint: Text(
+                                          "Gender*",
+                                          style: primaryFonts.copyWith(
+                                              fontSize: 14),
+                                        ),
                                         isExpanded: true,
-                                        icon: const Icon(Icons.arrow_downward),
-                                        elevation: 16,
+                                        icon: const Icon(
+                                            Icons.keyboard_arrow_down_outlined),
+                                        elevation: 0,
+                                        itemHeight: 55,
+                                        isDense: true,
                                         style: const TextStyle(
                                             color: Colors.deepPurple),
-                                        underline: Container(
-                                          height: 2,
-                                          color: Colors.deepPurpleAccent,
-                                        ),
                                         onChanged: (String? value) {
                                           // This is called when the user selects an item.
 
@@ -277,192 +249,142 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                           );
                                         }).toList(),
                                       ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Address",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
                                     ),
-                                    Container(
-                                      width: 350,
-                                      child: TextField(
-                                        maxLines: 2,
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 0, right: 5, top: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "Joining standard",
-                                            style: primaryFonts.copyWith(
-                                                fontSize: 13),
-                                          ),
-                                          Text(
-                                            "*",
-                                            style: primaryFonts.copyWith(
-                                                color: Colors.red),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        width: 350,
-                                        child: TextField(
-                                          decoration: InputDecoration(
-                                              enabledBorder: borderstyle,
-                                              focusedBorder: borderstyle),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 15, right: 15),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "DOB",
-                                            style: primaryFonts.copyWith(
-                                                fontSize: 13),
-                                          ),
-                                          Text(
-                                            "*",
-                                            style: primaryFonts.copyWith(
-                                                color: Colors.red),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        width: 350,
-                                        child: TextField(
-                                            controller: enddateController,
-                                            readOnly: true,
-                                            onTap: () {
-                                              _selectedDateEnd(context);
-                                            },
-                                            decoration: InputDecoration(
-                                              labelText: "Date of Birth*",
-                                              suffixIcon:
-                                                  const Icon(Icons.date_range),
-                                              enabledBorder: borderstyle,
-                                              focusedBorder: borderstyle,
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15, right: 15),
-                                child: Container(
-                                  height: 50,
-                                  width: 300,
-                                  child: TextField(
-                                      controller: startdateController,
-                                      readOnly: true,
-                                      onTap: () {
-                                        _selectedDate(context);
-                                      },
+                                  )
+                                ],
+                              ),
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      maxLines: 2,
                                       decoration: InputDecoration(
-                                        labelText: "Joining Date*",
-                                        suffixIcon:
-                                            const Icon(Icons.date_range),
-                                        enabledBorder: borderstyle,
-                                        focusedBorder: borderstyle,
-                                      )),
-                                ),
+                                          labelText: "Address*",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
+                                    ),
+                                  )
+                                ],
                               ),
                             ],
                           ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Medium",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
+                        ),
+                        h30,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          labelText: "Joining standard*",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      height: 50,
-                                      width: 300,
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 30,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 330,
+                                    child: TextField(
+                                        controller: enddateController,
+                                        readOnly: true,
+                                        onTap: () {
+                                          _selectedDateEnd(context);
+                                        },
+                                        decoration: InputDecoration(
+                                          labelText: "Date of Birth*",
+                                          suffixIcon:
+                                              const Icon(Icons.date_range),
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle,
+                                        )),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 50,
+                                width: 330,
+                                child: TextField(
+                                    controller: startdateController,
+                                    readOnly: true,
+                                    onTap: () {
+                                      _selectedDate(context);
+                                    },
+                                    decoration: InputDecoration(
+                                      labelText: "Joining Date*",
+                                      suffixIcon: const Icon(Icons.date_range),
+                                      enabledBorder: borderstyle,
+                                      focusedBorder: borderstyle,
+                                    )),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 330,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.black54
+                                                .withOpacity(0.5))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10, top: 10),
                                       child: DropdownButton<String>(
                                         value: designation,
                                         isExpanded: true,
-                                        icon: const Icon(Icons.arrow_downward),
-                                        elevation: 16,
+                                        icon: const Icon(
+                                            Icons.keyboard_arrow_down_outlined),
+                                        elevation: 0,
+                                        itemHeight: 55,
+                                        isDense: true,
                                         style: const TextStyle(
-                                            color: Colors.deepPurple),
-                                        underline: Container(
-                                          height: 2,
-                                          color: Colors.deepPurpleAccent,
+                                            color: Colors.black54),
+                                        hint: Text(
+                                          "Medium*",
+                                          style: primaryFonts.copyWith(
+                                              fontSize: 14),
                                         ),
                                         onChanged: (String? value) {
                                           // This is called when the user selects an item.
@@ -480,78 +402,66 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                           );
                                         }).toList(),
                                       ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "First Language",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
                                     ),
-                                    Container(
-                                      width: 350,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Nationality",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
+                                  )
+                                ],
+                              ),
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          labelText: "First Language",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      height: 50,
-                                      width: 300,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 330,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.black54
+                                                .withOpacity(0.5))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10, top: 10),
                                       child: DropdownButton<String>(
                                         value: nationality,
                                         isExpanded: true,
-                                        icon: const Icon(Icons.arrow_downward),
-                                        elevation: 16,
+                                        icon: const Icon(
+                                            Icons.keyboard_arrow_down_outlined),
+                                        elevation: 0,
+                                        itemHeight: 55,
+                                        isDense: true,
                                         style: const TextStyle(
-                                            color: Colors.deepPurple),
-                                        underline: Container(
-                                          height: 2,
-                                          color: Colors.deepPurpleAccent,
+                                            color: Colors.black54),
+                                        hint: Text(
+                                          "Nationality*",
+                                          style: primaryFonts.copyWith(
+                                              fontSize: 14),
                                         ),
                                         onChanged: (String? value) {
                                           // This is called when the user selects an item.
@@ -569,40 +479,41 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                           );
                                         }).toList(),
                                       ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "State",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
                                     ),
-                                    Container(
-                                      height: 50,
-                                      width: 300,
+                                  )
+                                ],
+                              ),
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 330,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.black54
+                                                .withOpacity(0.5))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10, top: 10),
                                       child: DropdownButton<String>(
                                         value: state,
                                         isExpanded: true,
-                                        icon: const Icon(Icons.arrow_downward),
-                                        elevation: 16,
-                                        style: const TextStyle(
-                                            color: Colors.deepPurple),
-                                        underline: Container(
-                                          height: 2,
-                                          color: Colors.deepPurpleAccent,
+                                        hint: Text(
+                                          "State*",
+                                          style:
+                                              primaryFonts.copyWith(fontSize: 14),
                                         ),
+                                        icon: const Icon(
+                                            Icons.keyboard_arrow_down_outlined),
+                                        elevation: 0,
+                                        itemHeight: 55,
+                                        isDense: true,
+                                        style: const TextStyle(
+                                            color: Colors.black54),
                                         onChanged: (String? value) {
                                           // This is called when the user selects an item.
                                           setState(() {
@@ -618,51 +529,51 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                           );
                                         }).toList(),
                                       ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Religion",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
                                     ),
-                                    Container(
-                                      height: 50,
-                                      width: 300,
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 330,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.black54
+                                                .withOpacity(0.5))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10, top: 10),
                                       child: DropdownButton<String>(
                                         value: releagion,
                                         isExpanded: true,
-                                        icon: const Icon(Icons.arrow_downward),
-                                        elevation: 16,
+                                        icon: const Icon(
+                                            Icons.keyboard_arrow_down_outlined),
+                                        elevation: 0,
+                                        itemHeight: 55,
+                                        isDense: true,
                                         style: const TextStyle(
-                                            color: Colors.deepPurple),
-                                        underline: Container(
-                                          height: 2,
-                                          color: Colors.deepPurpleAccent,
+                                            color: Colors.black54),
+                                        hint: Text(
+                                          "Religion*",
+                                          style: primaryFonts.copyWith(
+                                              fontSize: 14),
                                         ),
                                         onChanged: (String? value) {
                                           // This is called when the user selects an item.
@@ -680,203 +591,150 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                           );
                                         }).toList(),
                                       ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Cast",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
                                     ),
-                                    Container(
-                                      width: 350,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, right: 15, top: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Community",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
+                                  )
+                                ],
+                              ),
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          labelText: "Cast*",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      width: 300,
-                                      height: 50,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Mother Tongue",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    height: 50,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          labelText: "Community",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      width: 350,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Text(
-                              'Previous datas',
-                              style: primaryFonts.copyWith(
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(
-                                left: 15, right: 15, bottom: 10),
-                            child: Divider(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Previous School",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                      ],
+                                  )
+                                ],
+                              ),
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          labelText: "Mother Tongue",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      width: 300,
-                                      height: 50,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Previous Standard",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                      ],
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text(
+                            'Previous datas',
+                            style: primaryFonts.copyWith(
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        const Padding(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, bottom: 10),
+                          child: Divider(),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    height: 50,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          labelText: "Previous School",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      width: 300,
-                                      child: TextField(
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  )
+                                ],
+                              ),
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          labelText: "Previous Standard",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                          const SizedBox(
-                            height: 50,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: Container(
-                                height: 50,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    color: primaryColor),
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "Save",
-                                  style: primaryFonts.copyWith(
-                                      color: Colors.white),
-                                ),
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: InkWell(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: Container(
+                              height: 50,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: primaryColor),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Save",
+                                style:
+                                    primaryFonts.copyWith(color: Colors.white),
                               ),
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),

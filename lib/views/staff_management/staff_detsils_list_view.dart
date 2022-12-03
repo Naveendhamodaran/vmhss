@@ -87,7 +87,7 @@ class _StaffListViewState extends State<StaffListView> {
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
                       child: Text(
-                        "Sections",
+                        "Staffs",
                         style: primaryFonts.copyWith(
                             fontWeight: FontWeight.w600, fontSize: 20),
                       ),

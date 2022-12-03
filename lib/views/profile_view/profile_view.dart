@@ -1,5 +1,6 @@
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/constants/app_styles.dart';
+import 'package:attandence_admin_panel/constants/helper_widgets.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 
@@ -97,7 +98,7 @@ class _ProfileViewState extends State<ProfileView> {
                           Padding(
                             padding: const EdgeInsets.only(left: 15, right: 15),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
@@ -118,7 +119,7 @@ class _ProfileViewState extends State<ProfileView> {
                                       ],
                                     ),
                                     Container(
-                                      width: 300,
+                                      width: 330,
                                       height: 50,
                                       child: TextField(
                                         decoration: InputDecoration(
@@ -128,6 +129,7 @@ class _ProfileViewState extends State<ProfileView> {
                                     )
                                   ],
                                 ),
+                                w30,
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -146,7 +148,7 @@ class _ProfileViewState extends State<ProfileView> {
                                       ],
                                     ),
                                     Container(
-                                      width: 350,
+                                      width: 330,
                                       child: TextField(
                                         maxLines: 2,
                                         decoration: InputDecoration(
@@ -165,7 +167,7 @@ class _ProfileViewState extends State<ProfileView> {
                           Padding(
                             padding: const EdgeInsets.only(left: 15, right: 15),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
@@ -186,7 +188,7 @@ class _ProfileViewState extends State<ProfileView> {
                                       ],
                                     ),
                                     Container(
-                                      width: 300,
+                                      width: 330,
                                       height: 50,
                                       child: TextField(
                                         decoration: InputDecoration(
@@ -196,6 +198,7 @@ class _ProfileViewState extends State<ProfileView> {
                                     )
                                   ],
                                 ),
+                                w30,
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -214,7 +217,7 @@ class _ProfileViewState extends State<ProfileView> {
                                       ],
                                     ),
                                     Container(
-                                      width: 350,
+                                      width: 330,
                                       child: TextField(
                                         decoration: InputDecoration(
                                             enabledBorder: borderstyle,
@@ -249,7 +252,7 @@ class _ProfileViewState extends State<ProfileView> {
                                     const EdgeInsets.only(left: 15, right: 15),
                                 child: Container(
                                   height: 50,
-                                  width: 300,
+                                  width: 330,
                                   child: TextField(
                                       controller: startdateController,
                                       readOnly: true,
@@ -270,7 +273,7 @@ class _ProfileViewState extends State<ProfileView> {
                                     const EdgeInsets.only(left: 15, right: 15),
                                 child: Container(
                                   height: 50,
-                                  width: 300,
+                                  width: 330,
                                   child: TextField(
                                       controller: enddateController,
                                       readOnly: true,
@@ -288,7 +291,7 @@ class _ProfileViewState extends State<ProfileView> {
                               ),
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                           Padding(

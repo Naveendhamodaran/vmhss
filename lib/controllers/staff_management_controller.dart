@@ -17,14 +17,15 @@ class StaffManagementController extends GetxController {
 
     users.add(staffModel.toJson()).then((value) {
       Get.snackbar("Staff added successfully", "",
+      maxWidth: 400,
           colorText: Colors.white, backgroundColor: Colors.green);
       Get.off(() => StaffListView());
     }).catchError((error) {
       Get.snackbar("Something went wrong", "",
+         maxWidth: 400,
           colorText: Colors.white, backgroundColor: Colors.red);
     });
   }
-
   getStaffs() async {
     staffList.clear();
     FirebaseFirestore.instance

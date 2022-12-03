@@ -134,6 +134,7 @@ class _SignINViewState extends State<SignINView> {
                                         Get.snackbar(
                                             "Please Enter Email and Password to Continue",
                                             "",
+                                               maxWidth: 400,
                                             colorText: Colors.white,
                                             backgroundColor: Colors.red);
                                       }
@@ -167,12 +168,18 @@ class _SignINViewState extends State<SignINView> {
                                       child: Container(
                                         width: 40,
                                         height: 25,
-                                        child: Container(
-                                          height: 25,
-                                          width: 25,
-                                          child: CircularProgressIndicator(
-                                            color: Colors.white,
-                                          ),
+                                        child: Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              height: 20,
+                                              width: 20,
+                                              child: CircularProgressIndicator(
+                                                    color: Colors.white,
+                                                    
+                                                  ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ),

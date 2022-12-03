@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/constants/app_styles.dart';
+import 'package:attandence_admin_panel/constants/helper_widgets.dart';
 import 'package:attandence_admin_panel/controllers/staff_management_controller.dart';
 import 'package:attandence_admin_panel/models/staff_model.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/left_bar.dart';
@@ -103,6 +104,7 @@ class _StaffManageViewState extends State<StaffManageView> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -111,171 +113,147 @@ class _StaffManageViewState extends State<StaffManageView> {
           Expanded(
             child: ListView(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 100, right: 100),
-                  child: Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border:
-                            Border.all(color: Colors.grey.withOpacity(0.6))),
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 20, top: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Text(
-                              'Personal Information',
-                              style: primaryFonts.copyWith(
-                                  fontWeight: FontWeight.w600),
-                            ),
+                Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border:
+                          Border.all(color: Colors.grey.withOpacity(0.6))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 20, top: 20,left: 50,right: 50),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text(
+                            'Personal Information',
+                            style: primaryFonts.copyWith(
+                                fontWeight: FontWeight.w600),
                           ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 15, right: 15),
-                            child: Divider(),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(left: 15, right: 15),
+                          child: Divider(),
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(left: 15, bottom: 15),
+                          child: InkWell(
+                            onTap: () {
+                              chooseImage();
+                            },
+                            child: imagePath == ""
+                                ? Container(
+                                    height: 150,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(10),
+                                        color: Colors.grey[300]),
+                                    alignment: Alignment.center,
+                                    child: const Icon(
+                                      Icons.add_a_photo,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                : Container(
+                                    height: 150,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Image.network(imagePath),
+                                  ),
                           ),
-                          const SizedBox(
-                            height: 10,
+                        ),
+                        h15,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    height: 50,
+                                    child: TextField(
+                                      controller: fullNameTextController,
+                                      decoration: InputDecoration(
+                                          labelText: "Full Name",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 30,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      controller: mobileNumberTextController,
+                                      decoration: InputDecoration(
+                                          labelText: "Mobile Number",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 15, bottom: 15),
-                            child: InkWell(
-                              onTap: () {
-                                chooseImage();
-                              },
-                              child: imagePath == ""
-                                  ? Container(
-                                      height: 150,
-                                      width: 150,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.grey[300]),
-                                      alignment: Alignment.center,
-                                      child: const Icon(
-                                        Icons.add_a_photo,
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 330,
+                                    decoration: BoxDecoration(
                                         color: Colors.white,
-                                      ),
-                                    )
-                                  : Container(
-                                      height: 150,
-                                      width: 150,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: Image.network(imagePath),
-                                    ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Full Name",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      width: 300,
-                                      height: 50,
-                                      child: TextField(
-                                        controller: fullNameTextController,
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Mobile Number",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      width: 350,
-                                      child: TextField(
-                                        controller: mobileNumberTextController,
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Gender",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      height: 50,
-                                      width: 300,
+                                        borderRadius:
+                                            BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.black54
+                                                .withOpacity(0.5))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10, top: 10),
                                       child: DropdownButton<String>(
                                         value: gender,
-                                        isExpanded: true,
-                                        icon: const Icon(Icons.arrow_downward),
-                                        elevation: 16,
-                                        style: const TextStyle(
-                                            color: Colors.deepPurple),
-                                        underline: Container(
-                                          height: 2,
-                                          color: Colors.deepPurpleAccent,
+                                        hint: Text(
+                                          "Gender*",
+                                          style: primaryFonts.copyWith(
+                                              fontSize: 14),
                                         ),
+                                        isExpanded: true,
+                                        icon: const Icon(Icons
+                                            .keyboard_arrow_down_outlined),
+                                        elevation: 0,
+                                        itemHeight: 55,
+                                        isDense: true,
+                                        style: const TextStyle(
+                                            color: Colors.black54),
                                         onChanged: (String? value) {
                                           // This is called when the user selects an item.
 
@@ -292,263 +270,192 @@ class _StaffManageViewState extends State<StaffManageView> {
                                           );
                                         }).toList(),
                                       ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Address",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
                                     ),
-                                    Container(
-                                      width: 350,
-                                      child: TextField(
-                                        maxLines: 2,
-                                        controller: addressTextController,
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 0, right: 5, top: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 15),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "Email",
-                                            style: primaryFonts.copyWith(
-                                                fontSize: 13),
-                                          ),
-                                          Text(
-                                            "*",
-                                            style: primaryFonts.copyWith(
-                                                color: Colors.red),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        width: 350,
-                                        child: TextField(
-                                          controller: emailTextController,
-                                          decoration: InputDecoration(
-                                              enabledBorder: borderstyle,
-                                              focusedBorder: borderstyle),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 15, right: 15),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "DOB",
-                                            style: primaryFonts.copyWith(
-                                                fontSize: 13),
-                                          ),
-                                          Text(
-                                            "*",
-                                            style: primaryFonts.copyWith(
-                                                color: Colors.red),
-                                          ),
-                                        ],
-                                      ),
-                                      Container(
-                                        height: 50,
-                                        width: 350,
-                                        child: TextField(
-                                            controller: enddateController,
-                                            readOnly: true,
-                                            onTap: () {
-                                              _selectedDateEnd(context);
-                                            },
-                                            decoration: InputDecoration(
-                                              labelText: "Date of Birth*",
-                                              suffixIcon:
-                                                  const Icon(Icons.date_range),
-                                              enabledBorder: borderstyle,
-                                              focusedBorder: borderstyle,
-                                            )),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 20,
-                          ),
-                          Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(left: 15, right: 15),
-                                child: Container(
-                                  height: 50,
-                                  width: 300,
-                                  child: TextField(
-                                      controller: startdateController,
-                                      readOnly: true,
-                                      onTap: () {
-                                        _selectedDate(context);
-                                      },
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 30,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      maxLines: 2,
+                                      controller: addressTextController,
                                       decoration: InputDecoration(
-                                        labelText: "Joining Date*",
-                                        suffixIcon:
-                                            const Icon(Icons.date_range),
-                                        enabledBorder: borderstyle,
-                                        focusedBorder: borderstyle,
-                                      )),
-                                ),
+                                          labelText: "Address",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
+                                    ),
+                                  )
+                                ],
                               ),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15, right: 15, top: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Qualification",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
+                        ),
+                        h30,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      controller: emailTextController,
+                                      decoration: InputDecoration(
+                                          labelText: "Email*",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      width: 300,
-                                      height: 50,
-                                      child: TextField(
-                                        controller: qualificationTextController,
+                                  )
+                                ],
+                              ),
+                              const SizedBox(
+                                width: 30,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 330,
+                                    child: TextField(
+                                        controller: enddateController,
+                                        readOnly: true,
+                                        onTap: () {
+                                          _selectedDateEnd(context);
+                                        },
                                         decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Total Experience",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
-                                    ),
-                                    Container(
-                                      width: 350,
-                                      child: TextField(
-                                        controller:
-                                            totalExperienceTextController,
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
+                                          labelText: "Date of Birth*",
+                                          suffixIcon:
+                                              const Icon(Icons.date_range),
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle,
+                                        )),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Column(
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 15, right: 15),
+                              child: Container(
+                                height: 50,
+                                width: 330,
+                                child: TextField(
+                                    controller: startdateController,
+                                    readOnly: true,
+                                    onTap: () {
+                                      _selectedDate(context);
+                                    },
+                                    decoration: InputDecoration(
+                                      labelText: "Joining Date*",
+                                      suffixIcon:
+                                          const Icon(Icons.date_range),
+                                      enabledBorder: borderstyle,
+                                      focusedBorder: borderstyle,
+                                    )),
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "Designation",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
+                          ],
+                        ),
+                        h30,
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    height: 50,
+                                    child: TextField(
+                                      controller: qualificationTextController,
+                                      decoration: InputDecoration(
+                                          labelText: "Qualification",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      height: 50,
-                                      width: 300,
+                                  )
+                                ],
+                              ),
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      controller:
+                                          totalExperienceTextController,
+                                      decoration: InputDecoration(
+                                          labelText: "Total Experience",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 50,
+                                    width: 330,
+                                    decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius:
+                                            BorderRadius.circular(10),
+                                        border: Border.all(
+                                            color: Colors.black54
+                                                .withOpacity(0.5))),
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 10, right: 10, top: 10),
                                       child: DropdownButton<String>(
                                         value: designation,
                                         isExpanded: true,
-                                        icon: const Icon(Icons.arrow_downward),
-                                        elevation: 16,
-                                        style: const TextStyle(
-                                            color: Colors.deepPurple),
-                                        underline: Container(
-                                          height: 2,
-                                          color: Colors.deepPurpleAccent,
+                                        isDense: true,
+                                        hint: Text(
+                                          "Designation",
+                                          style: primaryFonts.copyWith(
+                                              fontSize: 14),
                                         ),
+                                        icon: const Icon(Icons
+                                            .keyboard_arrow_down_outlined),
+                                        elevation: 0,
+                                        style: const TextStyle(
+                                            color: Colors.black54),
                                         onChanged: (String? value) {
                                           // This is called when the user selects an item.
 
@@ -565,168 +472,141 @@ class _StaffManageViewState extends State<StaffManageView> {
                                           );
                                         }).toList(),
                                       ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "ESI",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                        Text(
-                                          "*",
-                                          style: primaryFonts.copyWith(
-                                              color: Colors.red),
-                                        ),
-                                      ],
                                     ),
-                                    Container(
-                                      width: 350,
-                                      child: TextField(
-                                        controller: esiTextController,
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 40,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: Text(
-                              'Documents',
-                              style: primaryFonts.copyWith(
-                                  fontWeight: FontWeight.w600),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(
-                                left: 15, right: 15, bottom: 10),
-                            child: Divider(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "AADHAR CARD NUMBER",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                      ],
+                                  )
+                                ],
+                              ),
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      controller: esiTextController,
+                                      decoration: InputDecoration(
+                                          labelText: "ESI",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      width: 200,
-                                      height: 50,
-                                      child: TextField(
-                                        controller: aadharnumberTextController,
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "PAN Card Number",
-                                          style: primaryFonts.copyWith(
-                                              fontSize: 13),
-                                        ),
-                                      ],
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text(
+                            'Documents',
+                            style: primaryFonts.copyWith(
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.only(
+                              left: 15, right: 15, bottom: 10),
+                          child: Divider(),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15, right: 15),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    height: 50,
+                                    child: TextField(
+                                      controller: aadharnumberTextController,
+                                      decoration: InputDecoration(
+                                          labelText: "AADHAR CARD NUMBER",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
                                     ),
-                                    Container(
-                                      width: 200,
-                                      child: TextField(
-                                        controller: panCardTextController,
-                                        decoration: InputDecoration(
-                                            enabledBorder: borderstyle,
-                                            focusedBorder: borderstyle),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
+                                  )
+                                ],
+                              ),
+                              w30,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    width: 330,
+                                    child: TextField(
+                                      controller: panCardTextController,
+                                      decoration: InputDecoration(
+                                          labelText: "PAN Card Number",
+                                          enabledBorder: borderstyle,
+                                          focusedBorder: borderstyle),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ],
                           ),
-                          const SizedBox(
-                            height: 50,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15),
-                            child: InkWell(
-                              onTap: () async {
-                                // var imageUrl =
-                                //     await staffmanageController.storeImage(
-                                //         images: imagePath,
-                                //         employeename:
-                                //             fullNameTextController.text,
-                                //         imageName: imageName);
+                        ),
+                        const SizedBox(
+                          height: 50,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: InkWell(
+                            onTap: () async {
+                              // var imageUrl =
+                              //     await staffmanageController.storeImage(
+                              //         images: imagePath,
+                              //         employeename:
+                              //             fullNameTextController.text,
+                              //         imageName: imageName);
 
-                                StaffModel staffModel = StaffModel(
-                                    image: "imageUrl",
-                                    fullName: fullNameTextController.text,
-                                    mobileNumber:
-                                        mobileNumberTextController.text,
-                                    gender: gender,
-                                    address: addressTextController.text,
-                                    email: emailTextController.text,
-                                    dob: _date2,
-                                    joiningDate: _date,
-                                    qualification:
-                                        qualificationTextController.text,
-                                    totalExperience:
-                                        totalExperienceTextController.text,
-                                    designation: designation,
-                                    esi: esiTextController.text,
-                                    aadharCardNumber:
-                                        aadharnumberTextController.text,
-                                    panCardNumber: panCardTextController.text,
-                                    aadharCardImage: "null",
-                                    panCardImage: "null");
+                              StaffModel staffModel = StaffModel(
+                                  image: "imageUrl",
+                                  fullName: fullNameTextController.text,
+                                  mobileNumber:
+                                      mobileNumberTextController.text,
+                                  gender: gender,
+                                  address: addressTextController.text,
+                                  email: emailTextController.text,
+                                  dob: _date2,
+                                  joiningDate: _date,
+                                  qualification:
+                                      qualificationTextController.text,
+                                  totalExperience:
+                                      totalExperienceTextController.text,
+                                  designation: designation,
+                                  esi: esiTextController.text,
+                                  aadharCardNumber:
+                                      aadharnumberTextController.text,
+                                  panCardNumber: panCardTextController.text,
+                                  aadharCardImage: "null",
+                                  panCardImage: "null");
 
-                                staffmanageController
-                                    .writeToStaffmanagement(staffModel);
-                              },
-                              child: Container(
-                                height: 50,
-                                width: 150,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(30),
-                                    color: primaryColor),
-                                alignment: Alignment.center,
-                                child: Text(
-                                  "Save",
-                                  style: primaryFonts.copyWith(
-                                      color: Colors.white),
-                                ),
+                              staffmanageController
+                                  .writeToStaffmanagement(staffModel);
+                            },
+                            child: Container(
+                              height: 50,
+                              width: 150,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  color: primaryColor),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "Save",
+                                style: primaryFonts.copyWith(
+                                    color: Colors.white),
                               ),
                             ),
-                          )
-                        ],
-                      ),
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
