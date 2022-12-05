@@ -2,11 +2,15 @@ import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/constants/app_styles.dart';
 import 'package:attandence_admin_panel/constants/helper_widgets.dart';
+import 'package:attandence_admin_panel/controllers/student_management_controller.dart';
+import 'package:attandence_admin_panel/models/student_model.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/left_bar.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:image_picker_web/image_picker_web.dart';
 
 class StudentManagementView extends StatefulWidget {
   const StudentManagementView({super.key});
@@ -18,7 +22,7 @@ class StudentManagementView extends StatefulWidget {
 class _StudentManagementViewState extends State<StudentManagementView> {
   DateTime _date = DateTime.now();
   DateTime _date2 = DateTime.now();
-
+  final studentController = Get.find<StudentmanagementController>();
   var startdateController = TextEditingController();
   var enddateController = TextEditingController();
 
@@ -105,6 +109,27 @@ class _StudentManagementViewState extends State<StudentManagementView> {
     }
   }
 
+  var fullNameController = TextEditingController();
+  var admissionNoController = TextEditingController();
+  var addressController = TextEditingController();
+  var joingStandersController = TextEditingController();
+  var firstlangController = TextEditingController();
+  var castController = TextEditingController();
+  var communityControler = TextEditingController();
+  var motherToungeController = TextEditingController();
+  var previousSchoolController = TextEditingController();
+  var previousstanderdController = TextEditingController();
+
+  Uint8List? imagePath;
+  String imageName = "";
+
+  chooseImage() async {
+    Uint8List? bytesFromPicker = await ImagePickerWeb.getImageAsBytes();
+    setState(() {
+      imagePath = bytesFromPicker!;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -120,7 +145,8 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(color: Colors.grey.withOpacity(0.6))),
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 20,left: 50,right: 50),
+                    padding: const EdgeInsets.only(
+                        bottom: 20, top: 20, left: 50, right: 50),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -141,17 +167,32 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 15, bottom: 15),
-                          child: Container(
-                            height: 150,
-                            width: 150,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.grey[300]),
-                            alignment: Alignment.center,
-                            child: const Icon(
-                              Icons.add_a_photo,
-                              color: Colors.white,
-                            ),
+                          child: InkWell(
+                            onTap: () {
+                              chooseImage();
+                            },
+                            child: imagePath == null
+                                ? Container(
+                                    height: 150,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.grey[300]),
+                                    alignment: Alignment.center,
+                                    child: const Icon(
+                                      Icons.add_a_photo,
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                : Container(
+                                    height: 150,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    alignment: Alignment.center,
+                                    child: Image.memory(imagePath!),
+                                  ),
                           ),
                         ),
                         h15,
@@ -168,6 +209,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     width: 330,
                                     height: 50,
                                     child: TextField(
+                                      controller: fullNameController,
                                       decoration: InputDecoration(
                                           labelText: "Full Name",
                                           enabledBorder: borderstyle,
@@ -183,6 +225,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   Container(
                                     width: 330,
                                     child: TextField(
+                                      controller: admissionNoController,
                                       decoration: InputDecoration(
                                           labelText: "Admission No",
                                           enabledBorder: borderstyle,
@@ -261,6 +304,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     width: 330,
                                     child: TextField(
                                       maxLines: 2,
+                                      controller: addressController,
                                       decoration: InputDecoration(
                                           labelText: "Address*",
                                           enabledBorder: borderstyle,
@@ -285,6 +329,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   Container(
                                     width: 330,
                                     child: TextField(
+                                      controller: joingStandersController,
                                       decoration: InputDecoration(
                                           labelText: "Joining standard*",
                                           enabledBorder: borderstyle,
@@ -413,6 +458,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   Container(
                                     width: 330,
                                     child: TextField(
+                                      controller: firstlangController,
                                       decoration: InputDecoration(
                                           labelText: "First Language",
                                           enabledBorder: borderstyle,
@@ -504,8 +550,8 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                         isExpanded: true,
                                         hint: Text(
                                           "State*",
-                                          style:
-                                              primaryFonts.copyWith(fontSize: 14),
+                                          style: primaryFonts.copyWith(
+                                              fontSize: 14),
                                         ),
                                         icon: const Icon(
                                             Icons.keyboard_arrow_down_outlined),
@@ -602,6 +648,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   Container(
                                     width: 330,
                                     child: TextField(
+                                      controller: castController,
                                       decoration: InputDecoration(
                                           labelText: "Cast*",
                                           enabledBorder: borderstyle,
@@ -629,6 +676,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     width: 330,
                                     height: 50,
                                     child: TextField(
+                                      controller: communityControler,
                                       decoration: InputDecoration(
                                           labelText: "Community",
                                           enabledBorder: borderstyle,
@@ -644,6 +692,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   Container(
                                     width: 330,
                                     child: TextField(
+                                      controller: motherToungeController,
                                       decoration: InputDecoration(
                                           labelText: "Mother Tongue",
                                           enabledBorder: borderstyle,
@@ -684,6 +733,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     width: 330,
                                     height: 50,
                                     child: TextField(
+                                      controller: previousSchoolController,
                                       decoration: InputDecoration(
                                           labelText: "Previous School",
                                           enabledBorder: borderstyle,
@@ -699,6 +749,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   Container(
                                     width: 330,
                                     child: TextField(
+                                      controller: previousstanderdController,
                                       decoration: InputDecoration(
                                           labelText: "Previous Standard",
                                           enabledBorder: borderstyle,
@@ -716,8 +767,35 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                         Padding(
                           padding: const EdgeInsets.only(left: 15),
                           child: InkWell(
-                            onTap: () {
-                              Get.back();
+                            onTap: () async {
+                              String url = await studentController.storeImage(
+                                  images: imagePath,
+                                  employeename: fullNameController.text,
+                                  imageName: imageName);
+                              print(url);
+                              StudentModel studentModel = StudentModel(
+                                  image: url,
+                                  fullName: fullNameController.text,
+                                  admissionNo: admissionNoController.text,
+                                  gender: gender,
+                                  address: addressController.text,
+                                  joiningSttanderd:
+                                      joingStandersController.text,
+                                  dob: _date2,
+                                  joiningDate: _date,
+                                  cast: castController.text,
+                                  community: communityControler.text,
+                                  firstLanguage: firstlangController.text,
+                                  medium: designation,
+                                  motherToungue: motherToungeController.text,
+                                  nationality: nationality,
+                                  previousSchool: previousSchoolController.text,
+                                  previousStanderds:
+                                      previousstanderdController.text,
+                                  religion: releagion,
+                                  state: state);
+                              studentController
+                                  .writeToStudentmanagement(studentModel);
                             },
                             child: Container(
                               height: 50,

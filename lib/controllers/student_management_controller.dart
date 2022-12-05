@@ -2,59 +2,62 @@ import 'dart:io';
 import 'dart:async';
 import 'package:attandence_admin_panel/constants/colllections_namings.dart';
 import 'package:attandence_admin_panel/models/staff_model.dart';
+import 'package:attandence_admin_panel/models/student_model.dart';
 import 'package:attandence_admin_panel/views/staff_management/staff_detsils_list_view.dart';
+import 'package:attandence_admin_panel/views/student_management/students_list_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class StaffManagementController extends GetxController {
-  List<StaffModel> staffList = [];
+class StudentmanagementController extends GetxController {
+  List<StudentModel> studentsList = [];
 
-  writeToStaffmanagement(StaffModel staffModel) async {
+  writeToStudentmanagement(StudentModel studentsModel) async {
     CollectionReference users =
-        FirebaseFirestore.instance.collection(staffCollection);
+        FirebaseFirestore.instance.collection(studentsCollection);
 
-    users.add(staffModel.toJson()).then((value) {
-      Get.snackbar("Staff added successfully", "",
+    users.add(studentsModel.toJson()).then((value) {
+      Get.snackbar("Student added successfully", "",
           maxWidth: 400,
           colorText: Colors.white,
           backgroundColor: Colors.green);
-      Get.off(() => StaffListView());
+      Get.off(() => StudentsListView());
     }).catchError((error) {
       Get.snackbar("Something went wrong", "",
           maxWidth: 400, colorText: Colors.white, backgroundColor: Colors.red);
     });
   }
 
-  getStaffs() async {
-    staffList.clear();
+  getStudents() async {
+    studentsList.clear();
     FirebaseFirestore.instance
-        .collection(staffCollection)
+        .collection(studentsCollection)
         .get()
         .then((QuerySnapshot querySnapshot) {
       for (var doc in querySnapshot.docs) {
-        print(doc["full_name"]);
-        StaffModel staffDetail = StaffModel(
+        StudentModel studentModel = StudentModel(
           image: doc["full_name"],
           fullName: doc["full_name"],
-          mobileNumber: doc["mobile_number"],
+          admissionNo: doc["admission_No"],
           gender: doc["gender"],
           address: doc["address"],
-          email: doc["email"],
+          joiningSttanderd: doc["joining_standerd"],
           dob: (doc["dob"] as Timestamp).toDate(),
           joiningDate: (doc["joining_date"] as Timestamp).toDate(),
-          qualification: doc["qualification"],
-          totalExperience: doc["totalExperience"],
-          designation: doc["designation"],
-          esi: doc["esi"],
-          aadharCardNumber: doc["aadhar_card_number"],
-          aadharCardImage: doc["aadhar_card_image"],
-          panCardImage: doc["pan_card_image"],
-          panCardNumber: doc["pan_card_number"],
+          medium: doc["medium"],
+          firstLanguage: doc["first_language"],
+          nationality: doc["nationality"],
+          state: doc["state"],
+          religion: doc["religion"],
+          cast: doc["cast"],
+          community: doc["community"],
+          motherToungue: doc["mother_tounge"],
+          previousSchool: doc["previous_school"],
+          previousStanderds: doc["previous_statnderd"],
         );
-        staffList.add(staffDetail);
+        studentsList.add(studentModel);
       }
       update();
     });
@@ -65,16 +68,12 @@ class StaffManagementController extends GetxController {
       required String employeename,
       required String imageName}) async {
     print("::::::::::::::1:::::::::::::::::::");
-
     final storageReference =
         FirebaseStorage.instance.ref().child("Staffs/$employeename");
     print("::::::::::::::2:::::::::::::::::::");
-
     await storageReference.putData(images!);
     print("::::::::::::::3:::::::::::::::::::");
-
     final String url = await storageReference.getDownloadURL();
-
     return url;
   }
 }

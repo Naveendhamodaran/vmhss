@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'dart:html';
 
 import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
@@ -10,8 +10,10 @@ import 'package:attandence_admin_panel/widgets/common_widgets/left_bar.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:image_picker_web/image_picker_web.dart';
 
 class StaffManageView extends StatefulWidget {
   const StaffManageView({super.key});
@@ -88,19 +90,17 @@ class _StaffManageViewState extends State<StaffManageView> {
     }
   }
 
-  String imagePath = "";
+   Uint8List? imagePath;
   String imageName = "";
 
   chooseImage() async {
-    final ImagePicker _picker = ImagePicker();
-    // Pick an image
-    final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
-
+    Uint8List? bytesFromPicker = await ImagePickerWeb.getImageAsBytes();
     setState(() {
-      imagePath = image!.path;
-      imageName = image.name;
+      imagePath = bytesFromPicker!;
     });
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -116,10 +116,10 @@ class _StaffManageViewState extends State<StaffManageView> {
                 Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      border:
-                          Border.all(color: Colors.grey.withOpacity(0.6))),
+                      border: Border.all(color: Colors.grey.withOpacity(0.6))),
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 20, top: 20,left: 50,right: 50),
+                    padding: const EdgeInsets.only(
+                        bottom: 20, top: 20, left: 50, right: 50),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -139,19 +139,17 @@ class _StaffManageViewState extends State<StaffManageView> {
                           height: 10,
                         ),
                         Padding(
-                          padding:
-                              const EdgeInsets.only(left: 15, bottom: 15),
+                          padding: const EdgeInsets.only(left: 15, bottom: 15),
                           child: InkWell(
                             onTap: () {
                               chooseImage();
                             },
-                            child: imagePath == ""
+                            child: imagePath == null
                                 ? Container(
                                     height: 150,
                                     width: 150,
                                     decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(10),
                                         color: Colors.grey[300]),
                                     alignment: Alignment.center,
                                     child: const Icon(
@@ -166,7 +164,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     alignment: Alignment.center,
-                                    child: Image.network(imagePath),
+                                    child: Image.memory(imagePath!),
                                   ),
                           ),
                         ),
@@ -231,8 +229,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                     width: 330,
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(10),
                                         border: Border.all(
                                             color: Colors.black54
                                                 .withOpacity(0.5))),
@@ -247,8 +244,8 @@ class _StaffManageViewState extends State<StaffManageView> {
                                               fontSize: 14),
                                         ),
                                         isExpanded: true,
-                                        icon: const Icon(Icons
-                                            .keyboard_arrow_down_outlined),
+                                        icon: const Icon(
+                                            Icons.keyboard_arrow_down_outlined),
                                         elevation: 0,
                                         itemHeight: 55,
                                         isDense: true,
@@ -365,8 +362,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                     },
                                     decoration: InputDecoration(
                                       labelText: "Joining Date*",
-                                      suffixIcon:
-                                          const Icon(Icons.date_range),
+                                      suffixIcon: const Icon(Icons.date_range),
                                       enabledBorder: borderstyle,
                                       focusedBorder: borderstyle,
                                     )),
@@ -404,8 +400,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                   Container(
                                     width: 330,
                                     child: TextField(
-                                      controller:
-                                          totalExperienceTextController,
+                                      controller: totalExperienceTextController,
                                       decoration: InputDecoration(
                                           labelText: "Total Experience",
                                           enabledBorder: borderstyle,
@@ -434,8 +429,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                     width: 330,
                                     decoration: BoxDecoration(
                                         color: Colors.white,
-                                        borderRadius:
-                                            BorderRadius.circular(10),
+                                        borderRadius: BorderRadius.circular(10),
                                         border: Border.all(
                                             color: Colors.black54
                                                 .withOpacity(0.5))),
@@ -451,8 +445,8 @@ class _StaffManageViewState extends State<StaffManageView> {
                                           style: primaryFonts.copyWith(
                                               fontSize: 14),
                                         ),
-                                        icon: const Icon(Icons
-                                            .keyboard_arrow_down_outlined),
+                                        icon: const Icon(
+                                            Icons.keyboard_arrow_down_outlined),
                                         elevation: 0,
                                         style: const TextStyle(
                                             color: Colors.black54),
@@ -507,8 +501,8 @@ class _StaffManageViewState extends State<StaffManageView> {
                           ),
                         ),
                         const Padding(
-                          padding: EdgeInsets.only(
-                              left: 15, right: 15, bottom: 10),
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, bottom: 10),
                           child: Divider(),
                         ),
                         Padding(
@@ -560,17 +554,15 @@ class _StaffManageViewState extends State<StaffManageView> {
                           child: InkWell(
                             onTap: () async {
                               // var imageUrl =
-                              //     await staffmanageController.storeImage(
-                              //         images: imagePath,
-                              //         employeename:
-                              //             fullNameTextController.text,
-                              //         imageName: imageName);
+                          String  url =     await staffmanageController.storeImage(
+                                  images: imagePath,
+                                  employeename: fullNameTextController.text,
+                                  imageName: imageName);
 
                               StaffModel staffModel = StaffModel(
-                                  image: "imageUrl",
+                                  image: url,
                                   fullName: fullNameTextController.text,
-                                  mobileNumber:
-                                      mobileNumberTextController.text,
+                                  mobileNumber: mobileNumberTextController.text,
                                   gender: gender,
                                   address: addressTextController.text,
                                   email: emailTextController.text,
@@ -600,8 +592,8 @@ class _StaffManageViewState extends State<StaffManageView> {
                               alignment: Alignment.center,
                               child: Text(
                                 "Save",
-                                style: primaryFonts.copyWith(
-                                    color: Colors.white),
+                                style:
+                                    primaryFonts.copyWith(color: Colors.white),
                               ),
                             ),
                           ),

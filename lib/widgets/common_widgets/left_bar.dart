@@ -5,6 +5,7 @@ import 'package:attandence_admin_panel/views/dash_board_view/home_page_view.dart
 import 'package:attandence_admin_panel/views/sections_view/section_view.dart';
 import 'package:attandence_admin_panel/views/staff_management/staff_detsils_list_view.dart';
 import 'package:attandence_admin_panel/views/staff_management/staff_management.dart';
+import 'package:attandence_admin_panel/views/student_management/students_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -161,7 +162,7 @@ class LeftBar extends StatelessWidget {
           Material(
             child: InkWell(
               onTap: () {
-                Get.to(() => const StudentManagementView());
+                Get.to(() => const StudentsListView());
               },
               child: Column(
                 children: [

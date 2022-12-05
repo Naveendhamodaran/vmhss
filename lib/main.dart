@@ -1,6 +1,7 @@
 import 'package:attandence_admin_panel/controllers/auth_controllers/auth_controller.dart';
 import 'package:attandence_admin_panel/controllers/sections_controller.dart';
 import 'package:attandence_admin_panel/controllers/staff_management_controller.dart';
+import 'package:attandence_admin_panel/controllers/student_management_controller.dart';
 import 'package:attandence_admin_panel/views/sign_in_view/spash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,7 @@ void main() async {
   Get.put(SectionController());
   Get.put(AuthController());
   Get.put(StaffManagementController());
+  Get.put(StudentmanagementController());
   runApp(const MyApp());
 }
 
