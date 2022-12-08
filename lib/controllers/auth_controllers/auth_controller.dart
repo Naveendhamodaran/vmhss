@@ -1,4 +1,3 @@
-import 'package:attandence_admin_panel/views/dash_board_view/dash_board_view.dart';
 import 'package:attandence_admin_panel/views/dash_board_view/home_page_view.dart';
 import 'package:attandence_admin_panel/views/sign_in_view/sign_in_view.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class AuthController extends GetxController {
         Get.offAll(() => SignINView());
       } else {
         print('User is signed in!');
-        Get.offAll(HomePageView());
+        Get.offAll(const HomePageView());
       }
     });
   }
@@ -28,7 +27,7 @@ class AuthController extends GetxController {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       isLoading(false);
-      Get.offAll(HomePageView());
+      Get.offAll(const HomePageView());
       Get.snackbar("Successfully Logged in", "",
           maxWidth: 400,
           colorText: Colors.white,

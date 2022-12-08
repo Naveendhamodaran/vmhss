@@ -1,16 +1,13 @@
-import 'package:attandence_admin_panel/constants/app_colors.dart';
-import 'package:attandence_admin_panel/constants/app_fonts.dart';
-import 'package:attandence_admin_panel/views/dash_board_view/dash_board_view.dart';
 import 'package:attandence_admin_panel/views/dash_board_view/home_page_view.dart';
 import 'package:attandence_admin_panel/views/sections_view/section_view.dart';
 import 'package:attandence_admin_panel/views/staff_management/staff_detsils_list_view.dart';
-import 'package:attandence_admin_panel/views/staff_management/staff_management.dart';
 import 'package:attandence_admin_panel/views/student_management/students_list_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../views/student_management/student_management_view.dart';
+import '../../constants/helper_widgets.dart';
+import 'icon_box.dart';
 
 class LeftBar extends StatelessWidget {
   const LeftBar({super.key});
@@ -18,11 +15,12 @@ class LeftBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 90,
+      width: 102,
+      color: Colors.white,
       child: ListView(
         children: [
           const SizedBox(
-            height: 25,
+            height: 10,
           ),
           // Column(
           //   children: [
@@ -41,296 +39,90 @@ class LeftBar extends StatelessWidget {
           //     ),
           //   ],
           // ),
-          Column(
-            children: [
-              InkWell(
-                onTap: () {
-                  Get.to(() => HomePageView());
-                },
-                child: Container(
-                  height: 30,
-                  width: 55,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: secondaryColor.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Icon(
-                    Icons.dashboard_outlined,
-                    color: primaryColor,
-                    size: 17,
-                  ),
-                ),
-              ),
-              Text(
-                "DashBoard",
-                style: primaryFonts.copyWith(
-                    fontSize: 10,
-                    color: Color.fromARGB(255, 4, 63, 110),
-                    fontWeight: FontWeight.w600),
-              )
-            ],
+          IconBox(
+            icon: Icons.dashboard_outlined,
+            text: 'Dashboard',
+            onPress: () {
+              Get.to(() => const HomePageView());
+            },
           ),
-          const SizedBox(
-            height: 10,
+
+          h20,
+          IconBox(
+            icon: Icons.cloud_upload_outlined, text: 'Data Import',
+            //   onPress: () {
+            //   Get.to(() => const HomePageView());
+            // },
+            onPress: () {},
           ),
-          Column(
-            children: [
-              Container(
-                height: 30,
-                width: 55,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: secondaryColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(30)),
-                child: Icon(
-                  Icons.cloud_upload_outlined,
-                  color: primaryColor,
-                  size: 17,
-                ),
-              ),
-              Text(
-                "Data Import",
-                style: primaryFonts.copyWith(
-                    fontSize: 10,
-                    color: const Color.fromARGB(255, 4, 63, 110),
-                    fontWeight: FontWeight.w600),
-              )
-            ],
+
+          h20,
+          IconBox(
+            icon: CupertinoIcons.star, text: 'Privilages',
+            //   onPress: () {
+            //   Get.to(() => const HomePageView());
+            // },
+            onPress: () {},
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(
-            children: [
-              Container(
-                height: 30,
-                width: 55,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: secondaryColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(30)),
-                child: Icon(
-                  CupertinoIcons.star,
-                  color: primaryColor,
-                  size: 17,
-                ),
-              ),
-              Text(
-                "Privilages",
-                style: primaryFonts.copyWith(
-                    fontSize: 10,
-                    color: const Color.fromARGB(255, 4, 63, 110),
-                    fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          InkWell(
-            onTap: () {
+          h20,
+          IconBox(
+            icon: Icons.photo_size_select_small_outlined,
+            text: 'Section',
+            onPress: () {
               Get.to(() => SetionView());
             },
-            child: Column(
-              children: [
-                Container(
-                  height: 30,
-                  width: 55,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: secondaryColor.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Icon(
-                    Icons.photo_size_select_small_outlined,
-                    color: primaryColor,
-                    size: 17,
-                  ),
-                ),
-                Text(
-                  "Section",
-                  style: primaryFonts.copyWith(
-                      fontSize: 10,
-                      color: const Color.fromARGB(255, 4, 63, 110),
-                      fontWeight: FontWeight.w600),
-                )
-              ],
-            ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Material(
-            child: InkWell(
-              onTap: () {
-                Get.to(() => const StudentsListView());
-              },
-              child: Column(
-                children: [
-                  Container(
-                    height: 30,
-                    width: 55,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: secondaryColor.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(30)),
-                    child: Icon(
-                      Icons.portrait_rounded,
-                      color: primaryColor,
-                      size: 17,
-                    ),
-                  ),
-                  Text(
-                    "Student",
-                    style: primaryFonts.copyWith(
-                        fontSize: 10,
-                        color: const Color.fromARGB(255, 4, 63, 110),
-                        fontWeight: FontWeight.w600),
-                  )
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          InkWell(
-            onTap: () {
-              Get.to(() => StaffListView());
+          h20,
+          IconBox(
+            icon: Icons.portrait_rounded,
+            text: 'Students',
+            onPress: () {
+              Get.to(() => const StudentsListView());
             },
-            onHover: (value) {},
-            child: Column(
-              children: [
-                Container(
-                  height: 30,
-                  width: 55,
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: secondaryColor.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(30)),
-                  child: Icon(
-                    Icons.person_pin,
-                    color: primaryColor,
-                    size: 17,
-                  ),
-                ),
-                Text(
-                  "Staf",
-                  style: primaryFonts.copyWith(
-                      fontSize: 10,
-                      color: const Color.fromARGB(255, 4, 63, 110),
-                      fontWeight: FontWeight.w600),
-                )
-              ],
-            ),
           ),
-          const SizedBox(
-            height: 10,
+          h20,
+          IconBox(
+            icon: Icons.person_pin,
+            text: 'Staffs',
+            onPress: () {
+              Get.to(() => const StaffListView());
+            },
           ),
-          Column(
-            children: [
-              Container(
-                height: 30,
-                width: 55,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: secondaryColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(30)),
-                child: Icon(
-                  Icons.bus_alert_outlined,
-                  color: primaryColor,
-                  size: 17,
-                ),
-              ),
-              Text(
-                "Bus",
-                style: primaryFonts.copyWith(
-                    fontSize: 10,
-                    color: const Color.fromARGB(255, 4, 63, 110),
-                    fontWeight: FontWeight.w600),
-              )
-            ],
+          h20,
+          IconBox(
+            icon: Icons.bus_alert_outlined, text: 'Bus',
+            //   onPress: () {
+            //   Get.to(() => const HomePageView());
+            // },
+            onPress: () {},
           ),
-          const SizedBox(
-            height: 10,
+
+          h20,
+          IconBox(
+            icon: Icons.table_chart_outlined, text: 'Attendance',
+            //   onPress: () {
+            //   Get.to(() => const HomePageView());
+            // },
+            onPress: () {},
           ),
-          Column(
-            children: [
-              Container(
-                height: 30,
-                width: 55,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: secondaryColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(30)),
-                child: Icon(
-                  Icons.table_chart_outlined,
-                  color: primaryColor,
-                  size: 17,
-                ),
-              ),
-              Text(
-                "Attandance",
-                style: primaryFonts.copyWith(
-                    fontSize: 10,
-                    color: const Color.fromARGB(255, 4, 63, 110),
-                    fontWeight: FontWeight.w600),
-              )
-            ],
+
+          h20,
+          IconBox(
+            icon: Icons.calculate_outlined, text: 'Exam',
+            //   onPress: () {
+            //   Get.to(() => const HomePageView());
+            // },
+            onPress: () {},
           ),
-          const SizedBox(
-            height: 10,
+          h20,
+          IconBox(
+            icon: Icons.data_saver_off_sharp, text: 'Marks',
+            //   onPress: () {
+            //   Get.to(() => const HomePageView());
+            // },
+            onPress: () {},
           ),
-          Column(
-            children: [
-              Container(
-                height: 30,
-                width: 55,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: secondaryColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(30)),
-                child: Icon(
-                  Icons.calculate_outlined,
-                  color: primaryColor,
-                  size: 17,
-                ),
-              ),
-              Text(
-                "Exam",
-                style: primaryFonts.copyWith(
-                    fontSize: 10,
-                    color: const Color.fromARGB(255, 4, 63, 110),
-                    fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          Column(
-            children: [
-              Container(
-                height: 30,
-                width: 55,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                    color: secondaryColor.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(30)),
-                child: Icon(
-                  Icons.data_saver_off_sharp,
-                  color: primaryColor,
-                  size: 17,
-                ),
-              ),
-              Text(
-                "Mark",
-                style: primaryFonts.copyWith(
-                    fontSize: 10,
-                    color: const Color.fromARGB(255, 4, 63, 110),
-                    fontWeight: FontWeight.w600),
-              )
-            ],
-          ),
+
           const SizedBox(
             height: 50,
           ),

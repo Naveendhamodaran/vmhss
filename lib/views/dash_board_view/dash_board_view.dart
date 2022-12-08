@@ -3,7 +3,6 @@ import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/views/profile_view/profile_view.dart';
 import 'package:attandence_admin_panel/views/sections_view/section_view.dart';
 import 'package:attandence_admin_panel/views/staff_management/staff_detsils_list_view.dart';
-import 'package:attandence_admin_panel/views/staff_management/staff_management.dart';
 import 'package:attandence_admin_panel/views/student_management/student_management_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +68,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                     "DashBoard",
                     style: primaryFonts.copyWith(
                         fontSize: 10,
-                        color: Color.fromARGB(255, 4, 63, 110),
+                        color: const Color.fromARGB(255, 4, 63, 110),
                         fontWeight: FontWeight.w600),
                   )
                 ],
@@ -182,7 +181,7 @@ class _DashBoardViewState extends State<DashBoardView> {
               ),
               InkWell(
                 onTap: () {
-                  Get.to(() => StaffListView());
+                  Get.to(() => const StaffListView());
                 },
                 child: Column(
                   children: [
@@ -879,7 +878,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                 padding: const EdgeInsets.only(right: 10, top: 20),
                 child: InkWell(
                   onTap: () {
-                    Get.to(() => ProfileView());
+                    Get.to(() => const ProfileView());
                   },
                   child: Container(
                     height: 30,
@@ -929,7 +928,7 @@ class _DashBoardViewState extends State<DashBoardView> {
                     "SMS",
                     style: primaryFonts.copyWith(
                         fontSize: 10,
-                        color: Color.fromARGB(255, 4, 63, 110),
+                        color: const Color.fromARGB(255, 4, 63, 110),
                         fontWeight: FontWeight.w600),
                   )
                 ],

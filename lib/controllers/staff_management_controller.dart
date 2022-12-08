@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:async';
 import 'package:attandence_admin_panel/constants/colllections_namings.dart';
 import 'package:attandence_admin_panel/models/staff_model.dart';
@@ -21,7 +20,7 @@ class StaffManagementController extends GetxController {
           maxWidth: 400,
           colorText: Colors.white,
           backgroundColor: Colors.green);
-      Get.off(() => StaffListView());
+      Get.off(() => const StaffListView());
     }).catchError((error) {
       Get.snackbar("Something went wrong", "",
           maxWidth: 400, colorText: Colors.white, backgroundColor: Colors.red);

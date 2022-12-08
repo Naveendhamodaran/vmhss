@@ -55,7 +55,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '271678574303',
     projectId: 'vmhsschool-88969',
     authDomain: 'vmhsschool-88969.firebaseapp.com',
-    databaseURL: 'https://vmhsschool-88969-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://vmhsschool-88969-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'vmhsschool-88969.appspot.com',
     measurementId: 'G-BKQJS7866T',
   );
@@ -65,7 +66,8 @@ class DefaultFirebaseOptions {
     appId: '1:271678574303:android:24e0a21591ded839b6636a',
     messagingSenderId: '271678574303',
     projectId: 'vmhsschool-88969',
-    databaseURL: 'https://vmhsschool-88969-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://vmhsschool-88969-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'vmhsschool-88969.appspot.com',
   );
 }

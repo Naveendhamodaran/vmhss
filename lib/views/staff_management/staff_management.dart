@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/constants/app_styles.dart';
@@ -12,8 +10,10 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker_web/image_picker_web.dart';
+
+import '../profile_view/profile_view.dart';
 
 class StaffManageView extends StatefulWidget {
   const StaffManageView({super.key});
@@ -90,7 +90,7 @@ class _StaffManageViewState extends State<StaffManageView> {
     }
   }
 
-   Uint8List? imagePath;
+  Uint8List? imagePath;
   String imageName = "";
 
   chooseImage() async {
@@ -100,16 +100,149 @@ class _StaffManageViewState extends State<StaffManageView> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(70),
+        child: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(100)),
+                color: HexColor('#F7E467'),
+                boxShadow: const [
+                  BoxShadow(
+                    color: Colors.black26,
+                    blurRadius: 4,
+                    offset: Offset(0, 4), // Shadow position
+                  ),
+                ],
+              ),
+              child: Image.asset(
+                "assets/icons/vmhslogo.png",
+                height: 70,
+                width: 70,
+              ),
+            ),
+          ),
+          leadingWidth: 100,
+          centerTitle: true,
+          // title: Row(
+          //   children: [
+          //     const SizedBox(
+          //       width: 20,
+          //     ),
+          //     Container(
+          //       height: 40,
+          //       width: 40,
+          //       decoration: BoxDecoration(
+          //           color: secondaryColor.withOpacity(0.3),
+          //           borderRadius: BorderRadius.circular(13)),
+          //       alignment: Alignment.center,
+          //       child: Icon(
+          //         Icons.menu,
+          //         color: secondaryColor,
+          //       ),
+          //     ),
+          //     const SizedBox(
+          //       width: 20,
+          //     ),
+          //     Container(
+          //       width: 400,
+          //       child: TextField(
+          //         decoration: InputDecoration(
+          //             hintText: "Search",
+          //             prefixIcon: const Icon(Icons.search),
+          //             enabledBorder: OutlineInputBorder(
+          //                 borderRadius: BorderRadius.circular(13),
+          //                 borderSide: const BorderSide(
+          //                     color: Colors.black, width: 0.2)),
+          //             focusedBorder: OutlineInputBorder(
+          //                 borderRadius: BorderRadius.circular(13),
+          //                 borderSide: const BorderSide(
+          //                     color: Colors.black, width: 0.2))),
+          //       ),
+          //     )
+          //   ],
+          // ),
+          actions: [
+            Row(
+              children: [
+                Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: HexColor('#0F2878'),
+                    borderRadius: BorderRadius.circular(13),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.black26,
+                        blurRadius: 4,
+                        offset: Offset(0, 4), // Shadow position
+                      ),
+                    ],
+                  ),
+                  alignment: Alignment.center,
+                  child: const Icon(
+                    Icons.notifications_none,
+                    // color: HexColor('#0F2878'),
+                    color: Colors.white,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10, left: 15),
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => const ProfileView());
+                    },
+                    child: Container(
+                      height: 36,
+                      width: 74,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        color: HexColor('#F7E467'),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black26,
+                            blurRadius: 4,
+                            offset: Offset(0, 4), // Shadow position
+                          ),
+                        ],
+                      ),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.person,
+                              color: HexColor('#5E72C4'),
+                              size: 23,
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Icon(
+                              Icons.settings_outlined,
+                              color: HexColor('#5E72C4'),
+                              size: 23,
+                            )
+                          ]),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
       body: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          LeftBar(),
+          const LeftBar(),
           Expanded(
             child: ListView(
               children: [
@@ -126,9 +259,9 @@ class _StaffManageViewState extends State<StaffManageView> {
                         Padding(
                           padding: const EdgeInsets.only(left: 15),
                           child: Text(
-                            'Personal Information',
+                            'PERSONAl INFORMATION',
                             style: primaryFonts.copyWith(
-                                fontWeight: FontWeight.w600),
+                                fontWeight: FontWeight.w600, fontSize: 20),
                           ),
                         ),
                         const Padding(
@@ -495,9 +628,9 @@ class _StaffManageViewState extends State<StaffManageView> {
                         Padding(
                           padding: const EdgeInsets.only(left: 15),
                           child: Text(
-                            'Documents',
+                            'DOCUMENTS',
                             style: primaryFonts.copyWith(
-                                fontWeight: FontWeight.w600),
+                                fontWeight: FontWeight.w600, fontSize: 20),
                           ),
                         ),
                         const Padding(
@@ -520,7 +653,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                     child: TextField(
                                       controller: aadharnumberTextController,
                                       decoration: InputDecoration(
-                                          labelText: "AADHAR CARD NUMBER",
+                                          labelText: "Aadhaar Card Number",
                                           enabledBorder: borderstyle,
                                           focusedBorder: borderstyle),
                                     ),
@@ -554,10 +687,11 @@ class _StaffManageViewState extends State<StaffManageView> {
                           child: InkWell(
                             onTap: () async {
                               // var imageUrl =
-                          String  url =     await staffmanageController.storeImage(
-                                  images: imagePath,
-                                  employeename: fullNameTextController.text,
-                                  imageName: imageName);
+                              String url =
+                                  await staffmanageController.storeImage(
+                                      images: imagePath,
+                                      employeename: fullNameTextController.text,
+                                      imageName: imageName);
 
                               StaffModel staffModel = StaffModel(
                                   image: url,
@@ -605,7 +739,7 @@ class _StaffManageViewState extends State<StaffManageView> {
               ],
             ),
           ),
-          RightBar()
+          const RightBar()
         ],
       ),
     );

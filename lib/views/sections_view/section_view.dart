@@ -3,7 +3,6 @@ import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/constants/app_styles.dart';
 import 'package:attandence_admin_panel/constants/helper_widgets.dart';
 import 'package:attandence_admin_panel/controllers/sections_controller.dart';
-import 'package:attandence_admin_panel/views/profile_view/profile_view.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/left_bar.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
 import 'package:flutter/cupertino.dart';
@@ -37,7 +36,7 @@ class _SetionViewState extends State<SetionView> {
         body: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        LeftBar(),
+        const LeftBar(),
         Expanded(
           child: Container(
             decoration: const BoxDecoration(color: Colors.white),
@@ -99,7 +98,7 @@ class _SetionViewState extends State<SetionView> {
                           fontWeight: FontWeight.w600, fontSize: 20),
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 1.5,
                   ),
                   Row(
@@ -157,7 +156,7 @@ class _SetionViewState extends State<SetionView> {
                       ),
                     ],
                   ),
-                  Divider(),
+                  const Divider(),
                   for (int i = 0;
                       i < sectionController.sectionModelList.length;
                       i++)
@@ -252,7 +251,7 @@ class _SetionViewState extends State<SetionView> {
             }),
           ),
         ),
-        RightBar(),
+        const RightBar(),
       ],
     ));
   }
@@ -646,7 +645,7 @@ class _SetionViewState extends State<SetionView> {
                     width: 320,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        physics: AlwaysScrollableScrollPhysics(),
+                        physics: const AlwaysScrollableScrollPhysics(),
                         itemCount: sectionController.sectionsList.length,
                         itemBuilder: (context, index) {
                           return Padding(

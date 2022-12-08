@@ -229,7 +229,7 @@ class _ProfileViewState extends State<ProfileView> {
                               ],
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 40,
                           ),
                           Padding(

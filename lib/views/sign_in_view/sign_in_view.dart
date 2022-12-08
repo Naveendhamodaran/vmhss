@@ -2,7 +2,6 @@ import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/constants/app_fonts.dart';
 import 'package:attandence_admin_panel/constants/app_styles.dart';
 import 'package:attandence_admin_panel/controllers/auth_controllers/auth_controller.dart';
-import 'package:attandence_admin_panel/views/dash_board_view/dash_board_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,20 +19,20 @@ class _SignINViewState extends State<SignINView> {
 
   final authController = Get.find<AuthController>();
 
-  bool isObsecure = true;
+  bool isObscure = true;
 
   bool rememberMe = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Row(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(
-            child: Container(
-              color: primaryColor,
-            ),
-          ),
+          const Expanded(
+              child: Image(
+            image: AssetImage("assets/icons/vmhslogo.png"),
+          )),
           Expanded(
             child: Container(
               color: Colors.white,
@@ -41,22 +40,20 @@ class _SignINViewState extends State<SignINView> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Container(
-                      width: 330,
-                      child: TextField(
-                        controller: emailController,
-                        decoration: InputDecoration(
-                            labelText: "Email",
-                            suffixIcon: InkWell(
-                                onTap: () {
-                                  emailController.clear();
-                                },
-                                child: const Icon(CupertinoIcons.xmark_circle)),
-                            enabledBorder: borderstyle,
-                            focusedBorder: borderstyle),
-                      ),
+                  Container(
+                    width: 330,
+                    child: TextField(
+                      controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: InputDecoration(
+                          labelText: "Email",
+                          suffixIcon: InkWell(
+                              onTap: () {
+                                emailController.clear();
+                              },
+                              child: const Icon(CupertinoIcons.xmark_circle)),
+                          enabledBorder: borderstyle,
+                          focusedBorder: borderstyle),
                     ),
                   ),
                   const SizedBox(
@@ -68,16 +65,16 @@ class _SignINViewState extends State<SignINView> {
                       width: 330,
                       child: TextField(
                         controller: passwordController,
-                        obscureText: isObsecure,
+                        obscureText: isObscure,
                         decoration: InputDecoration(
                             labelText: "Password",
                             suffixIcon: InkWell(
                                 onTap: () {
                                   setState(() {
-                                    isObsecure = !isObsecure;
+                                    isObscure = !isObscure;
                                   });
                                 },
-                                child: isObsecure
+                                child: isObscure
                                     ? const Icon(Icons.visibility)
                                     : const Icon(Icons.visibility_off)),
                             enabledBorder: borderstyle,
@@ -134,7 +131,7 @@ class _SignINViewState extends State<SignINView> {
                                         Get.snackbar(
                                             "Please Enter Email and Password to Continue",
                                             "",
-                                               maxWidth: 400,
+                                            maxWidth: 400,
                                             colorText: Colors.white,
                                             backgroundColor: Colors.red);
                                       }
@@ -169,15 +166,16 @@ class _SignINViewState extends State<SignINView> {
                                         width: 40,
                                         height: 25,
                                         child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Container(
                                               height: 20,
                                               width: 20,
-                                              child: CircularProgressIndicator(
-                                                    color: Colors.white,
-                                                    
-                                                  ),
+                                              child:
+                                                  const CircularProgressIndicator(
+                                                color: Colors.white,
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -190,7 +188,7 @@ class _SignINViewState extends State<SignINView> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

@@ -1,9 +1,7 @@
-import 'dart:io';
 import 'dart:async';
+
 import 'package:attandence_admin_panel/constants/colllections_namings.dart';
-import 'package:attandence_admin_panel/models/staff_model.dart';
 import 'package:attandence_admin_panel/models/student_model.dart';
-import 'package:attandence_admin_panel/views/staff_management/staff_detsils_list_view.dart';
 import 'package:attandence_admin_panel/views/student_management/students_list_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -11,10 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 
-class StudentmanagementController extends GetxController {
+class StudentManagementController extends GetxController {
   List<StudentModel> studentsList = [];
 
-  writeToStudentmanagement(StudentModel studentsModel) async {
+  writeToStudentManagement(StudentModel studentsModel) async {
     CollectionReference users =
         FirebaseFirestore.instance.collection(studentsCollection);
 
@@ -23,7 +21,7 @@ class StudentmanagementController extends GetxController {
           maxWidth: 400,
           colorText: Colors.white,
           backgroundColor: Colors.green);
-      Get.off(() => StudentsListView());
+      Get.off(() => const StudentsListView());
     }).catchError((error) {
       Get.snackbar("Something went wrong", "",
           maxWidth: 400, colorText: Colors.white, backgroundColor: Colors.red);
@@ -40,10 +38,10 @@ class StudentmanagementController extends GetxController {
         StudentModel studentModel = StudentModel(
           image: doc["full_name"],
           fullName: doc["full_name"],
-          admissionNo: doc["admission_No"],
+          admissionNumber: doc["admission_number"],
           gender: doc["gender"],
           address: doc["address"],
-          joiningSttanderd: doc["joining_standerd"],
+          joiningStandard: doc["joining_standard"],
           dob: (doc["dob"] as Timestamp).toDate(),
           joiningDate: (doc["joining_date"] as Timestamp).toDate(),
           medium: doc["medium"],
@@ -51,11 +49,26 @@ class StudentmanagementController extends GetxController {
           nationality: doc["nationality"],
           state: doc["state"],
           religion: doc["religion"],
-          cast: doc["cast"],
+          caste: doc["caste"],
           community: doc["community"],
-          motherToungue: doc["mother_tounge"],
+          motherTongue: doc["mother_tongue"],
           previousSchool: doc["previous_school"],
-          previousStanderds: doc["previous_statnderd"],
+          previousStandards: doc["previous_standard"],
+          fatherName: doc["father_name"],
+          emisCode: doc["EMIS_code"],
+          busStop: doc["bus_stop"],
+          route: doc["route"],
+          transport: doc["transport"],
+          guardianAddress: doc["guardian_address"],
+          guardianMobileNumber: doc["guardian_mobile_number"],
+          guardianName: doc["guardian_name"],
+          mobileNumber: doc["mobile_number"],
+          monthlyIncome: doc["monthly_income"],
+          motherQualification: doc["mother_qualification"],
+          fatherQualification: doc["father_qualification"],
+          motherOccupation: doc["mother_occupation"],
+          fatherOccupation: doc["father_occupation"],
+          motherName: doc["mother_name"],
         );
         studentsList.add(studentModel);
       }

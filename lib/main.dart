@@ -2,13 +2,12 @@ import 'package:attandence_admin_panel/controllers/auth_controllers/auth_control
 import 'package:attandence_admin_panel/controllers/sections_controller.dart';
 import 'package:attandence_admin_panel/controllers/staff_management_controller.dart';
 import 'package:attandence_admin_panel/controllers/student_management_controller.dart';
-import 'package:attandence_admin_panel/views/sign_in_view/spash_screen.dart';
+import 'package:attandence_admin_panel/views/student_management/student_management_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'firebase_options.dart';
-import 'views/staff_management/staff_management.dart';
-import 'views/student_management/student_management_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +17,7 @@ void main() async {
   Get.put(SectionController());
   Get.put(AuthController());
   Get.put(StaffManagementController());
-  Get.put(StudentmanagementController());
+  Get.put(StudentManagementController());
   runApp(const MyApp());
 }
 
@@ -33,8 +32,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: SplashScreenView(),
-      // home: StudentManagementView(),
+      // home: const SplashScreenView(),
+      // home: const StudentsListView(),
+      home: const StudentManagementView(),
     );
   }
 }

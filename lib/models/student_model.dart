@@ -1,10 +1,10 @@
 class StudentModel {
   String image;
   String fullName;
-  String admissionNo;
+  String admissionNumber;
   String gender;
   String address;
-  String joiningSttanderd;
+  String joiningStandard;
   DateTime dob;
   DateTime joiningDate;
   String medium;
@@ -12,41 +12,70 @@ class StudentModel {
   String nationality;
   String state;
   String religion;
-  String cast;
+  String caste;
   String community;
-  String motherToungue;
+  String motherTongue;
   String previousSchool;
-  String previousStanderds;
+  String previousStandards;
+  String fatherName;
+  String motherName;
+  String fatherOccupation;
+  String motherOccupation;
+  String fatherQualification;
+  String motherQualification;
+  String monthlyIncome;
+  String mobileNumber;
+  String guardianName;
+  String guardianAddress;
+  String guardianMobileNumber;
+  String transport;
+  String route;
+  String busStop;
+  String emisCode;
 
-  StudentModel({
-    required this.image,
-    required this.fullName,
-    required this.admissionNo,
-    required this.gender,
-    required this.address,
-    required this.joiningSttanderd,
-    required this.dob,
-    required this.joiningDate,
-    required this.cast,
-    required this.community,
-    required this.firstLanguage,
-    required this.medium,
-    required this.motherToungue,
-    required this.nationality,
-    required this.previousSchool,
-    required this.previousStanderds,
-    required this.religion,
-    required this.state,
-  });
+  StudentModel(
+      {required this.image,
+      required this.fullName,
+      required this.admissionNumber,
+      required this.gender,
+      required this.address,
+      required this.joiningStandard,
+      required this.dob,
+      required this.joiningDate,
+      required this.caste,
+      required this.community,
+      required this.firstLanguage,
+      required this.medium,
+      required this.motherTongue,
+      required this.nationality,
+      required this.previousSchool,
+      required this.previousStandards,
+      required this.religion,
+      required this.state,
+      required this.fatherName,
+      required this.emisCode,
+      required this.busStop,
+      required this.route,
+      required this.transport,
+      required this.guardianAddress,
+      required this.guardianMobileNumber,
+      required this.guardianName,
+      required this.mobileNumber,
+      required this.monthlyIncome,
+      required this.motherQualification,
+      required this.fatherQualification,
+      required this.motherOccupation,
+      required this.fatherOccupation,
+      required this.motherName});
 
   Map<String, dynamic> toJson() {
     return {
       "image": image,
       "full_name": fullName,
-      "admission_No": admissionNo,
+      "admission_number": admissionNumber,
       "gender": gender,
       "address": address,
-      "joining_standerd": joiningSttanderd,
+      "joining_standard": joiningStandard,
       "dob": dob,
       "joining_date": joiningDate,
       "medium": medium,
@@ -54,11 +83,26 @@ class StudentModel {
       "nationality": nationality,
       "state": state,
       "religion": religion,
-      "cast": cast,
+      "caste": caste,
       "community": community,
-      "mother_tounge": motherToungue,
+      "mother_tongue": motherTongue,
       "previous_school": previousSchool,
-      "previous_statnderd": previousStanderds
+      "previous_standard": previousStandards,
+      "father_name": fatherName,
+      "mother_name": motherName,
+      "father_occupation": fatherOccupation,
+      "mother_occupation": motherOccupation,
+      "father_qualification": fatherQualification,
+      "mother_qualification": motherQualification,
+      "monthly_income": monthlyIncome,
+      "mobile_number": mobileNumber,
+      "guardian_name": guardianName,
+      "guardian_mobile_number": guardianMobileNumber,
+      "guardian_address": guardianAddress,
+      "transport": transport,
+      "route": route,
+      "bus_stop": busStop,
+      "EMIS_code": emisCode,
     };
   }
 }
