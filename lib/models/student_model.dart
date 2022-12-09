@@ -32,6 +32,10 @@ class StudentModel {
   String route;
   String busStop;
   String emisCode;
+  String birthCertificate;
+  String transferCertificate;
+  String aadhaarCard;
+  String markSheet;
 
   StudentModel(
       {required this.image,
@@ -66,7 +70,11 @@ class StudentModel {
       required this.fatherQualification,
       required this.motherOccupation,
       required this.fatherOccupation,
-      required this.motherName});
+      required this.motherName,
+      required this.markSheet,
+      required this.aadhaarCard,
+      required this.transferCertificate,
+      required this.birthCertificate});
 
   Map<String, dynamic> toJson() {
     return {
@@ -103,6 +111,10 @@ class StudentModel {
       "route": route,
       "bus_stop": busStop,
       "EMIS_code": emisCode,
+      "birth_certificate": birthCertificate,
+      "Transfer_certificate": transferCertificate,
+      "aadhaar_card": aadhaarCard,
+      "mark_sheet": markSheet,
     };
   }
 }

@@ -69,6 +69,10 @@ class StudentManagementController extends GetxController {
           motherOccupation: doc["mother_occupation"],
           fatherOccupation: doc["father_occupation"],
           motherName: doc["mother_name"],
+          markSheet: doc['mark_sheet'],
+          aadhaarCard: doc['aadhaar_card'],
+          transferCertificate: doc['transfer_certificate'],
+          birthCertificate: doc['birth_certificate'],
         );
         studentsList.add(studentModel);
       }
@@ -78,13 +82,27 @@ class StudentManagementController extends GetxController {
 
   Future<String> storeImage(
       {required Uint8List? images,
-      required String employeename,
+      required String studentName,
       required String imageName}) async {
     print("::::::::::::::1:::::::::::::::::::");
     final storageReference =
-        FirebaseStorage.instance.ref().child("Staffs/$employeename");
+        FirebaseStorage.instance.ref().child("Students/$studentName");
     print("::::::::::::::2:::::::::::::::::::");
     await storageReference.putData(images!);
+    print("::::::::::::::3:::::::::::::::::::");
+    final String url = await storageReference.getDownloadURL();
+    return url;
+  }
+
+  Future<String> storeFiles(
+      {required Uint8List? file,
+      required String studentName,
+      required String fileName}) async {
+    print("::::::::::::::1:::::::::::::::::::");
+    final storageReference =
+        FirebaseStorage.instance.ref().child("Students/$studentName");
+    print("::::::::::::::2:::::::::::::::::::");
+    await storageReference.putData(file!);
     print("::::::::::::::3:::::::::::::::::::");
     final String url = await storageReference.getDownloadURL();
     return url;

@@ -157,6 +157,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
     });
   }
 
+  Uint8List? filePath;
   File? file;
   Future filePick() async {
     final result = await FilePicker.platform.pickFiles();
@@ -166,16 +167,11 @@ class _StudentManagementViewState extends State<StudentManagementView> {
     final path = result.files.first.name;
     setState(() {
       file = File(path);
+      filePath = fileBytes;
     });
-    // if (result != null) {
-    //   Uint8List? fileBytes = result.files.first.bytes;
-    //   String fileName = result.files.first.name;
-    //
-    //   Upload file
-    //   await FirebaseStorage.instance.ref('uploads/$fileName').putData(fileBytes!);
-    // }
   }
 
+  Uint8List? filePath1;
   File? file1;
   Future filePick1() async {
     final result = await FilePicker.platform.pickFiles();
@@ -185,16 +181,11 @@ class _StudentManagementViewState extends State<StudentManagementView> {
     final path = result.files.first.name;
     setState(() {
       file1 = File(path);
+      filePath1 = fileBytes1;
     });
-    // if (result != null) {
-    //   Uint8List? fileBytes = result.files.first.bytes;
-    //   String fileName = result.files.first.name;
-    //
-    //   Upload file
-    //   await FirebaseStorage.instance.ref('uploads/$fileName').putData(fileBytes!);
-    // }
   }
 
+  Uint8List? filePath2;
   File? file2;
   Future filePick2() async {
     final result = await FilePicker.platform.pickFiles();
@@ -204,16 +195,11 @@ class _StudentManagementViewState extends State<StudentManagementView> {
     final path = result.files.first.name;
     setState(() {
       file2 = File(path);
+      filePath2 = fileBytes2;
     });
-    // if (result != null) {
-    //   Uint8List? fileBytes = result.files.first.bytes;
-    //   String fileName = result.files.first.name;
-    //
-    //   Upload file
-    //   await FirebaseStorage.instance.ref('uploads/$fileName').putData(fileBytes!);
-    // }
   }
 
+  Uint8List? filePath3;
   File? file3;
   Future filePick3() async {
     final result = await FilePicker.platform.pickFiles();
@@ -223,16 +209,11 @@ class _StudentManagementViewState extends State<StudentManagementView> {
     final path = result.files.first.name;
     setState(() {
       file3 = File(path);
+      filePath3 = fileBytes3;
     });
-    // if (result != null) {
-    //   Uint8List? fileBytes = result.files.first.bytes;
-    //   String fileName = result.files.first.name;
-    //
-    //   Upload file
-    //   await FirebaseStorage.instance.ref('uploads/$fileName').putData(fileBytes!);
-    // }
   }
 
+  Uint8List? filePath4;
   File? file4;
   Future filePick4() async {
     final result = await FilePicker.platform.pickFiles();
@@ -242,23 +223,17 @@ class _StudentManagementViewState extends State<StudentManagementView> {
     final path = result.files.first.name;
     setState(() {
       file4 = File(path);
+      filePath4 = fileBytes4;
     });
-    // if (result != null) {
-    //   Uint8List? fileBytes = result.files.first.bytes;
-    //   String fileName = result.files.first.name;
-    //
-    //   Upload file
-    //   await FirebaseStorage.instance.ref('uploads/$fileName').putData(fileBytes!);
-    // }
   }
 
   @override
   Widget build(BuildContext context) {
-    final fileName = file != null ? file : 'Select files';
-    final fileName1 = file1 != null ? file1 : 'Select files';
-    final fileName2 = file2 != null ? file2 : 'Select files';
-    final fileName3 = file3 != null ? file3 : 'Select files';
-    final fileName4 = file4 != null ? file4 : 'Select files';
+    final fileName = file ?? 'Select files';
+    final fileName1 = file1 ?? 'Select files';
+    final fileName2 = file2 ?? 'Select files';
+    final fileName3 = file3 ?? 'Select files';
+    final fileName4 = file4 ?? 'Select files';
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70),
@@ -933,7 +908,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   labelText: 'Guardian Name',
                                   maxLine: 1,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 110,
                                 ),
                                 TextFieldCommon(
@@ -1028,25 +1003,25 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(10.0),
                                             child: Text(
                                               'Birth Certificate',
                                               style: TextStyle(
                                                   color: Colors.white),
                                             ),
                                           ),
-                                          decoration: BoxDecoration(
-                                              color: Colors.blue,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
                                         ),
                                         onTap: () {
                                           filePick();
                                         },
                                       ),
                                       w20,
-                                      Text('${fileName}')
+                                      Text('$fileName')
                                       // Text(file == null
                                       //     ? 'Click to select Birth Certificate'
                                       //     : '${fileName}')
@@ -1060,18 +1035,18 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(10.0),
                                             child: Text(
                                               'Transfer Certificate',
                                               style: TextStyle(
                                                   color: Colors.white),
                                             ),
                                           ),
-                                          decoration: BoxDecoration(
-                                              color: Colors.blue,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
                                         ),
                                         onTap: () {
                                           filePick1();
@@ -1081,7 +1056,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                       // Text(file == null
                                       //     ? 'Click to select Transfer Certificate'
                                       //     : '${fileName1}')
-                                      Text('${fileName1}')
+                                      Text('$fileName1')
                                     ],
                                   ),
                                 ),
@@ -1103,32 +1078,32 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(10.0),
                                             child: Text(
                                               'Aadhaar Card',
                                               style: TextStyle(
                                                   color: Colors.white),
                                             ),
                                           ),
-                                          decoration: BoxDecoration(
-                                              color: Colors.blue,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
                                         ),
                                         onTap: () {
                                           filePick2();
                                         },
                                       ),
                                       w20,
-                                      Text('${fileName2}')
+                                      Text('$fileName2')
                                       // Text(file == null
                                       //     ? 'Aadhaar Card'
                                       //     : '${fileName2}')
                                     ],
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 112,
                                 ),
                                 Container(
@@ -1138,25 +1113,25 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(10.0),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(10.0),
                                             child: Text(
                                               'Mark Sheet',
                                               style: TextStyle(
                                                   color: Colors.white),
                                             ),
                                           ),
-                                          decoration: BoxDecoration(
-                                              color: Colors.blue,
-                                              borderRadius:
-                                                  BorderRadius.circular(10)),
                                         ),
                                         onTap: () {
                                           filePick3();
                                         },
                                       ),
                                       w20,
-                                      Text('${fileName3}')
+                                      Text('$fileName3')
                                       // Text(file == null
                                       //     ? 'Mark Sheet'
                                       //     : '${fileName2}')
@@ -1211,7 +1186,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                         focusedBorder: borderstyle),
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 110,
                                 ),
                                 Container(
@@ -1239,9 +1214,28 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                         onTap: () async {
                           String url = await studentController.storeImage(
                               images: imagePath,
-                              employeename: fullNameController.text,
+                              studentName: fullNameController.text,
                               imageName: imageName);
                           print(url);
+                          String birthCertificate =
+                              await studentController.storeFiles(
+                                  file: filePath,
+                                  studentName: fullNameController.text,
+                                  fileName: file!.path);
+                          String transferCertificate =
+                              await studentController.storeFiles(
+                                  file: filePath1,
+                                  studentName: fullNameController.text,
+                                  fileName: file1!.path);
+                          String aadhaarCard =
+                              await studentController.storeFiles(
+                                  file: filePath2,
+                                  studentName: fullNameController.text,
+                                  fileName: file2!.path);
+                          String markSheet = await studentController.storeFiles(
+                              file: filePath3,
+                              studentName: fullNameController.text,
+                              fileName: file3!.path);
                           StudentModel studentModel = StudentModel(
                               image: url,
                               fullName: fullNameController.text,
@@ -1279,7 +1273,11 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   fatherQualificationController.text,
                               motherOccupation: motherOccupationController.text,
                               fatherOccupation: fatherOccupationController.text,
-                              motherName: motherNameController.text);
+                              motherName: motherNameController.text,
+                              markSheet: markSheet,
+                              aadhaarCard: aadhaarCard,
+                              transferCertificate: transferCertificate,
+                              birthCertificate: birthCertificate);
                           studentController
                               .writeToStudentManagement(studentModel);
                         },
