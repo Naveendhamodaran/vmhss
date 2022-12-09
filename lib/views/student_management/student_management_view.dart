@@ -33,6 +33,8 @@ class _StudentManagementViewState extends State<StudentManagementView> {
   var startDateController = TextEditingController();
   var endDateController = TextEditingController();
 
+  bool isLoading = false;
+
   var gender;
   var designation;
   var nationality;
@@ -1212,6 +1214,9 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                     children: [
                       InkWell(
                         onTap: () async {
+                          setState(() {
+                            isLoading = true;
+                          });
                           String url = await studentController.storeImage(
                               images: imagePath,
                               studentName: fullNameController.text,
@@ -1252,8 +1257,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                               motherTongue: motherTongueController.text,
                               nationality: nationality,
                               previousSchool: previousSchoolController.text,
-                              previousStandards:
-                                  previousStandardController.text,
+                              previousStandard: previousStandardController.text,
                               religion: religion,
                               state: state,
                               fatherName: fatherNameController.text,
@@ -1280,6 +1284,9 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                               birthCertificate: birthCertificate);
                           studentController
                               .writeToStudentManagement(studentModel);
+                          setState(() {
+                            isLoading = false;
+                          });
                         },
                         child: Container(
                           height: 50,
@@ -1288,10 +1295,17 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                               borderRadius: BorderRadius.circular(30),
                               color: primaryColor),
                           alignment: Alignment.center,
-                          child: Text(
-                            "Save",
-                            style: primaryFonts.copyWith(color: Colors.white),
-                          ),
+                          child: isLoading
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: Colors.white,
+                                  ),
+                                )
+                              : Text(
+                                  "Save",
+                                  style: primaryFonts.copyWith(
+                                      color: Colors.white),
+                                ),
                         ),
                       ),
                     ],

@@ -16,7 +16,7 @@ class StudentModel {
   String community;
   String motherTongue;
   String previousSchool;
-  String previousStandards;
+  String previousStandard;
   String fatherName;
   String motherName;
   String fatherOccupation;
@@ -53,7 +53,7 @@ class StudentModel {
       required this.motherTongue,
       required this.nationality,
       required this.previousSchool,
-      required this.previousStandards,
+      required this.previousStandard,
       required this.religion,
       required this.state,
       required this.fatherName,
@@ -95,7 +95,7 @@ class StudentModel {
       "community": community,
       "mother_tongue": motherTongue,
       "previous_school": previousSchool,
-      "previous_standard": previousStandards,
+      "previous_standard": previousStandard,
       "father_name": fatherName,
       "mother_name": motherName,
       "father_occupation": fatherOccupation,
@@ -112,7 +112,7 @@ class StudentModel {
       "bus_stop": busStop,
       "EMIS_code": emisCode,
       "birth_certificate": birthCertificate,
-      "Transfer_certificate": transferCertificate,
+      "transfer_certificate": transferCertificate,
       "aadhaar_card": aadhaarCard,
       "mark_sheet": markSheet,
     };

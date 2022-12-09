@@ -36,7 +36,7 @@ class StudentManagementController extends GetxController {
         .then((QuerySnapshot querySnapshot) {
       for (var doc in querySnapshot.docs) {
         StudentModel studentModel = StudentModel(
-          image: doc["full_name"],
+          image: doc["image"],
           fullName: doc["full_name"],
           admissionNumber: doc["admission_number"],
           gender: doc["gender"],
@@ -53,7 +53,7 @@ class StudentManagementController extends GetxController {
           community: doc["community"],
           motherTongue: doc["mother_tongue"],
           previousSchool: doc["previous_school"],
-          previousStandards: doc["previous_standard"],
+          previousStandard: doc["previous_standard"],
           fatherName: doc["father_name"],
           emisCode: doc["EMIS_code"],
           busStop: doc["bus_stop"],
@@ -90,8 +90,8 @@ class StudentManagementController extends GetxController {
     print("::::::::::::::2:::::::::::::::::::");
     await storageReference.putData(images!);
     print("::::::::::::::3:::::::::::::::::::");
-    final String url = await storageReference.getDownloadURL();
-    return url;
+    final String imageUrl = await storageReference.getDownloadURL();
+    return imageUrl;
   }
 
   Future<String> storeFiles(
@@ -104,7 +104,7 @@ class StudentManagementController extends GetxController {
     print("::::::::::::::2:::::::::::::::::::");
     await storageReference.putData(file!);
     print("::::::::::::::3:::::::::::::::::::");
-    final String url = await storageReference.getDownloadURL();
-    return url;
+    final String fileUrl = await storageReference.getDownloadURL();
+    return fileUrl;
   }
 }

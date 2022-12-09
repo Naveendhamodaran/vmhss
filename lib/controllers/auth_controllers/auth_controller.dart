@@ -1,8 +1,8 @@
 import 'package:attandence_admin_panel/views/dash_board_view/home_page_view.dart';
 import 'package:attandence_admin_panel/views/sign_in_view/sign_in_view.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import "package:get/get.dart";
-import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthController extends GetxController {
   FirebaseAuth auth = FirebaseAuth.instance;
