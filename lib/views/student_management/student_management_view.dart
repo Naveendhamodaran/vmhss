@@ -162,6 +162,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
     final result = await FilePicker.platform.pickFiles();
 
     if (result == null) return;
+    Uint8List? fileBytes = result.files.first.bytes;
     final path = result.files.first.name;
     setState(() {
       file = File(path);
@@ -175,9 +176,89 @@ class _StudentManagementViewState extends State<StudentManagementView> {
     // }
   }
 
+  File? file1;
+  Future filePick1() async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result == null) return;
+    Uint8List? fileBytes1 = result.files.first.bytes;
+    final path = result.files.first.name;
+    setState(() {
+      file1 = File(path);
+    });
+    // if (result != null) {
+    //   Uint8List? fileBytes = result.files.first.bytes;
+    //   String fileName = result.files.first.name;
+    //
+    //   Upload file
+    //   await FirebaseStorage.instance.ref('uploads/$fileName').putData(fileBytes!);
+    // }
+  }
+
+  File? file2;
+  Future filePick2() async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result == null) return;
+    Uint8List? fileBytes2 = result.files.first.bytes;
+    final path = result.files.first.name;
+    setState(() {
+      file2 = File(path);
+    });
+    // if (result != null) {
+    //   Uint8List? fileBytes = result.files.first.bytes;
+    //   String fileName = result.files.first.name;
+    //
+    //   Upload file
+    //   await FirebaseStorage.instance.ref('uploads/$fileName').putData(fileBytes!);
+    // }
+  }
+
+  File? file3;
+  Future filePick3() async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result == null) return;
+    Uint8List? fileBytes3 = result.files.first.bytes;
+    final path = result.files.first.name;
+    setState(() {
+      file3 = File(path);
+    });
+    // if (result != null) {
+    //   Uint8List? fileBytes = result.files.first.bytes;
+    //   String fileName = result.files.first.name;
+    //
+    //   Upload file
+    //   await FirebaseStorage.instance.ref('uploads/$fileName').putData(fileBytes!);
+    // }
+  }
+
+  File? file4;
+  Future filePick4() async {
+    final result = await FilePicker.platform.pickFiles();
+
+    if (result == null) return;
+    Uint8List? fileBytes4 = result.files.first.bytes;
+    final path = result.files.first.name;
+    setState(() {
+      file4 = File(path);
+    });
+    // if (result != null) {
+    //   Uint8List? fileBytes = result.files.first.bytes;
+    //   String fileName = result.files.first.name;
+    //
+    //   Upload file
+    //   await FirebaseStorage.instance.ref('uploads/$fileName').putData(fileBytes!);
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final fileName = file != null ? file!.path : 'Select files';
+    final fileName = file != null ? file : 'Select files';
+    final fileName1 = file1 != null ? file1 : 'Select files';
+    final fileName2 = file2 != null ? file2 : 'Select files';
+    final fileName3 = file3 != null ? file3 : 'Select files';
+    final fileName4 = file4 != null ? file4 : 'Select files';
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(70),
@@ -323,69 +404,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
             Expanded(
               child: ListView(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          h10,
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Text(
-                              'STUDENT DETAILS',
-                              style: primaryFonts.copyWith(
-                                  fontWeight: FontWeight.w600, fontSize: 20),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(left: 15, right: 15),
-                            child: Divider(),
-                          ),
-                          h10,
-                          Padding(
-                            padding:
-                                const EdgeInsets.only(left: 15, bottom: 15),
-                            child: InkWell(
-                              onTap: () {
-                                chooseImage();
-                              },
-                              child: imagePath == null
-                                  ? Container(
-                                      height: 150,
-                                      width: 150,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: Colors.grey[300]),
-                                      alignment: Alignment.center,
-                                      child: const Icon(
-                                        Icons.add_a_photo,
-                                        color: Colors.white,
-                                      ),
-                                    )
-                                  : Container(
-                                      height: 150,
-                                      width: 150,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: Image.memory(imagePath!),
-                                    ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
                   h20,
-
                   ////STUDENT INFORMATION
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -398,12 +417,52 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                         padding: const EdgeInsets.symmetric(horizontal: 40.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            h10,
+                            h20,
                             Text(
-                              'STUDENT INFORMATION',
+                              'STUDENT DETAILS',
                               style: primaryFonts.copyWith(
                                   fontWeight: FontWeight.w600, fontSize: 20),
+                            ),
+                            h10,
+                            const Padding(
+                              padding: EdgeInsets.only(left: 15, right: 15),
+                              child: Divider(),
+                            ),
+                            h10,
+                            Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 15, bottom: 15),
+                              child: InkWell(
+                                onTap: () {
+                                  chooseImage();
+                                },
+                                child: imagePath == null
+                                    ? Container(
+                                        height: 150,
+                                        width: 150,
+                                        decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(200),
+                                            color: Colors.grey[300]),
+                                        alignment: Alignment.center,
+                                        child: const Icon(
+                                          Icons.add_a_photo,
+                                          color: Colors.white,
+                                        ),
+                                      )
+                                    : Container(
+                                        height: 150,
+                                        width: 150,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        alignment: Alignment.center,
+                                        child: Image.memory(imagePath!),
+                                      ),
+                              ),
                             ),
                             h10,
                             const Padding(
@@ -759,7 +818,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            h10,
+                            h20,
                             Text(
                               'PARENT INFORMATION',
                               style: primaryFonts.copyWith(
@@ -853,7 +912,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            h10,
+                            h20,
                             Text(
                               'GUARDIAN INFORMATION',
                               style: primaryFonts.copyWith(
@@ -916,7 +975,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            h10,
+                            h20,
                             Text(
                               'OTHER INFORMATION',
                               style: primaryFonts.copyWith(
@@ -969,17 +1028,28 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
-                                          child: Text('Birth Certificate'),
-                                          color: Colors.blue,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(
+                                              'Birth Certificate',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
                                         ),
                                         onTap: () {
                                           filePick();
                                         },
                                       ),
-                                      Text(fileName)
+                                      w20,
+                                      Text('${fileName}')
                                       // Text(file == null
                                       //     ? 'Click to select Birth Certificate'
-                                      //     : '${fileName = file!.path}')
+                                      //     : '${fileName}')
                                     ],
                                   ),
                                 ),
@@ -990,17 +1060,28 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
-                                          child: Text('Transfer Certificate'),
-                                          color: Colors.blue,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(
+                                              'Transfer Certificate',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
                                         ),
                                         onTap: () {
-                                          filePick();
+                                          filePick1();
                                         },
                                       ),
+                                      w20,
                                       // Text(file == null
                                       //     ? 'Click to select Transfer Certificate'
-                                      //     : '${fileName = (file!.path)}')
-                                      Text(fileName)
+                                      //     : '${fileName1}')
+                                      Text('${fileName1}')
                                     ],
                                   ),
                                 ),
@@ -1013,18 +1094,74 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                             ),
                             h20,
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                TextFieldCommon(
-                                  controller: aadhaarController,
-                                  labelText: 'Aadhaar',
-                                  maxLine: 1,
+                                Container(
+                                  width: 330,
+                                  height: 55,
+                                  child: Row(
+                                    children: [
+                                      InkWell(
+                                        child: Container(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(
+                                              'Aadhaar Card',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                        ),
+                                        onTap: () {
+                                          filePick2();
+                                        },
+                                      ),
+                                      w20,
+                                      Text('${fileName2}')
+                                      // Text(file == null
+                                      //     ? 'Aadhaar Card'
+                                      //     : '${fileName2}')
+                                    ],
+                                  ),
                                 ),
-                                h15,
-                                TextFieldCommon(
-                                  controller: markSheetController,
-                                  labelText: 'Mark Sheet',
-                                  maxLine: 1,
+                                SizedBox(
+                                  width: 112,
+                                ),
+                                Container(
+                                  width: 330,
+                                  height: 55,
+                                  child: Row(
+                                    children: [
+                                      InkWell(
+                                        child: Container(
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(
+                                              'Mark Sheet',
+                                              style: TextStyle(
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                        ),
+                                        onTap: () {
+                                          filePick3();
+                                        },
+                                      ),
+                                      w20,
+                                      Text('${fileName3}')
+                                      // Text(file == null
+                                      //     ? 'Mark Sheet'
+                                      //     : '${fileName2}')
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -1048,7 +1185,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            h10,
+                            h20,
                             Text(
                               'PREVIOUS SCHOOL INFORMATION',
                               style: primaryFonts.copyWith(
