@@ -477,8 +477,8 @@ class _StudentsListViewState extends State<StudentsListView> {
                                 i < studentManageController.studentsList.length;
                                 i++)
                               Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 8, vertical: 10),
                                 child: Container(
                                   decoration: BoxDecoration(
                                       boxShadow: const [

@@ -1,4 +1,4 @@
-import 'package:attandence_admin_panel/views/sign_in_view/spash_screen.dart';
+import 'package:attandence_admin_panel/views/sms_view/sms_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -34,8 +34,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: const SplashScreenView(),
-      // home: const StudentsListView(),
+      // home: const SplashScreenView(),
+      home: const SmsView(),
       // home: const StudentManagementView(),
     );
   }
