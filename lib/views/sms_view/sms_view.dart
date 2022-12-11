@@ -1,9 +1,15 @@
+import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:hexcolor/hexcolor.dart';
 
+import '../../constants/app_fonts.dart';
+import '../../constants/decoration.dart';
+import '../../constants/helper_widgets.dart';
+import '../../controllers/sections_controller.dart';
+import '../../controllers/staff_management_controller.dart';
 import '../../controllers/student_management_controller.dart';
 import '../../widgets/common_widgets/left_bar.dart';
 import '../profile_view/profile_view.dart';
@@ -16,6 +22,40 @@ class SmsView extends StatefulWidget {
 }
 
 class _SmsViewState extends State<SmsView> {
+  final sectionController = Get.find<SectionController>();
+  final staffManageController = Get.find<StaffManagementController>();
+  @override
+  void initState() {
+    super.initState();
+
+    sectionController.getSections();
+    staffManageController.getStaffs();
+  }
+
+  var selectedClass = '';
+  var smsFor;
+  var smsForStudent;
+  var smsForStaffs;
+  var messageController = TextEditingController();
+  var template1 =
+      'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga eos quidem animi atque eveniet quos architecto consequuntur ut blanditiis, ratione odit ab tenetur placeat amet! Fuga qui consequatur impedit nostrum!';
+
+  List<String> smsList = ["Common to all", "Students", 'Staffs'];
+  List<String> smsStudentList = ["Common to all", "Class"];
+  List<String> smsStaffList = [
+    "Common to all",
+    'Selected',
+    "Primary",
+    "High School",
+    "HR Sec",
+    "Special Teacher",
+    "Driver",
+    "Attender",
+    "AAYA",
+    "Security",
+    "Office Staff"
+  ];
+  String? text = '';
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -167,10 +207,324 @@ class _SmsViewState extends State<SmsView> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      // height: 1024,
+                      height: 1024,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            h30,
+                            Text('Bulk SMS'),
+                            h30,
+                            Container(
+                              height: 50,
+                              width: 500,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                      color: Colors.black54.withOpacity(0.5))),
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10, right: 10, top: 10),
+                                child: DropdownButton<String>(
+                                  value: smsFor,
+                                  hint: Text(
+                                    "SMS For*",
+                                    style: primaryFonts.copyWith(fontSize: 14),
+                                  ),
+                                  isExpanded: true,
+                                  icon: const Icon(
+                                      Icons.keyboard_arrow_down_outlined),
+                                  elevation: 0,
+                                  itemHeight: 55,
+                                  isDense: true,
+                                  style:
+                                  const TextStyle(color: Colors.deepPurple),
+                                  onChanged: (String? value) {
+                                    // This is called when the user selects an item.
+
+                                    setState(() {
+                                      smsFor = value!;
+                                    });
+                                  },
+                                  items: smsList.map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(
+                                            value,
+                                            style: TextStyle(color: Colors.black87),
+                                          ),
+                                        );
+                                      }).toList(),
+                                ),
+                              ),
+                            ),
+                            h30,
+                            if (smsFor == 'Students')
+                              Container(
+                                  height: 50,
+                                  width: 500,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                          color:
+                                          Colors.black54.withOpacity(0.5))),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 10, top: 10),
+                                    child: DropdownButton<String>(
+                                      value: smsForStudent,
+                                      hint: Text(
+                                        "SMS For Students In*",
+                                        style:
+                                        primaryFonts.copyWith(fontSize: 14),
+                                      ),
+                                      isExpanded: true,
+                                      icon: const Icon(
+                                          Icons.keyboard_arrow_down_outlined),
+                                      elevation: 0,
+                                      itemHeight: 55,
+                                      isDense: true,
+                                      style: const TextStyle(
+                                          color: Colors.deepPurple),
+                                      onChanged: (String? value) {
+                                        // This is called when the user selects an item.
+
+                                        setState(() {
+                                          smsForStudent = value!;
+                                        });
+                                      },
+                                      items: smsStudentList
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(
+                                                value,
+                                                style: TextStyle(
+                                                    color: Colors.black87),
+                                              ),
+                                            );
+                                          }).toList(),
+                                    ),
+                                  )),
+                            if (smsForStudent == 'Class')
+                              Padding(
+                                padding:
+                                const EdgeInsets.symmetric(vertical: 20.0),
+                                child: Container(
+                                  height: 300,
+                                  width: 900,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1, color: Colors.black26),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SingleChildScrollView(
+                                          child: Column(
+                                            children: [
+                                              for (int i = 0;
+                                              i <
+                                                  sectionController
+                                                      .sectionModelList
+                                                      .length;
+                                              i++)
+                                                Container(
+                                                  child: Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 10.0,
+                                                        vertical: 3),
+                                                    child: InkWell(
+                                                      onTap: () {},
+                                                      child: Container(
+                                                        height: 20,
+                                                        child: Text(
+                                                            sectionController
+                                                                .sectionModelList[
+                                                            i]
+                                                                .standerd),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                            ],
+                                          ),
+                                        ),
+                                        Container(
+                                          color: Colors.blue,
+                                          height: 40,
+                                          width: double.infinity,
+                                          child: Text(text!),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            if (smsFor == 'Staffs')
+                              Container(
+                                  height: 50,
+                                  width: 500,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                      border: Border.all(
+                                          color:
+                                          Colors.black54.withOpacity(0.5))),
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                        left: 10, right: 10, top: 10),
+                                    child: DropdownButton<String>(
+                                      value: smsForStaffs,
+                                      hint: Text(
+                                        "SMS For Staffs In*",
+                                        style:
+                                        primaryFonts.copyWith(fontSize: 14),
+                                      ),
+                                      isExpanded: true,
+                                      icon: const Icon(
+                                          Icons.keyboard_arrow_down_outlined),
+                                      elevation: 0,
+                                      itemHeight: 55,
+                                      isDense: true,
+                                      style: const TextStyle(
+                                          color: Colors.deepPurple),
+                                      onChanged: (String? value) {
+                                        // This is called when the user selects an item.
+
+                                        setState(() {
+                                          smsForStaffs = value!;
+                                        });
+                                      },
+                                      items: smsStaffList
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(
+                                                value,
+                                                style: TextStyle(
+                                                    color: Colors.black87),
+                                              ),
+                                            );
+                                          }).toList(),
+                                    ),
+                                  )),
+                            if (smsForStaffs == 'Selected')
+                              Padding(
+                                padding:
+                                const EdgeInsets.symmetric(vertical: 20.0),
+                                child: Container(
+                                  height: 300,
+                                  width: 900,
+                                  decoration: BoxDecoration(
+                                      border: Border.all(
+                                          width: 1, color: Colors.black26),
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            for (int i = 0;
+                                            i <
+                                                staffManageController
+                                                    .staffList.length;
+                                            i++)
+                                              Padding(
+                                                padding:
+                                                const EdgeInsets.symmetric(
+                                                    horizontal: 10.0),
+                                                child: GestureDetector(
+                                                  child: Container(
+                                                    height: 20,
+                                                    width: double.infinity,
+                                                    child: Text(
+                                                        staffManageController
+                                                            .staffList[i]
+                                                            .fullName),
+                                                  ),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
+                                        Container(
+                                          color: Colors.blue,
+                                          height: 40,
+                                          width: double.infinity,
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            h30,
+                            Container(
+                              width: 900,
+                              child: TextField(
+                                maxLines: 5,
+                                controller: messageController,
+                                decoration: kTextField.copyWith(
+                                  labelText: 'Message',
+                                ),
+                              ),
+                            ),
+                            h30,
+                            Row(
+                              children: [
+                                InkWell(
+                                  onTap: () {
+                                    messageController.text = template1;
+                                  },
+                                  child: Container(
+                                    height: 100,
+                                    width: 100,
+                                    color: Colors.blue,
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(template1),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            h30,
+                            TextButton(
+                                onPressed: () {},
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                        color: primaryColor,
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        'Send',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    )))
+                          ],
+                        ),
                       ),
                     ),
                   ),

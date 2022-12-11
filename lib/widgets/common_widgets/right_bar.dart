@@ -1,3 +1,4 @@
+import 'package:attandence_admin_panel/views/sms_view/sms_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +20,7 @@ class RightBar extends StatelessWidget {
             height: 10,
           ),
           IconBox(icon: Icons.sms_outlined, text: 'SMS', onPress: () {
-            Get.to(() => const ());
+            Get.to(() => const SmsView());
           }),
           h20,
           IconBox(
