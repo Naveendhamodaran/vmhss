@@ -23,6 +23,7 @@ class _StaffListViewState extends State<StaffListView> {
   List<String> sortList = ["Name", "Gender", 'Designation'];
 
   final staffManageController = Get.find<StaffManagementController>();
+
   @override
   void initState() {
     super.initState();
@@ -176,7 +177,7 @@ class _StaffListViewState extends State<StaffListView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(
-                              height: 30,
+                              height: 50,
                             ),
                             Padding(
                               padding:
@@ -189,7 +190,7 @@ class _StaffListViewState extends State<StaffListView> {
                                     'STAFFS',
                                     style: primaryFonts.copyWith(
                                         fontWeight: FontWeight.w700,
-                                        fontSize: 30),
+                                        fontSize: 20),
                                   ),
                                   Row(
                                     children: [
@@ -208,8 +209,10 @@ class _StaffListViewState extends State<StaffListView> {
                                                   BorderRadius.circular(15),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 20, right: 20),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                horizontal: 10,
+                                              ),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
@@ -243,11 +246,11 @@ class _StaffListViewState extends State<StaffListView> {
                                                 () => const StaffManageView());
                                           },
                                           child: Container(
-                                            height: 55,
+                                            height: 40,
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(15),
-                                                color: primaryColor,
+                                                color: HexColor('#0F2878'),
                                                 boxShadow: [
                                                   BoxShadow(
                                                       color: Colors.grey
@@ -255,19 +258,16 @@ class _StaffListViewState extends State<StaffListView> {
                                                       blurRadius: 3)
                                                 ]),
                                             child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 20, right: 20),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                horizontal: 20,
+                                              ),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: const [
-                                                  Icon(Icons.add,
-                                                      color: Colors.white),
-                                                  SizedBox(
-                                                    width: 10,
-                                                  ),
                                                   Text(
-                                                    "Add Staff",
+                                                    "ADD STAFF",
                                                     style: TextStyle(
                                                         color: Colors.white),
                                                   )
@@ -373,8 +373,8 @@ class _StaffListViewState extends State<StaffListView> {
                             ),
                             h20,
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 20, vertical: 8),
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: tableHeadColor,
@@ -445,7 +445,7 @@ class _StaffListViewState extends State<StaffListView> {
                                 i++)
                               Padding(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 8),
+                                    const EdgeInsets.symmetric(horizontal: 20),
                                 child: Column(
                                   children: [
                                     Container(

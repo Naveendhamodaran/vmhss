@@ -1,7 +1,6 @@
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 import '../../controllers/student_management_controller.dart';
@@ -157,15 +156,15 @@ class _DataImportViewState extends State<DataImportView> {
       ),
       body: Container(
         child: Row(children: [
-          LeftBar(),
+          const LeftBar(),
           Expanded(
             child: GetBuilder<StudentManagementController>(builder: (_) {
               return Container(
-                child: SingleChildScrollView(),
+                child: const SingleChildScrollView(),
               );
             }),
           ),
-          RightBar(),
+          const RightBar(),
         ]),
       ),
     );

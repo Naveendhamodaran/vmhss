@@ -1,4 +1,3 @@
-import 'package:attandence_admin_panel/constants/app_colors.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,6 +23,7 @@ class SmsView extends StatefulWidget {
 class _SmsViewState extends State<SmsView> {
   final sectionController = Get.find<SectionController>();
   final staffManageController = Get.find<StaffManagementController>();
+
   @override
   void initState() {
     super.initState();
@@ -56,6 +56,7 @@ class _SmsViewState extends State<SmsView> {
     "Office Staff"
   ];
   String? text = '';
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -197,7 +198,7 @@ class _SmsViewState extends State<SmsView> {
       ),
       body: Container(
         child: Row(children: [
-          LeftBar(),
+          const LeftBar(),
           Expanded(
             child: GetBuilder<StudentManagementController>(builder: (_) {
               return Container(
@@ -207,7 +208,7 @@ class _SmsViewState extends State<SmsView> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      height: 1024,
+                      // height: 1024,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
@@ -218,10 +219,10 @@ class _SmsViewState extends State<SmsView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             h30,
-                            Text('Bulk SMS'),
+                            const Text('Bulk SMS'),
                             h30,
                             Container(
-                              height: 50,
+                              height: 55,
                               width: 500,
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -258,7 +259,8 @@ class _SmsViewState extends State<SmsView> {
                                       value: value,
                                       child: Text(
                                         value,
-                                        style: TextStyle(color: Colors.black87),
+                                        style: const TextStyle(
+                                            color: Colors.black87),
                                       ),
                                     );
                                   }).toList(),
@@ -308,7 +310,7 @@ class _SmsViewState extends State<SmsView> {
                                           value: value,
                                           child: Text(
                                             value,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.black87),
                                           ),
                                         );
@@ -420,7 +422,7 @@ class _SmsViewState extends State<SmsView> {
                                           value: value,
                                           child: Text(
                                             value,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 color: Colors.black87),
                                           ),
                                         );
@@ -487,7 +489,7 @@ class _SmsViewState extends State<SmsView> {
                             Container(
                               width: 900,
                               child: TextField(
-                                maxLines: 5,
+                                maxLines: 10,
                                 controller: messageController,
                                 decoration: kTextField.copyWith(
                                   labelText: 'Message',
@@ -497,19 +499,32 @@ class _SmsViewState extends State<SmsView> {
                             h30,
                             Row(
                               children: [
-                                InkWell(
+                                templateWidget(
+                                  template1: template1,
                                   onTap: () {
                                     messageController.text = template1;
                                   },
-                                  child: Container(
-                                    height: 100,
-                                    width: 100,
-                                    color: Colors.blue,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(template1),
-                                    ),
-                                  ),
+                                ),
+                                w30,
+                                templateWidget(
+                                  template1: template1,
+                                  onTap: () {
+                                    messageController.text = template1;
+                                  },
+                                ),
+                                w30,
+                                templateWidget(
+                                  template1: template1,
+                                  onTap: () {
+                                    messageController.text = template1;
+                                  },
+                                ),
+                                w30,
+                                templateWidget(
+                                  template1: template1,
+                                  onTap: () {
+                                    messageController.text = template1;
+                                  },
                                 ),
                               ],
                             ),
@@ -517,17 +532,19 @@ class _SmsViewState extends State<SmsView> {
                             TextButton(
                                 onPressed: () {},
                                 child: Container(
+                                    alignment: Alignment.center,
+                                    height: 50,
+                                    width: 100,
                                     decoration: BoxDecoration(
-                                        color: primaryColor,
+                                        color: HexColor('#473871'),
                                         borderRadius:
                                             BorderRadius.circular(10)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                        'Send',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    )))
+                                    child: const Text(
+                                      'Send',
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 16),
+                                    ))),
+                            h30
                           ],
                         ),
                       ),
@@ -537,8 +554,48 @@ class _SmsViewState extends State<SmsView> {
               );
             }),
           ),
-          RightBar(),
+          const RightBar(),
         ]),
+      ),
+    );
+  }
+}
+
+class templateWidget extends StatelessWidget {
+  const templateWidget({
+    Key? key,
+    required this.template1,
+    required this.onTap,
+  }) : super(key: key);
+
+  final String template1;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        height: 200,
+        width: 200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: HexColor('#A9B4DF'),
+          boxShadow: const [
+            BoxShadow(
+              color: Colors.black26,
+              blurRadius: 2,
+              offset: Offset(0, 2), // Shadow position
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            template1,
+            style: TextStyle(color: HexColor('#000000')),
+          ),
+        ),
       ),
     );
   }

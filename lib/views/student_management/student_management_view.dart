@@ -161,6 +161,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
 
   Uint8List? filePath;
   File? file;
+
   Future filePick() async {
     final result = await FilePicker.platform.pickFiles();
 
@@ -175,6 +176,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
 
   Uint8List? filePath1;
   File? file1;
+
   Future filePick1() async {
     final result = await FilePicker.platform.pickFiles();
 
@@ -189,6 +191,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
 
   Uint8List? filePath2;
   File? file2;
+
   Future filePick2() async {
     final result = await FilePicker.platform.pickFiles();
 
@@ -203,6 +206,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
 
   Uint8List? filePath3;
   File? file3;
+
   Future filePick3() async {
     final result = await FilePicker.platform.pickFiles();
 
@@ -217,6 +221,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
 
   Uint8List? filePath4;
   File? file4;
+
   Future filePick4() async {
     final result = await FilePicker.platform.pickFiles();
 
@@ -407,7 +412,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                               padding: EdgeInsets.only(left: 15, right: 15),
                               child: Divider(),
                             ),
-                            h10,
+                            h20,
                             Padding(
                               padding:
                                   const EdgeInsets.only(left: 15, bottom: 15),
@@ -446,19 +451,17 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                               padding: EdgeInsets.only(left: 15, right: 15),
                               child: Divider(),
                             ),
-                            h10,
+                            h20,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TextFieldCommon(
                                   controller: fullNameController,
                                   labelText: 'Full Name',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: admissionNoController,
                                   labelText: 'Admission Number',
-                                  maxLine: 1,
                                 ),
                                 Container(
                                   height: 50,
@@ -705,12 +708,10 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 TextFieldCommon(
                                   controller: castController,
                                   labelText: 'Caste',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: communityController,
                                   labelText: 'Community',
-                                  maxLine: 1,
                                 ),
                                 Container(
                                   height: 50,
@@ -765,16 +766,14 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 TextFieldCommon(
                                   controller: motherTongueController,
                                   labelText: 'Mother Tongue',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: firstLanguageController,
                                   labelText: 'First Language',
-                                  maxLine: 1,
                                 ),
                               ],
                             ),
-                            h20,
+                            h30,
                           ],
                         ),
                       ),
@@ -806,24 +805,21 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                               padding: EdgeInsets.only(left: 15, right: 15),
                               child: Divider(),
                             ),
-                            h10,
+                            h20,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TextFieldCommon(
                                   controller: fatherNameController,
                                   labelText: 'Father Name',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: fatherOccupationController,
                                   labelText: 'Father Occupation',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: fatherQualificationController,
                                   labelText: 'Father Qualification',
-                                  maxLine: 1,
                                 ),
                               ],
                             ),
@@ -834,17 +830,14 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 TextFieldCommon(
                                   controller: motherNameController,
                                   labelText: 'Mother Name',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: motherOccupationController,
                                   labelText: 'Mother Occupation',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: motherQualificationController,
                                   labelText: 'Mother Qualification',
-                                  maxLine: 1,
                                 ),
                               ],
                             ),
@@ -855,12 +848,10 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 TextFieldCommon(
                                   controller: mobileNumberController,
                                   labelText: 'Mobile Number',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: incomeController,
                                   labelText: 'Monthly Income',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: addressController,
@@ -869,7 +860,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 ),
                               ],
                             ),
-                            h20,
+                            h30,
                           ],
                         ),
                       ),
@@ -900,25 +891,21 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                               padding: EdgeInsets.only(left: 15, right: 15),
                               child: Divider(),
                             ),
-                            h10,
+                            h20,
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                h15,
                                 TextFieldCommon(
                                   controller: guardianNameController,
                                   labelText: 'Guardian Name',
-                                  maxLine: 1,
                                 ),
-                                const SizedBox(
-                                  width: 110,
-                                ),
+                                // const SizedBox(
+                                //   width: 70,
+                                // ),
                                 TextFieldCommon(
                                   controller: guardianMobileNumberController,
                                   labelText: 'Guardian Mobile Number',
-                                  maxLine: 1,
                                 ),
-                                h15,
                               ],
                             ),
                             h20,
@@ -932,7 +919,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 ),
                               ],
                             ),
-                            h20
+                            h30
                           ],
                         ),
                       ),
@@ -963,24 +950,21 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                               padding: EdgeInsets.only(left: 15, right: 15),
                               child: Divider(),
                             ),
-                            h10,
+                            h20,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TextFieldCommon(
                                   controller: emisCodeController,
                                   labelText: "EMIS Code",
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: transportController,
                                   labelText: 'Transport (Y/N)',
-                                  maxLine: 1,
                                 ),
                                 TextFieldCommon(
                                   controller: routeController,
                                   labelText: "Route Number",
-                                  maxLine: 1,
                                 ),
                               ],
                             ),
@@ -991,13 +975,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 TextFieldCommon(
                                   controller: busStopController,
                                   labelText: 'Bus stop',
-                                  maxLine: 1,
                                 ),
-                                // TextFieldCommon(
-                                //   controller: birthCertificateController,
-                                //   labelText: 'Birth Certificate',
-                                //   maxLine: 1,
-                                // ),
                                 Container(
                                   width: 330,
                                   height: 55,
@@ -1010,11 +988,12 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           child: const Padding(
-                                            padding: EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(15.0),
                                             child: Text(
                                               'Birth Certificate',
                                               style: TextStyle(
-                                                  color: Colors.white),
+                                                  color: Colors.white,
+                                                  fontSize: 16),
                                             ),
                                           ),
                                         ),
@@ -1042,11 +1021,12 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           child: const Padding(
-                                            padding: EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(15.0),
                                             child: Text(
                                               'Transfer Certificate',
                                               style: TextStyle(
-                                                  color: Colors.white),
+                                                  color: Colors.white,
+                                                  fontSize: 16),
                                             ),
                                           ),
                                         ),
@@ -1065,7 +1045,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 // TextFieldCommon(
                                 //   controller: transferCertificateController,
                                 //   labelText: 'Transfer Certificate',
-                                //   maxLine: 1,
+                                //
                                 // ),
                               ],
                             ),
@@ -1085,11 +1065,12 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           child: const Padding(
-                                            padding: EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(15.0),
                                             child: Text(
                                               'Aadhaar Card',
                                               style: TextStyle(
-                                                  color: Colors.white),
+                                                  color: Colors.white,
+                                                  fontSize: 16),
                                             ),
                                           ),
                                         ),
@@ -1106,7 +1087,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  width: 112,
+                                  width: 65,
                                 ),
                                 Container(
                                   width: 330,
@@ -1120,11 +1101,12 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                               borderRadius:
                                                   BorderRadius.circular(10)),
                                           child: const Padding(
-                                            padding: EdgeInsets.all(10.0),
+                                            padding: EdgeInsets.all(15.0),
                                             child: Text(
                                               'Mark Sheet',
                                               style: TextStyle(
-                                                  color: Colors.white),
+                                                  color: Colors.white,
+                                                  fontSize: 16),
                                             ),
                                           ),
                                         ),
@@ -1142,7 +1124,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 ),
                               ],
                             ),
-                            h20
+                            h30
                           ],
                         ),
                       ),
@@ -1173,14 +1155,14 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                               padding: EdgeInsets.only(left: 15, right: 15),
                               child: Divider(),
                             ),
-                            h10,
+                            h20,
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
                                   width: 330,
-                                  height: 50,
                                   child: TextField(
+                                    maxLines: 1,
                                     controller: previousSchoolController,
                                     decoration: InputDecoration(
                                         labelText: "Previous School",
@@ -1189,11 +1171,12 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   ),
                                 ),
                                 const SizedBox(
-                                  width: 110,
+                                  width: 65,
                                 ),
                                 Container(
                                   width: 330,
                                   child: TextField(
+                                    maxLines: 1,
                                     controller: previousStandardController,
                                     decoration: InputDecoration(
                                         labelText: "Previous Standard",
@@ -1203,7 +1186,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                 ),
                               ],
                             ),
-                            h20
+                            h30
                           ],
                         ),
                       ),
@@ -1311,53 +1294,6 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                     ],
                   ),
                   h30,
-                  // Container(
-                  //   child: Padding(
-                  //     padding: const EdgeInsets.all(10.0),
-                  //     child: Container(
-                  //       decoration: BoxDecoration(
-                  //           color: Colors.white,
-                  //           borderRadius: BorderRadius.circular(10)),
-                  //       child: Column(
-                  //         crossAxisAlignment: CrossAxisAlignment.start,
-                  //         children: [
-                  //           h20,
-                  //           h15,
-                  //           Padding(
-                  //             padding:
-                  //                 const EdgeInsets.symmetric(horizontal: 20),
-                  //             child: Column(
-                  //               children: [],
-                  //             ),
-                  //           ),
-                  //           h30,
-                  //           Padding(
-                  //             padding: const EdgeInsets.only(left: 15),
-                  //             child: Text(
-                  //               'PREVIOUS SCHOOL DATA',
-                  //               style: primaryFonts.copyWith(
-                  //                   fontWeight: FontWeight.w600, fontSize: 20),
-                  //             ),
-                  //           ),
-                  //           const Padding(
-                  //             padding: EdgeInsets.only(
-                  //                 left: 15, right: 15, bottom: 10),
-                  //             child: Divider(),
-                  //           ),
-                  //           Padding(
-                  //             padding: const EdgeInsets.only(left: 15),
-                  //
-                  //           ),
-                  //           const SizedBox(
-                  //             height: 50,
-                  //           ),
-                  //
-                  //           h20
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -1371,9 +1307,10 @@ class _StudentManagementViewState extends State<StudentManagementView> {
 
 class TextFieldCommon extends StatelessWidget {
   TextFieldCommon({
+    super.key,
     required this.controller,
     required this.labelText,
-    required this.maxLine,
+    this.maxLine = 1,
   });
 
   final TextEditingController controller;

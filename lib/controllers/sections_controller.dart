@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SectionController extends GetxController {
-  var sectionSecled;
+  var sectionSelected;
   var teacherSelected;
 
   List<String> sectionsList = [];
@@ -14,32 +14,32 @@ class SectionController extends GetxController {
   List<SectionModel> sectionModelList = [];
   var sectionModel = [];
 
-  addToDb(var subjectList, var teacherlList) async {
+  addToDb(var subjectList, var teacherList) async {
     for (var v = 0; v < sectionsList.length; v++) {
-      List tsubjectList = [];
+      List tSubjectList = [];
       String teacher = "";
-      for (var i = 0; i < teacherlList.length; i++) {
-        Map teacherMap = teacherlList[i] as Map;
+      for (var i = 0; i < teacherList.length; i++) {
+        Map teacherMap = teacherList[i] as Map;
         if (teacherMap.keys.single == sectionsList[v]) {
-          teacher = teacherlList[i][sectionsList[v]];
+          teacher = teacherList[i][sectionsList[v]];
         }
       }
 
       for (var j = 0; j < subjectList.length; j++) {
         Map subMap = subjectList[j] as Map;
         if (subMap.keys.single == sectionsList[v]) {
-          tsubjectList.add(subjectList[j][sectionsList[v]]);
+          tSubjectList.add(subjectList[j][sectionsList[v]]);
         }
       }
 
       print(sectionsList[v]);
       print(teacher);
-      print(tsubjectList);
+      print(tSubjectList);
       var sectionTempList = sectionsList[v].split(" ");
       SectionModel sectionModel = SectionModel(
           classTeacher: teacher,
           section: sectionTempList.last,
-          subject: tsubjectList,
+          subject: tSubjectList,
           standerd: sectionTempList.first);
 
       writeToSection(sectionModel);

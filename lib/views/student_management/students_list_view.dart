@@ -178,7 +178,7 @@ class _StudentsListViewState extends State<StudentsListView> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(
-                              height: 20,
+                              height: 50,
                             ),
                             Padding(
                               padding:
@@ -199,10 +199,7 @@ class _StudentsListViewState extends State<StudentsListView> {
                                         padding:
                                             const EdgeInsets.only(left: 20),
                                         child: InkWell(
-                                          onTap: () {
-                                            Get.to(() =>
-                                                const StudentManagementView());
-                                          },
+                                          onTap: () {},
                                           child: Container(
                                             height: 30,
                                             decoration: BoxDecoration(
@@ -249,7 +246,7 @@ class _StudentsListViewState extends State<StudentsListView> {
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(15),
-                                                color: primaryColor,
+                                                color: HexColor('#0F2878'),
                                                 boxShadow: [
                                                   BoxShadow(
                                                       color: Colors.grey
@@ -257,19 +254,16 @@ class _StudentsListViewState extends State<StudentsListView> {
                                                       blurRadius: 3)
                                                 ]),
                                             child: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 10, right: 10),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                horizontal: 20,
+                                              ),
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.center,
                                                 children: const [
-                                                  Icon(Icons.add,
-                                                      color: Colors.white),
-                                                  SizedBox(
-                                                    width: 5,
-                                                  ),
                                                   Text(
-                                                    "ADD",
+                                                    "ADD STUDENT",
                                                     style: TextStyle(
                                                         color: Colors.white),
                                                   )
@@ -285,7 +279,7 @@ class _StudentsListViewState extends State<StudentsListView> {
                               ),
                             ),
                             const SizedBox(
-                              height: 100,
+                              height: 50,
                             ),
                             Padding(
                               padding:
@@ -376,7 +370,7 @@ class _StudentsListViewState extends State<StudentsListView> {
                             h20,
                             Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 8),
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               child: Container(
                                 decoration: BoxDecoration(
                                     color: tableHeadColor,
@@ -397,16 +391,6 @@ class _StudentsListViewState extends State<StudentsListView> {
                                             fontWeight: FontWeight.w600),
                                       ),
                                     ),
-                                    // Container(
-                                    //   width: 50,
-                                    //   child: Text(
-                                    //     "Image",
-                                    //     style: primaryFonts.copyWith(
-                                    //         color: Colors.black,
-                                    //         fontSize: 15,
-                                    //         fontWeight: FontWeight.w600),
-                                    //   ),
-                                    // ),
                                     Container(
                                       width: 100,
                                       child: Text(
@@ -478,7 +462,7 @@ class _StudentsListViewState extends State<StudentsListView> {
                                 i++)
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 8, vertical: 10),
+                                    horizontal: 20, vertical: 10),
                                 child: Container(
                                   decoration: BoxDecoration(
                                       boxShadow: const [

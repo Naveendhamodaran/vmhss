@@ -59,7 +59,7 @@ class LeftBar extends StatelessWidget {
 
           h20,
           IconBox(
-            icon: CupertinoIcons.star, text: 'Privilages',
+            icon: CupertinoIcons.star, text: 'Privileges',
             //   onPress: () {
             //   Get.to(() => const HomePageView());
             // },
@@ -70,7 +70,7 @@ class LeftBar extends StatelessWidget {
             icon: Icons.photo_size_select_small_outlined,
             text: 'Section',
             onPress: () {
-              Get.to(() => SetionView());
+              Get.to(() => SectionView());
             },
           ),
           h20,
