@@ -244,7 +244,7 @@ class _SmsViewState extends State<SmsView> {
                                   itemHeight: 55,
                                   isDense: true,
                                   style:
-                                  const TextStyle(color: Colors.deepPurple),
+                                      const TextStyle(color: Colors.deepPurple),
                                   onChanged: (String? value) {
                                     // This is called when the user selects an item.
 
@@ -253,20 +253,20 @@ class _SmsViewState extends State<SmsView> {
                                     });
                                   },
                                   items: smsList.map<DropdownMenuItem<String>>(
-                                          (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(
-                                            value,
-                                            style: TextStyle(color: Colors.black87),
-                                          ),
-                                        );
-                                      }).toList(),
+                                      (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                        style: TextStyle(color: Colors.black87),
+                                      ),
+                                    );
+                                  }).toList(),
                                 ),
                               ),
                             ),
                             h30,
-                            if (smsFor == 'Students')
+                            if (smsFor == 'Students') ...[
                               Container(
                                   height: 50,
                                   width: 500,
@@ -275,7 +275,7 @@ class _SmsViewState extends State<SmsView> {
                                       borderRadius: BorderRadius.circular(10),
                                       border: Border.all(
                                           color:
-                                          Colors.black54.withOpacity(0.5))),
+                                              Colors.black54.withOpacity(0.5))),
                                   child: Padding(
                                     padding: const EdgeInsets.only(
                                         left: 10, right: 10, top: 10),
@@ -284,7 +284,7 @@ class _SmsViewState extends State<SmsView> {
                                       hint: Text(
                                         "SMS For Students In*",
                                         style:
-                                        primaryFonts.copyWith(fontSize: 14),
+                                            primaryFonts.copyWith(fontSize: 14),
                                       ),
                                       isExpanded: true,
                                       icon: const Icon(
@@ -304,79 +304,81 @@ class _SmsViewState extends State<SmsView> {
                                       items: smsStudentList
                                           .map<DropdownMenuItem<String>>(
                                               (String value) {
-                                            return DropdownMenuItem<String>(
-                                              value: value,
-                                              child: Text(
-                                                value,
-                                                style: TextStyle(
-                                                    color: Colors.black87),
-                                              ),
-                                            );
-                                          }).toList(),
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(
+                                            value,
+                                            style: TextStyle(
+                                                color: Colors.black87),
+                                          ),
+                                        );
+                                      }).toList(),
                                     ),
                                   )),
-                            if (smsForStudent == 'Class')
-                              Padding(
-                                padding:
-                                const EdgeInsets.symmetric(vertical: 20.0),
-                                child: Container(
-                                  height: 300,
-                                  width: 900,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 1, color: Colors.black26),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        SingleChildScrollView(
-                                          child: Column(
-                                            children: [
-                                              for (int i = 0;
-                                              i <
-                                                  sectionController
-                                                      .sectionModelList
-                                                      .length;
-                                              i++)
-                                                Container(
-                                                  child: Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 10.0,
-                                                        vertical: 3),
-                                                    child: InkWell(
-                                                      onTap: () {},
-                                                      child: Container(
-                                                        height: 20,
-                                                        child: Text(
-                                                            sectionController
-                                                                .sectionModelList[
-                                                            i]
-                                                                .standerd),
+                              if (smsForStudent == 'Class') ...[
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 20.0),
+                                  child: Container(
+                                    height: 300,
+                                    width: 900,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 1, color: Colors.black26),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          SingleChildScrollView(
+                                            child: Column(
+                                              children: [
+                                                for (int i = 0;
+                                                    i <
+                                                        sectionController
+                                                            .sectionModelList
+                                                            .length;
+                                                    i++)
+                                                  Container(
+                                                    child: Padding(
+                                                      padding: const EdgeInsets
+                                                              .symmetric(
+                                                          horizontal: 10.0,
+                                                          vertical: 3),
+                                                      child: InkWell(
+                                                        onTap: () {},
+                                                        child: Container(
+                                                          height: 20,
+                                                          child: Text(
+                                                              sectionController
+                                                                  .sectionModelList[
+                                                                      i]
+                                                                  .standerd),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                        Container(
-                                          color: Colors.blue,
-                                          height: 40,
-                                          width: double.infinity,
-                                          child: Text(text!),
-                                        )
-                                      ],
+                                          Container(
+                                            color: Colors.blue,
+                                            height: 40,
+                                            width: double.infinity,
+                                            child: Text(text!),
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            if (smsFor == 'Staffs')
+                              ]
+                            ] else if (smsFor == 'Staffs') ...[
                               Container(
                                   height: 50,
                                   width: 500,
@@ -385,7 +387,7 @@ class _SmsViewState extends State<SmsView> {
                                       borderRadius: BorderRadius.circular(10),
                                       border: Border.all(
                                           color:
-                                          Colors.black54.withOpacity(0.5))),
+                                              Colors.black54.withOpacity(0.5))),
                                   child: Padding(
                                     padding: const EdgeInsets.only(
                                         left: 10, right: 10, top: 10),
@@ -394,7 +396,7 @@ class _SmsViewState extends State<SmsView> {
                                       hint: Text(
                                         "SMS For Staffs In*",
                                         style:
-                                        primaryFonts.copyWith(fontSize: 14),
+                                            primaryFonts.copyWith(fontSize: 14),
                                       ),
                                       isExpanded: true,
                                       icon: const Icon(
@@ -414,70 +416,73 @@ class _SmsViewState extends State<SmsView> {
                                       items: smsStaffList
                                           .map<DropdownMenuItem<String>>(
                                               (String value) {
-                                            return DropdownMenuItem<String>(
-                                              value: value,
-                                              child: Text(
-                                                value,
-                                                style: TextStyle(
-                                                    color: Colors.black87),
-                                              ),
-                                            );
-                                          }).toList(),
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(
+                                            value,
+                                            style: TextStyle(
+                                                color: Colors.black87),
+                                          ),
+                                        );
+                                      }).toList(),
                                     ),
                                   )),
-                            if (smsForStaffs == 'Selected')
-                              Padding(
-                                padding:
-                                const EdgeInsets.symmetric(vertical: 20.0),
-                                child: Container(
-                                  height: 300,
-                                  width: 900,
-                                  decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 1, color: Colors.black26),
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          children: [
-                                            for (int i = 0;
-                                            i <
-                                                staffManageController
-                                                    .staffList.length;
-                                            i++)
-                                              Padding(
-                                                padding:
-                                                const EdgeInsets.symmetric(
-                                                    horizontal: 10.0),
-                                                child: GestureDetector(
-                                                  child: Container(
-                                                    height: 20,
-                                                    width: double.infinity,
-                                                    child: Text(
-                                                        staffManageController
-                                                            .staffList[i]
-                                                            .fullName),
+                              if (smsForStaffs == 'Selected') ...[
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 20.0),
+                                  child: Container(
+                                    height: 300,
+                                    width: 900,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 1, color: Colors.black26),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10.0),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            children: [
+                                              for (int i = 0;
+                                                  i <
+                                                      staffManageController
+                                                          .staffList.length;
+                                                  i++)
+                                                Padding(
+                                                  padding: const EdgeInsets
+                                                          .symmetric(
+                                                      horizontal: 10.0),
+                                                  child: GestureDetector(
+                                                    child: Container(
+                                                      height: 20,
+                                                      width: double.infinity,
+                                                      child: Text(
+                                                          staffManageController
+                                                              .staffList[i]
+                                                              .fullName),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
-                                          ],
-                                        ),
-                                        Container(
-                                          color: Colors.blue,
-                                          height: 40,
-                                          width: double.infinity,
-                                        )
-                                      ],
+                                            ],
+                                          ),
+                                          Container(
+                                            color: Colors.blue,
+                                            height: 40,
+                                            width: double.infinity,
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
+                              ]
+                            ],
                             h30,
                             Container(
                               width: 900,
