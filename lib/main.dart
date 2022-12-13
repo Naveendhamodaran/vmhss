@@ -1,4 +1,7 @@
+import 'package:attandence_admin_panel/views/dash_board_view/home_page_view.dart';
 import 'package:attandence_admin_panel/views/sections_view/section_view.dart';
+import 'package:attandence_admin_panel/views/sms_view/sms_view.dart';
+import 'package:attandence_admin_panel/views/staff_management/staff_management.dart';
 import 'package:attandence_admin_panel/views/student_management/student_management_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +40,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: const SplashScreenView(),
       // home: SectionView(),
-      home: StudentManagementView(),
+      home: SmsView(),
     );
   }
 }

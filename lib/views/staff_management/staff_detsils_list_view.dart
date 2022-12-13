@@ -283,7 +283,7 @@ class _StaffListViewState extends State<StaffListView> {
                               ),
                             ),
                             const SizedBox(
-                              height: 60,
+                              height: 50,
                             ),
                             Padding(
                               padding:

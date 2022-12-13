@@ -6,6 +6,7 @@ import 'package:attandence_admin_panel/constants/app_styles.dart';
 import 'package:attandence_admin_panel/constants/helper_widgets.dart';
 import 'package:attandence_admin_panel/controllers/student_management_controller.dart';
 import 'package:attandence_admin_panel/models/student_model.dart';
+import 'package:attandence_admin_panel/views/student_management/students_list_view.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/left_bar.dart';
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
 import 'package:date_format/date_format.dart';
@@ -15,8 +16,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker_web/image_picker_web.dart';
-
-import '../../constants/decoration.dart';
+import '../../widgets/common_widgets/textFieldCommon.dart';
 import '../profile_view/profile_view.dart';
 
 class StudentManagementView extends StatefulWidget {
@@ -878,7 +878,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 40.0),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             h20,
                             Text(
@@ -899,13 +899,13 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                   controller: guardianNameController,
                                   labelText: 'Guardian Name',
                                 ),
-                                // const SizedBox(
-                                //   width: 70,
-                                // ),
                                 TextFieldCommon(
                                   controller: guardianMobileNumberController,
                                   labelText: 'Guardian Mobile Number',
                                 ),
+                                SizedBox(
+                                  width: 330,
+                                )
                               ],
                             ),
                             h20,
@@ -983,6 +983,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
+                                          alignment: Alignment.center,
                                           decoration: BoxDecoration(
                                               color: Colors.blue,
                                               borderRadius:
@@ -1002,7 +1003,11 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                         },
                                       ),
                                       w20,
-                                      Text('$fileName')
+                                      Flexible(
+                                          child: Text(
+                                        '$fileName',
+                                        style: TextStyle(fontSize: 16),
+                                      ))
                                       // Text(file == null
                                       //     ? 'Click to select Birth Certificate'
                                       //     : '${fileName}')
@@ -1016,6 +1021,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
+                                          alignment: Alignment.center,
                                           decoration: BoxDecoration(
                                               color: Colors.blue,
                                               borderRadius:
@@ -1038,20 +1044,19 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                       // Text(file == null
                                       //     ? 'Click to select Transfer Certificate'
                                       //     : '${fileName1}')
-                                      Text('$fileName1')
+                                      Flexible(
+                                          child: Text(
+                                        '$fileName1',
+                                        style: TextStyle(fontSize: 16),
+                                      ))
                                     ],
                                   ),
                                 ),
-                                // TextFieldCommon(
-                                //   controller: transferCertificateController,
-                                //   labelText: 'Transfer Certificate',
-                                //
-                                // ),
                               ],
                             ),
                             h20,
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
                                   width: 330,
@@ -1060,6 +1065,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
+                                          alignment: Alignment.center,
                                           decoration: BoxDecoration(
                                               color: Colors.blue,
                                               borderRadius:
@@ -1079,15 +1085,16 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                         },
                                       ),
                                       w20,
-                                      Text('$fileName2')
+                                      Flexible(
+                                          child: Text(
+                                        '$fileName2',
+                                        style: TextStyle(fontSize: 16),
+                                      ))
                                       // Text(file == null
                                       //     ? 'Aadhaar Card'
                                       //     : '${fileName2}')
                                     ],
                                   ),
-                                ),
-                                const SizedBox(
-                                  width: 65,
                                 ),
                                 Container(
                                   width: 330,
@@ -1096,6 +1103,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                     children: [
                                       InkWell(
                                         child: Container(
+                                          alignment: Alignment.center,
                                           decoration: BoxDecoration(
                                               color: Colors.blue,
                                               borderRadius:
@@ -1115,13 +1123,20 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                         },
                                       ),
                                       w20,
-                                      Text('$fileName3')
+                                      Flexible(
+                                          child: Text(
+                                        '$fileName3',
+                                        style: TextStyle(fontSize: 16),
+                                      ))
                                       // Text(file == null
                                       //     ? 'Mark Sheet'
                                       //     : '${fileName2}')
                                     ],
                                   ),
                                 ),
+                                SizedBox(
+                                  width: 330,
+                                )
                               ],
                             ),
                             h30
@@ -1157,7 +1172,7 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                             ),
                             h20,
                             Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Container(
                                   width: 330,
@@ -1170,9 +1185,6 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                         focusedBorder: borderstyle),
                                   ),
                                 ),
-                                const SizedBox(
-                                  width: 65,
-                                ),
                                 Container(
                                   width: 330,
                                   child: TextField(
@@ -1184,6 +1196,9 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                                         focusedBorder: borderstyle),
                                   ),
                                 ),
+                                SizedBox(
+                                  width: 330,
+                                )
                               ],
                             ),
                             h30
@@ -1193,105 +1208,139 @@ class _StudentManagementViewState extends State<StudentManagementView> {
                     ),
                   ),
                   h20,
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () async {
-                          setState(() {
-                            isLoading = true;
-                          });
-                          String url = await studentController.storeImage(
-                              images: imagePath,
-                              studentName: fullNameController.text,
-                              imageName: imageName);
-                          print(url);
-                          String birthCertificate =
-                              await studentController.storeFiles(
-                                  file: filePath,
-                                  studentName: fullNameController.text,
-                                  fileName: file!.path);
-                          String transferCertificate =
-                              await studentController.storeFiles(
-                                  file: filePath1,
-                                  studentName: fullNameController.text,
-                                  fileName: file1!.path);
-                          String aadhaarCard =
-                              await studentController.storeFiles(
-                                  file: filePath2,
-                                  studentName: fullNameController.text,
-                                  fileName: file2!.path);
-                          String markSheet = await studentController.storeFiles(
-                              file: filePath3,
-                              studentName: fullNameController.text,
-                              fileName: file3!.path);
-                          StudentModel studentModel = StudentModel(
-                              image: url,
-                              fullName: fullNameController.text,
-                              admissionNumber: admissionNoController.text,
-                              gender: gender,
-                              address: addressController.text,
-                              joiningStandard: joiningStandardController.text,
-                              dob: _date2,
-                              joiningDate: _date,
-                              caste: castController.text,
-                              community: communityController.text,
-                              firstLanguage: firstLanguageController.text,
-                              medium: designation,
-                              motherTongue: motherTongueController.text,
-                              nationality: nationality,
-                              previousSchool: previousSchoolController.text,
-                              previousStandard: previousStandardController.text,
-                              religion: religion,
-                              state: state,
-                              fatherName: fatherNameController.text,
-                              emisCode: emisCodeController.text,
-                              busStop: busStopController.text,
-                              route: routeController.text,
-                              transport: transportController.text,
-                              guardianAddress: guardianAddressController.text,
-                              guardianMobileNumber:
-                                  guardianMobileNumberController.text,
-                              guardianName: guardianNameController.text,
-                              mobileNumber: mobileNumberController.text,
-                              monthlyIncome: incomeController.text,
-                              motherQualification:
-                                  motherQualificationController.text,
-                              fatherQualification:
-                                  fatherQualificationController.text,
-                              motherOccupation: motherOccupationController.text,
-                              fatherOccupation: fatherOccupationController.text,
-                              motherName: motherNameController.text,
-                              markSheet: markSheet,
-                              aadhaarCard: aadhaarCard,
-                              transferCertificate: transferCertificate,
-                              birthCertificate: birthCertificate);
-                          studentController
-                              .writeToStudentManagement(studentModel);
-                          setState(() {
-                            isLoading = false;
-                          });
-                        },
-                        child: Container(
-                          height: 50,
-                          width: 150,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: primaryColor),
-                          alignment: Alignment.center,
-                          child: isLoading
-                              ? const Center(
-                                  child: CircularProgressIndicator(
-                                    color: Colors.white,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Get.back();
+                            StudentsListView();
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 150,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white),
+                            alignment: Alignment.center,
+                            child: isLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                : Text(
+                                    "Cancel",
+                                    style: primaryFonts.copyWith(
+                                        color: Colors.black),
                                   ),
-                                )
-                              : Text(
-                                  "Save",
-                                  style: primaryFonts.copyWith(
-                                      color: Colors.white),
-                                ),
+                          ),
                         ),
-                      ),
-                    ],
+                        w20,
+                        InkWell(
+                          onTap: () async {
+                            setState(() {
+                              isLoading = true;
+                            });
+                            String url = await studentController.storeImage(
+                                images: imagePath,
+                                studentName: fullNameController.text,
+                                imageName: imageName);
+                            print(url);
+                            String birthCertificate =
+                                await studentController.storeFiles(
+                                    file: filePath,
+                                    studentName: fullNameController.text,
+                                    fileName: file!.path);
+                            String transferCertificate =
+                                await studentController.storeFiles(
+                                    file: filePath1,
+                                    studentName: fullNameController.text,
+                                    fileName: file1!.path);
+                            String aadhaarCard =
+                                await studentController.storeFiles(
+                                    file: filePath2,
+                                    studentName: fullNameController.text,
+                                    fileName: file2!.path);
+                            String markSheet =
+                                await studentController.storeFiles(
+                                    file: filePath3,
+                                    studentName: fullNameController.text,
+                                    fileName: file3!.path);
+                            StudentModel studentModel = StudentModel(
+                                image: url,
+                                fullName: fullNameController.text,
+                                admissionNumber: admissionNoController.text,
+                                gender: gender,
+                                address: addressController.text,
+                                joiningStandard: joiningStandardController.text,
+                                dob: _date2,
+                                joiningDate: _date,
+                                caste: castController.text,
+                                community: communityController.text,
+                                firstLanguage: firstLanguageController.text,
+                                medium: designation,
+                                motherTongue: motherTongueController.text,
+                                nationality: nationality,
+                                previousSchool: previousSchoolController.text,
+                                previousStandard:
+                                    previousStandardController.text,
+                                religion: religion,
+                                state: state,
+                                fatherName: fatherNameController.text,
+                                emisCode: emisCodeController.text,
+                                busStop: busStopController.text,
+                                route: routeController.text,
+                                transport: transportController.text,
+                                guardianAddress: guardianAddressController.text,
+                                guardianMobileNumber:
+                                    guardianMobileNumberController.text,
+                                guardianName: guardianNameController.text,
+                                mobileNumber: mobileNumberController.text,
+                                monthlyIncome: incomeController.text,
+                                motherQualification:
+                                    motherQualificationController.text,
+                                fatherQualification:
+                                    fatherQualificationController.text,
+                                motherOccupation:
+                                    motherOccupationController.text,
+                                fatherOccupation:
+                                    fatherOccupationController.text,
+                                motherName: motherNameController.text,
+                                markSheet: markSheet,
+                                aadhaarCard: aadhaarCard,
+                                transferCertificate: transferCertificate,
+                                birthCertificate: birthCertificate);
+                            studentController
+                                .writeToStudentManagement(studentModel);
+                            setState(() {
+                              isLoading = false;
+                            });
+                          },
+                          child: Container(
+                            height: 50,
+                            width: 150,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: HexColor('#0F2878')),
+                            alignment: Alignment.center,
+                            child: isLoading
+                                ? const Center(
+                                    child: CircularProgressIndicator(
+                                      color: Colors.white,
+                                    ),
+                                  )
+                                : Text(
+                                    "Save",
+                                    style: primaryFonts.copyWith(
+                                        color: Colors.white),
+                                  ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   h30,
                 ],
@@ -1301,38 +1350,6 @@ class _StudentManagementViewState extends State<StudentManagementView> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class TextFieldCommon extends StatelessWidget {
-  TextFieldCommon({
-    super.key,
-    required this.controller,
-    required this.labelText,
-    this.maxLine = 1,
-  });
-
-  final TextEditingController controller;
-  final String labelText;
-  final int maxLine;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: 330,
-          child: TextField(
-            maxLines: maxLine,
-            controller: controller,
-            decoration: kTextField.copyWith(
-              labelText: labelText,
-            ),
-          ),
-        )
-      ],
     );
   }
 }

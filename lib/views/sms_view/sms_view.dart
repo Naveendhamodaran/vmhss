@@ -1,4 +1,5 @@
 import 'package:attandence_admin_panel/widgets/common_widgets/right_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -56,6 +57,8 @@ class _SmsViewState extends State<SmsView> {
     "Office Staff"
   ];
   String? text = '';
+
+  List<String> sectionList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -353,7 +356,14 @@ class _SmsViewState extends State<SmsView> {
                                                           horizontal: 10.0,
                                                           vertical: 3),
                                                       child: InkWell(
-                                                        onTap: () {},
+                                                        onTap: () {
+                                                          if (sectionList.contains(
+                                                                  "${sectionController.sectionModelList[i].standerd}") ==
+                                                              false) {
+                                                            sectionList.add(
+                                                                "${sectionController.sectionModelList[i].standerd}");
+                                                          }
+                                                        },
                                                         child: Container(
                                                           height: 20,
                                                           child: Text(
@@ -365,15 +375,111 @@ class _SmsViewState extends State<SmsView> {
                                                       ),
                                                     ),
                                                   ),
+                                                // InkWell(
+                                                //   onTap: ()
+                                                //   child: Container(
+                                                //     height: 35,
+                                                //     width: 35,
+                                                //     decoration: BoxDecoration(
+                                                //         color: secondaryColor,
+                                                //         borderRadius: BorderRadius.circular(20)),
+                                                //     alignment: Alignment.center,
+                                                //     child: const Icon(Icons.add),
+                                                //   ),
+                                                // )
                                               ],
                                             ),
                                           ),
                                           Container(
-                                            color: Colors.blue,
-                                            height: 40,
-                                            width: double.infinity,
-                                            child: Text(text!),
-                                          )
+                                            height: 50,
+                                            // width: double.infinity,
+                                            child: ListView.builder(
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                physics:
+                                                    const AlwaysScrollableScrollPhysics(),
+                                                itemCount: sectionList.length,
+                                                itemBuilder: (context, index) {
+                                                  return Column(
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            const EdgeInsets
+                                                                    .symmetric(
+                                                                horizontal:
+                                                                    20.0),
+                                                        child: Container(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          height: 30,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                                  boxShadow: const [
+                                                                BoxShadow(
+                                                                    color: Colors
+                                                                        .black12,
+                                                                    blurRadius:
+                                                                        1,
+                                                                    spreadRadius:
+                                                                        1,
+                                                                    offset:
+                                                                        Offset(
+                                                                            0,
+                                                                            1))
+                                                              ],
+                                                                  color: HexColor(
+                                                                      '#7CC57E'),
+                                                                  // border:
+                                                                  //     Border.all(color: Colors.black),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              20)),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsets
+                                                                        .only(
+                                                                    left: 10,
+                                                                    right: 10),
+                                                            child: Row(
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Text(
+                                                                  sectionList[
+                                                                      index],
+                                                                  style: primaryFonts
+                                                                      .copyWith(
+                                                                          fontSize:
+                                                                              12),
+                                                                ),
+                                                                w10,
+                                                                InkWell(
+                                                                  onTap: () {
+                                                                    sectionList
+                                                                        .removeAt(
+                                                                            index);
+                                                                  },
+                                                                  child:
+                                                                      const Icon(
+                                                                    CupertinoIcons
+                                                                        .xmark,
+                                                                    color: Colors
+                                                                        .red,
+                                                                    size: 10,
+                                                                  ),
+                                                                )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      h10
+                                                    ],
+                                                  );
+                                                }),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -499,28 +605,28 @@ class _SmsViewState extends State<SmsView> {
                             h30,
                             Row(
                               children: [
-                                templateWidget(
+                                TemplateWidget(
                                   template1: template1,
                                   onTap: () {
                                     messageController.text = template1;
                                   },
                                 ),
                                 w30,
-                                templateWidget(
+                                TemplateWidget(
                                   template1: template1,
                                   onTap: () {
                                     messageController.text = template1;
                                   },
                                 ),
                                 w30,
-                                templateWidget(
+                                TemplateWidget(
                                   template1: template1,
                                   onTap: () {
                                     messageController.text = template1;
                                   },
                                 ),
                                 w30,
-                                templateWidget(
+                                TemplateWidget(
                                   template1: template1,
                                   onTap: () {
                                     messageController.text = template1;
@@ -561,8 +667,8 @@ class _SmsViewState extends State<SmsView> {
   }
 }
 
-class templateWidget extends StatelessWidget {
-  const templateWidget({
+class TemplateWidget extends StatelessWidget {
+  const TemplateWidget({
     Key? key,
     required this.template1,
     required this.onTap,

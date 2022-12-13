@@ -1,4 +1,3 @@
-
 class StaffModel {
   String image;
   String fullName;
@@ -12,32 +11,33 @@ class StaffModel {
   String totalExperience;
   String designation;
   String esi;
-  String aadharCardNumber;
+  String aadhaarCardNumber;
   String panCardNumber;
-  String aadharCardImage;
+  String aadhaarCardImage;
   String panCardImage;
+  String resumeImage;
 
- StaffModel({
-    required this.image,
-    required this.fullName,
-    required this.mobileNumber,
-    required this.gender,
-    required this.address,
-    required this.email,
-    required this.dob,
-    required this.joiningDate,
-    required this.qualification,
-    required this.totalExperience,
-    required this.designation,
-    required this.esi,
-    required this.aadharCardNumber,
-    required this.panCardNumber,
-    required this.aadharCardImage,
-    required this.panCardImage,
-});
+  StaffModel(
+      {required this.image,
+      required this.fullName,
+      required this.mobileNumber,
+      required this.gender,
+      required this.address,
+      required this.email,
+      required this.dob,
+      required this.joiningDate,
+      required this.qualification,
+      required this.totalExperience,
+      required this.designation,
+      required this.esi,
+      required this.aadhaarCardNumber,
+      required this.panCardNumber,
+      required this.aadhaarCardImage,
+      required this.panCardImage,
+      required this.resumeImage});
 
-Map<String, dynamic> toJson() {
-  return {
+  Map<String, dynamic> toJson() {
+    return {
       "image": image,
       "full_name": fullName,
       "mobile_number": mobileNumber,
@@ -50,13 +50,11 @@ Map<String, dynamic> toJson() {
       "totalExperience": totalExperience,
       "designation": designation,
       "esi": esi,
-      "aadhar_card_number": aadharCardNumber,
+      "aadhar_card_number": aadhaarCardNumber,
       "pan_card_number": panCardNumber,
-      "aadhar_card_image": aadharCardImage,
-      "pan_card_image": panCardImage
+      "aadhar_card_image": aadhaarCardImage,
+      "pan_card_image": panCardImage,
+      "resume_image": resumeImage
     };
   }
-
-  
-
 }

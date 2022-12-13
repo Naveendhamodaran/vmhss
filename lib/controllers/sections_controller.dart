@@ -10,6 +10,7 @@ class SectionController extends GetxController {
 
   List<String> sectionsList = [];
   var subjectList = [];
+
   List<String> teachersList = ["Radha", "Sam", "John"];
   List<SectionModel> sectionModelList = [];
   var sectionModel = [];

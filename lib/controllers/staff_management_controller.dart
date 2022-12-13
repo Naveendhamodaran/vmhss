@@ -48,10 +48,11 @@ class StaffManagementController extends GetxController {
           totalExperience: doc["totalExperience"],
           designation: doc["designation"],
           esi: doc["esi"],
-          aadharCardNumber: doc["aadhar_card_number"],
-          aadharCardImage: doc["aadhar_card_image"],
+          aadhaarCardNumber: doc["aadhar_card_number"],
+          aadhaarCardImage: doc["aadhar_card_image"],
           panCardImage: doc["pan_card_image"],
           panCardNumber: doc["pan_card_number"],
+          resumeImage: doc['resume_image'],
         );
         staffList.add(staffDetail);
       }
@@ -61,12 +62,12 @@ class StaffManagementController extends GetxController {
 
   Future<String> storeImage(
       {required Uint8List? images,
-      required String employeename,
+      required String employeeName,
       required String imageName}) async {
     print("::::::::::::::1:::::::::::::::::::");
 
     final storageReference =
-        FirebaseStorage.instance.ref().child("Staffs/$employeename");
+        FirebaseStorage.instance.ref().child("Staffs/$employeeName");
     print("::::::::::::::2:::::::::::::::::::");
 
     await storageReference.putData(images!);
@@ -75,5 +76,19 @@ class StaffManagementController extends GetxController {
     final String url = await storageReference.getDownloadURL();
 
     return url;
+  }
+
+  Future<String> storeFiles(
+      {required Uint8List? file,
+      required String employeeName,
+      required String fileName}) async {
+    print("::::::::::::::1:::::::::::::::::::");
+    final storageReference =
+        FirebaseStorage.instance.ref().child("Students/$employeeName");
+    print("::::::::::::::2:::::::::::::::::::");
+    await storageReference.putData(file!);
+    print("::::::::::::::3:::::::::::::::::::");
+    final String fileUrl = await storageReference.getDownloadURL();
+    return fileUrl;
   }
 }
