@@ -154,9 +154,12 @@ class _StaffManageViewState extends State<StaffManageView> {
 
   @override
   Widget build(BuildContext context) {
-    final fileName = file ?? 'Select files';
-    final fileName1 = file1 ?? 'Select files';
-    final fileName2 = file2 ?? 'Select files';
+    var sampleText = 'Select files';
+
+    var fileName = file ?? sampleText;
+    var fileName1 = file1 ?? sampleText;
+    var fileName2 = file2 ?? sampleText;
+
     var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: PreferredSize(
@@ -305,7 +308,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                 children: [
                   h20,
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 100.0),
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -316,8 +319,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                           horizontal: 40,
                         ),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             h20,
                             Text(
@@ -326,10 +328,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                   fontWeight: FontWeight.w600, fontSize: 20),
                             ),
                             h10,
-                            const Padding(
-                              padding: EdgeInsets.only(left: 15, right: 15),
-                              child: Divider(),
-                            ),
+                            Divider(),
                             h20,
                             Padding(
                               padding:
@@ -366,7 +365,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                             ),
                             h10,
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TextFieldCommon(
@@ -382,75 +381,70 @@ class _StaffManageViewState extends State<StaffManageView> {
                             const SizedBox(
                               height: 30,
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 15, right: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 50,
-                                        width: 330,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                                color: Colors.black54
-                                                    .withOpacity(0.5))),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 10, right: 10, top: 10),
-                                          child: DropdownButton<String>(
-                                            value: gender,
-                                            hint: Text(
-                                              "Gender*",
-                                              style: primaryFonts.copyWith(
-                                                  fontSize: 14),
-                                            ),
-                                            isExpanded: true,
-                                            icon: const Icon(Icons
-                                                .keyboard_arrow_down_outlined),
-                                            elevation: 0,
-                                            itemHeight: 55,
-                                            isDense: true,
-                                            style: const TextStyle(
-                                                color: Colors.black54),
-                                            onChanged: (String? value) {
-                                              // This is called when the user selects an item.
-
-                                              setState(() {
-                                                gender = value!;
-                                              });
-                                            },
-                                            items: genderList
-                                                .map<DropdownMenuItem<String>>(
-                                                    (String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(value),
-                                              );
-                                            }).toList(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 330,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Colors.black54
+                                                  .withOpacity(0.5))),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 10, top: 10),
+                                        child: DropdownButton<String>(
+                                          value: gender,
+                                          hint: Text(
+                                            "Gender*",
+                                            style: primaryFonts.copyWith(
+                                                fontSize: 14),
                                           ),
+                                          isExpanded: true,
+                                          icon: const Icon(Icons
+                                              .keyboard_arrow_down_outlined),
+                                          elevation: 0,
+                                          itemHeight: 55,
+                                          isDense: true,
+                                          style: const TextStyle(
+                                              color: Colors.black54),
+                                          onChanged: (String? value) {
+                                            // This is called when the user selects an item.
+
+                                            setState(() {
+                                              gender = value!;
+                                            });
+                                          },
+                                          items: genderList
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                  w30,
-                                  TextFieldCommon(
-                                      controller: emailTextController,
-                                      labelText: 'Email'),
-                                ],
-                              ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                w30,
+                                TextFieldCommon(
+                                    controller: emailTextController,
+                                    labelText: 'Email'),
+                              ],
                             ),
                             h30,
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
@@ -501,7 +495,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                             ),
                             h30,
                             Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Column(
@@ -540,76 +534,76 @@ class _StaffManageViewState extends State<StaffManageView> {
                               ],
                             ),
                             h30,
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 15, right: 15),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        height: 50,
-                                        width: 330,
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            border: Border.all(
-                                                color: Colors.black54
-                                                    .withOpacity(0.5))),
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 10, right: 10, top: 10),
-                                          child: DropdownButton<String>(
-                                            value: designation,
-                                            isExpanded: true,
-                                            isDense: true,
-                                            hint: Text(
-                                              "Designation",
-                                              style: primaryFonts.copyWith(
-                                                  fontSize: 14),
-                                            ),
-                                            icon: const Icon(Icons
-                                                .keyboard_arrow_down_outlined),
-                                            elevation: 0,
-                                            style: const TextStyle(
-                                                color: Colors.black54),
-                                            onChanged: (String? value) {
-                                              // This is called when the user selects an item.
-
-                                              setState(() {
-                                                designation = value!;
-                                              });
-                                            },
-                                            items: designationList
-                                                .map<DropdownMenuItem<String>>(
-                                                    (String value) {
-                                              return DropdownMenuItem<String>(
-                                                value: value,
-                                                child: Text(value),
-                                              );
-                                            }).toList(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      height: 50,
+                                      width: 330,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          border: Border.all(
+                                              color: Colors.black54
+                                                  .withOpacity(0.5))),
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            left: 10, right: 10, top: 10),
+                                        child: DropdownButton<String>(
+                                          value: designation,
+                                          isExpanded: true,
+                                          isDense: true,
+                                          hint: Text(
+                                            "Designation",
+                                            style: primaryFonts.copyWith(
+                                                fontSize: 14),
                                           ),
+                                          icon: const Icon(Icons
+                                              .keyboard_arrow_down_outlined),
+                                          elevation: 0,
+                                          style: const TextStyle(
+                                              color: Colors.black54),
+                                          onChanged: (String? value) {
+                                            // This is called when the user selects an item.
+
+                                            setState(() {
+                                              designation = value!;
+                                            });
+                                          },
+                                          items: designationList
+                                              .map<DropdownMenuItem<String>>(
+                                                  (String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(value),
+                                            );
+                                          }).toList(),
                                         ),
-                                      )
-                                    ],
-                                  ),
-                                  w30,
-                                  TextFieldCommon(
-                                      controller: esiTextController,
-                                      labelText: 'ESI'),
-                                ],
-                              ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                w30,
+                                TextFieldCommon(
+                                    controller: esiTextController,
+                                    labelText: 'ESI'),
+                              ],
                             ),
                             h20,
-                            TextFieldCommon(
-                              controller: addressTextController,
-                              labelText: 'Address',
-                              maxLine: 3,
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                TextFieldCommon(
+                                  controller: addressTextController,
+                                  labelText: 'Address',
+                                  maxLine: 3,
+                                ),
+                              ],
                             ),
                             const SizedBox(
                               height: 40,
@@ -619,17 +613,20 @@ class _StaffManageViewState extends State<StaffManageView> {
                       ),
                     ),
                   ),
+                  h30,
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 100.0),
                     child: Container(
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(10)),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           h20,
                           Padding(
-                            padding: const EdgeInsets.only(left: 15),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 40.0),
                             child: Text(
                               'DOCUMENTS',
                               style: primaryFonts.copyWith(
@@ -639,19 +636,17 @@ class _StaffManageViewState extends State<StaffManageView> {
                           h10,
                           const Padding(
                             padding: EdgeInsets.only(
-                                left: 15, right: 15, bottom: 10),
+                                left: 40, right: 40, bottom: 10),
                             child: Divider(),
                           ),
                           h20,
                           Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
+                            padding: const EdgeInsets.symmetric(horizontal: 40),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Container(
                                   width: 330,
-                                  height: 50,
                                   child: TextField(
                                     controller: aadharnumberTextController,
                                     decoration: InputDecoration(
@@ -675,143 +670,171 @@ class _StaffManageViewState extends State<StaffManageView> {
                             ),
                           ),
                           h30,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 330,
-                                height: 55,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: const [
-                                      BoxShadow(
-                                          color: Colors.black12, blurRadius: 1)
-                                    ],
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Row(
-                                  children: [
-                                    InkWell(
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            color: Colors.blue,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(15.0),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 40.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 330,
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: const [
+                                        BoxShadow(
+                                            color: Colors.black12,
+                                            blurRadius: 1)
+                                      ],
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(15.0),
+                                            child: Text(
+                                              'Aadhaar Card',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16),
+                                            ),
+                                          ),
+                                        ),
+                                        onTap: () {
+                                          filePick();
+                                        },
+                                      ),
+                                      Flexible(
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          width: 200,
                                           child: Text(
-                                            'Aadhaar Card',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 16),
+                                            '$fileName',
+                                            style:
+                                                const TextStyle(fontSize: 16),
                                           ),
                                         ),
                                       ),
-                                      onTap: () {
-                                        filePick();
-                                      },
-                                    ),
-                                    w20,
-                                    Flexible(
-                                      child: Text(
-                                        '$fileName',
-                                        style: const TextStyle(fontSize: 16),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              w20,
-                              Container(
-                                width: 330,
-                                height: 55,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: const [
-                                      BoxShadow(
-                                          color: Colors.black12, blurRadius: 1)
+                                      InkWell(
+                                          onTap: () {
+                                            fileName = sampleText;
+                                          },
+                                          child: Icon(Icons.close)),
+                                      w10
                                     ],
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Row(
-                                  children: [
-                                    InkWell(
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            color: Colors.blue,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(15.0),
-                                          child: Text(
-                                            'Pan Card',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 16),
+                                  ),
+                                ),
+                                w30,
+                                Container(
+                                  width: 330,
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: const [
+                                        BoxShadow(
+                                            color: Colors.black12,
+                                            blurRadius: 1)
+                                      ],
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Row(
+                                    children: [
+                                      InkWell(
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(15.0),
+                                            child: Text(
+                                              'Pan Card',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16),
+                                            ),
                                           ),
                                         ),
+                                        onTap: () {
+                                          filePick1();
+                                        },
                                       ),
-                                      onTap: () {
-                                        filePick1();
-                                      },
-                                    ),
-                                    w20,
-                                    Flexible(
-                                      child: Text(
-                                        '$fileName1',
-                                        style: const TextStyle(fontSize: 16),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              w20,
-                              Container(
-                                width: 330,
-                                height: 55,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    boxShadow: const [
-                                      BoxShadow(
-                                          color: Colors.black12, blurRadius: 1)
+                                      w20,
+                                      Flexible(
+                                        child: Text(
+                                          '$fileName1',
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      )
                                     ],
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    InkWell(
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                            color: Colors.blue,
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(15.0),
-                                          child: Text(
-                                            'Resume',
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 16),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          h30,
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 40.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  width: 330,
+                                  height: 55,
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      boxShadow: const [
+                                        BoxShadow(
+                                            color: Colors.black12,
+                                            blurRadius: 1)
+                                      ],
+                                      borderRadius: BorderRadius.circular(10)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      InkWell(
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                              color: Colors.blue,
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
+                                          child: const Padding(
+                                            padding: EdgeInsets.all(15.0),
+                                            child: Text(
+                                              'Resume',
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16),
+                                            ),
                                           ),
                                         ),
+                                        onTap: () {
+                                          filePick2();
+                                        },
                                       ),
-                                      onTap: () {
-                                        filePick2();
-                                      },
-                                    ),
-                                    w30,
-                                    Flexible(
-                                      child: Text(
-                                        '$fileName2',
-                                        style: const TextStyle(fontSize: 16),
-                                      ),
-                                    )
-                                  ],
+                                      w30,
+                                      Flexible(
+                                        child: Text(
+                                          '$fileName2',
+                                          style: const TextStyle(fontSize: 16),
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                           const SizedBox(
                             height: 40,
@@ -820,15 +843,16 @@ class _StaffManageViewState extends State<StaffManageView> {
                       ),
                     ),
                   ),
+                  h30,
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 100.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         InkWell(
                           onTap: () {
                             Get.back();
-                            const StaffListView();
+                            StaffListView();
                           },
                           child: Container(
                             height: 50,

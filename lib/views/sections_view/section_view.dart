@@ -387,7 +387,7 @@ class _SectionViewState extends State<SectionView> {
                                       ),
                                     ),
                                     Container(
-                                      width: 100,
+                                      width: 200,
                                       child: Text(
                                         "Standard",
                                         style: primaryFonts.copyWith(
@@ -397,7 +397,7 @@ class _SectionViewState extends State<SectionView> {
                                       ),
                                     ),
                                     Container(
-                                      width: 100,
+                                      width: 200,
                                       child: Text(
                                         "Section",
                                         style: primaryFonts.copyWith(
@@ -407,7 +407,7 @@ class _SectionViewState extends State<SectionView> {
                                       ),
                                     ),
                                     Container(
-                                      width: 150,
+                                      width: 200,
                                       child: Text(
                                         "Class Teacher",
                                         style: primaryFonts.copyWith(
@@ -417,7 +417,8 @@ class _SectionViewState extends State<SectionView> {
                                       ),
                                     ),
                                     Container(
-                                      width: 100,
+                                      alignment: Alignment.center,
+                                      width: 200,
                                       child: Text(
                                         "Actions",
                                         style: primaryFonts.copyWith(
@@ -467,7 +468,7 @@ class _SectionViewState extends State<SectionView> {
                                           ),
                                         ),
                                         Container(
-                                          width: 150,
+                                          width: 200,
                                           child: Text(
                                             sectionController
                                                 .sectionModelList[i].standerd,
@@ -478,7 +479,7 @@ class _SectionViewState extends State<SectionView> {
                                           ),
                                         ),
                                         Container(
-                                          width: 50,
+                                          width: 200,
                                           child: Text(
                                             sectionController
                                                 .sectionModelList[i].section,
@@ -489,7 +490,7 @@ class _SectionViewState extends State<SectionView> {
                                           ),
                                         ),
                                         Container(
-                                          width: 150,
+                                          width: 200,
                                           child: Text(
                                             sectionController
                                                 .sectionModelList[i]
@@ -501,11 +502,28 @@ class _SectionViewState extends State<SectionView> {
                                           ),
                                         ),
                                         Container(
-                                          width: 100,
+                                          width: 200,
                                           child: Row(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
+                                              Container(
+                                                  decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20),
+                                                      color: Colors.green),
+                                                  alignment: Alignment.center,
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            8.0),
+                                                    child: Text(
+                                                      'Add Students',
+                                                      style: TextStyle(
+                                                          color: Colors.white),
+                                                    ),
+                                                  )),
                                               Container(
                                                 height: 20,
                                                 width: 40,
@@ -754,7 +772,7 @@ class _SectionViewState extends State<SectionView> {
                           width: 100,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: primaryColor),
+                              color: HexColor('#0F2878')),
                           alignment: Alignment.center,
                           child: Text(
                             "Next",
@@ -997,7 +1015,7 @@ class _SectionViewState extends State<SectionView> {
                             width: 100,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: primaryColor),
+                                color: HexColor('#0F2878')),
                             alignment: Alignment.center,
                             child: Text(
                               "Next",
@@ -1115,7 +1133,7 @@ class _SectionViewState extends State<SectionView> {
                             width: 100,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(20),
-                                color: primaryColor),
+                                color: HexColor('#0F2878')),
                             alignment: Alignment.center,
                             child: Text(
                               "Add",
@@ -1270,11 +1288,11 @@ class _SectionViewState extends State<SectionView> {
                           Get.back();
                         },
                         child: Container(
-                          height: 30,
+                          height: 40,
                           width: 100,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20),
-                              color: primaryColor),
+                              color: HexColor('#0F2878')),
                           alignment: Alignment.center,
                           child: Text(
                             "Add",

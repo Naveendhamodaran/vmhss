@@ -384,7 +384,7 @@ class _StaffListViewState extends State<StaffListView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 50,
+                                      width: 40,
                                       child: Text(
                                         "Sl.No",
                                         style: primaryFonts.copyWith(
@@ -394,7 +394,7 @@ class _StaffListViewState extends State<StaffListView> {
                                       ),
                                     ),
                                     Container(
-                                      width: 150,
+                                      width: 200,
                                       child: Text(
                                         "Name",
                                         style: primaryFonts.copyWith(
@@ -416,7 +416,7 @@ class _StaffListViewState extends State<StaffListView> {
                                     Container(
                                       width: 100,
                                       child: Text(
-                                        "Mobile",
+                                        "Address",
                                         style: primaryFonts.copyWith(
                                             color: Colors.black,
                                             fontSize: 15,
@@ -467,7 +467,7 @@ class _StaffListViewState extends State<StaffListView> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Container(
-                                              width: 50,
+                                              width: 40,
                                               child: Text(
                                                 (i + 1).toString(),
                                                 style: primaryFonts.copyWith(
@@ -478,15 +478,56 @@ class _StaffListViewState extends State<StaffListView> {
                                               ),
                                             ),
                                             Container(
-                                              width: 150,
-                                              child: Text(
-                                                staffManageController
-                                                    .staffList[i].fullName,
-                                                style: primaryFonts.copyWith(
-                                                    color: Colors.black,
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w500),
+                                              width: 200,
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                    width: 50,
+                                                    height: 50,
+                                                    decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(200)),
+                                                    child: Image.network(
+                                                        staffManageController
+                                                            .staffList[i]
+                                                            .image),
+                                                  ),
+                                                  w10,
+                                                  Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Text(
+                                                        staffManageController
+                                                            .staffList[i]
+                                                            .fullName,
+                                                        style: primaryFonts
+                                                            .copyWith(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 15,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                      ),
+                                                      Text(
+                                                        staffManageController
+                                                            .staffList[i]
+                                                            .mobileNumber,
+                                                        style: primaryFonts
+                                                            .copyWith(
+                                                                color: Colors
+                                                                    .black,
+                                                                fontSize: 15,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                             Container(
@@ -503,14 +544,17 @@ class _StaffListViewState extends State<StaffListView> {
                                             ),
                                             Container(
                                               width: 100,
-                                              child: Text(
-                                                staffManageController
-                                                    .staffList[i].mobileNumber,
-                                                style: primaryFonts.copyWith(
-                                                    color: Colors.black,
-                                                    fontSize: 15,
-                                                    fontWeight:
-                                                        FontWeight.w500),
+                                              height: 55,
+                                              child: Flexible(
+                                                child: Text(
+                                                  staffManageController
+                                                      .staffList[i].address,
+                                                  style: primaryFonts.copyWith(
+                                                      color: Colors.black,
+                                                      fontSize: 15,
+                                                      fontWeight:
+                                                          FontWeight.w500),
+                                                ),
                                               ),
                                             ),
                                             Container(

@@ -376,18 +376,6 @@ class _SmsViewState extends State<SmsView> {
                                                       ),
                                                     ),
                                                   ),
-                                                // InkWell(
-                                                //   onTap: ()
-                                                //   child: Container(
-                                                //     height: 35,
-                                                //     width: 35,
-                                                //     decoration: BoxDecoration(
-                                                //         color: secondaryColor,
-                                                //         borderRadius: BorderRadius.circular(20)),
-                                                //     alignment: Alignment.center,
-                                                //     child: const Icon(Icons.add),
-                                                //   ),
-                                                // )
                                               ],
                                             ),
                                           ),
