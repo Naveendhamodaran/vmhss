@@ -339,12 +339,10 @@ class _StaffListViewState extends State<StaffListView> {
                                               style: primaryFonts.copyWith(
                                                   fontSize: 14),
                                             ),
-                                            underline: null,
                                             isExpanded: true,
                                             icon: const Icon(Icons
                                                 .keyboard_arrow_down_outlined),
                                             elevation: 8,
-                                            itemHeight: 50,
                                             isDense: true,
                                             style: const TextStyle(
                                                 color: Colors.black54),
@@ -386,7 +384,7 @@ class _StaffListViewState extends State<StaffListView> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Container(
-                                      width: 100,
+                                      width: 50,
                                       child: Text(
                                         "Sl.No",
                                         style: primaryFonts.copyWith(
@@ -396,7 +394,7 @@ class _StaffListViewState extends State<StaffListView> {
                                       ),
                                     ),
                                     Container(
-                                      width: 100,
+                                      width: 150,
                                       child: Text(
                                         "Name",
                                         style: primaryFonts.copyWith(
@@ -406,7 +404,7 @@ class _StaffListViewState extends State<StaffListView> {
                                       ),
                                     ),
                                     Container(
-                                      width: 100,
+                                      width: 150,
                                       child: Text(
                                         "Designation",
                                         style: primaryFonts.copyWith(
@@ -469,7 +467,7 @@ class _StaffListViewState extends State<StaffListView> {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Container(
-                                              width: 100,
+                                              width: 50,
                                               child: Text(
                                                 (i + 1).toString(),
                                                 style: primaryFonts.copyWith(
@@ -480,7 +478,7 @@ class _StaffListViewState extends State<StaffListView> {
                                               ),
                                             ),
                                             Container(
-                                              width: 100,
+                                              width: 150,
                                               child: Text(
                                                 staffManageController
                                                     .staffList[i].fullName,
@@ -492,7 +490,7 @@ class _StaffListViewState extends State<StaffListView> {
                                               ),
                                             ),
                                             Container(
-                                              width: 100,
+                                              width: 150,
                                               child: Text(
                                                 staffManageController
                                                     .staffList[i].designation,

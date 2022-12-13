@@ -58,7 +58,8 @@ class _SmsViewState extends State<SmsView> {
   ];
   String? text = '';
 
-  List<String> sectionList = [];
+  List<String> classList = [];
+  List<String> staffList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -357,10 +358,10 @@ class _SmsViewState extends State<SmsView> {
                                                           vertical: 3),
                                                       child: InkWell(
                                                         onTap: () {
-                                                          if (sectionList.contains(
+                                                          if (classList.contains(
                                                                   "${sectionController.sectionModelList[i].standerd}") ==
                                                               false) {
-                                                            sectionList.add(
+                                                            classList.add(
                                                                 "${sectionController.sectionModelList[i].standerd}");
                                                           }
                                                         },
@@ -391,94 +392,43 @@ class _SmsViewState extends State<SmsView> {
                                             ),
                                           ),
                                           Container(
-                                            height: 50,
-                                            // width: double.infinity,
+                                            height: 100,
+                                            width: double.infinity,
+                                            color: Colors.blueGrey,
                                             child: ListView.builder(
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                physics:
-                                                    const AlwaysScrollableScrollPhysics(),
-                                                itemCount: sectionList.length,
-                                                itemBuilder: (context, index) {
-                                                  return Column(
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal:
-                                                                    20.0),
-                                                        child: Container(
-                                                          alignment:
-                                                              Alignment.center,
-                                                          height: 30,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                                  boxShadow: const [
-                                                                BoxShadow(
-                                                                    color: Colors
-                                                                        .black12,
-                                                                    blurRadius:
-                                                                        1,
-                                                                    spreadRadius:
-                                                                        1,
-                                                                    offset:
-                                                                        Offset(
-                                                                            0,
-                                                                            1))
-                                                              ],
-                                                                  color: HexColor(
-                                                                      '#7CC57E'),
-                                                                  // border:
-                                                                  //     Border.all(color: Colors.black),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              20)),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                        .only(
-                                                                    left: 10,
-                                                                    right: 10),
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Text(
-                                                                  sectionList[
-                                                                      index],
-                                                                  style: primaryFonts
-                                                                      .copyWith(
-                                                                          fontSize:
-                                                                              12),
-                                                                ),
-                                                                w10,
-                                                                InkWell(
-                                                                  onTap: () {
-                                                                    sectionList
-                                                                        .removeAt(
-                                                                            index);
-                                                                  },
-                                                                  child:
-                                                                      const Icon(
-                                                                    CupertinoIcons
-                                                                        .xmark,
-                                                                    color: Colors
-                                                                        .red,
-                                                                    size: 10,
-                                                                  ),
-                                                                )
-                                                              ],
+                                              itemCount: classList.length,
+                                              scrollDirection: Axis.horizontal,
+                                              physics:
+                                                  AlwaysScrollableScrollPhysics(),
+                                              itemBuilder: (context, index) {
+                                                return Column(
+                                                  children: [
+                                                    Container(
+                                                      height: 50,
+                                                      width: 330,
+                                                      child: Row(
+                                                        children: [
+                                                          Text(
+                                                              classList[index]),
+                                                          InkWell(
+                                                            onTap: () {
+                                                              classList
+                                                                  .removeAt(
+                                                                      index);
+                                                            },
+                                                            child: Icon(
+                                                              CupertinoIcons
+                                                                  .xmark,
+                                                              size: 10,
                                                             ),
-                                                          ),
-                                                        ),
+                                                          )
+                                                        ],
                                                       ),
-                                                      h10
-                                                    ],
-                                                  );
-                                                }),
+                                                    )
+                                                  ],
+                                                );
+                                              },
+                                            ),
                                           ),
                                         ],
                                       ),
@@ -566,7 +516,17 @@ class _SmsViewState extends State<SmsView> {
                                                   padding: const EdgeInsets
                                                           .symmetric(
                                                       horizontal: 10.0),
-                                                  child: GestureDetector(
+                                                  child: InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        if (staffList.contains(
+                                                                "${staffManageController.staffList[i].fullName}") ==
+                                                            false) {
+                                                          staffList.add(
+                                                              "${staffManageController.staffList[i].fullName}");
+                                                        }
+                                                      });
+                                                    },
                                                     child: Container(
                                                       height: 20,
                                                       width: double.infinity,
@@ -579,16 +539,78 @@ class _SmsViewState extends State<SmsView> {
                                                 ),
                                             ],
                                           ),
-                                          Container(
-                                            color: Colors.blue,
-                                            height: 40,
-                                            width: double.infinity,
-                                          )
                                         ],
                                       ),
                                     ),
                                   ),
                                 ),
+                                h20,
+                                if (staffList.isNotEmpty) ...[
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10.0),
+                                    child: Container(
+                                      height: 100,
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Colors.black12,
+                                            )
+                                          ]),
+                                      child: ListView.builder(
+                                        itemCount: staffList.length,
+                                        scrollDirection: Axis.horizontal,
+                                        physics:
+                                            AlwaysScrollableScrollPhysics(),
+                                        itemBuilder: (context, index) {
+                                          return Row(
+                                            children: [
+                                              Column(
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                        color: Colors.green,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5)),
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: Row(
+                                                        children: [
+                                                          Text(
+                                                              staffList[index]),
+                                                          InkWell(
+                                                            onTap: () {
+                                                              staffList
+                                                                  .removeAt(
+                                                                      index);
+                                                            },
+                                                            child: Icon(
+                                                              CupertinoIcons
+                                                                  .xmark,
+                                                              size: 10,
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              w10,
+                                            ],
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                ]
                               ]
                             ],
                             h30,
