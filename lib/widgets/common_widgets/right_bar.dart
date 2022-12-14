@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../constants/helper_widgets.dart';
+import '../../views/event_handling/event_handling_view.dart';
 import 'icon_box.dart';
 
 class RightBar extends StatelessWidget {
@@ -23,6 +24,13 @@ class RightBar extends StatelessWidget {
               text: 'SMS',
               onPress: () {
                 Get.to(() => const SmsView());
+              }),
+          h20,
+          IconBox(
+              icon: Icons.adf_scanner_outlined,
+              text: 'whatsapp',
+              onPress: () {
+                Get.to(() => const EventManagetView());
               }),
           h20,
           IconBox(

@@ -1,4 +1,7 @@
 import 'package:attandence_admin_panel/views/dash_board_view/home_page_view.dart';
+import 'package:attandence_admin_panel/views/exam_view/add_class_exam_view.dart';
+import 'package:attandence_admin_panel/views/exam_view/add_subject_exam_view.dart';
+import 'package:attandence_admin_panel/views/exam_view/exam_list_view.dart';
 import 'package:attandence_admin_panel/views/sections_view/section_view.dart';
 import 'package:attandence_admin_panel/views/sms_view/sms_view.dart';
 import 'package:attandence_admin_panel/views/staff_management/staff_detsils_list_view.dart';
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: const SplashScreenView(),
       // home: SectionView(),
-      home: StaffManageView(),
+      home: SmsView(),
     );
   }
 }

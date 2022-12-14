@@ -41,7 +41,7 @@ class _StaffManageViewState extends State<StaffManageView> {
   var qualificationTextController = TextEditingController();
   var totalExperienceTextController = TextEditingController();
   var esiTextController = TextEditingController();
-  var aadharnumberTextController = TextEditingController();
+  var aadhaarNumberTextController = TextEditingController();
   var panCardTextController = TextEditingController();
 
   var gender;
@@ -648,7 +648,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                 Container(
                                   width: 330,
                                   child: TextField(
-                                    controller: aadharnumberTextController,
+                                    controller: aadhaarNumberTextController,
                                     decoration: InputDecoration(
                                         labelText: "Aadhaar Card Number",
                                         enabledBorder: borderstyle,
@@ -916,7 +916,7 @@ class _StaffManageViewState extends State<StaffManageView> {
                                   designation: designation,
                                   esi: esiTextController.text,
                                   aadhaarCardNumber:
-                                      aadharnumberTextController.text,
+                                      aadhaarNumberTextController.text,
                                   panCardNumber: panCardTextController.text,
                                   aadhaarCardImage: aadhaarCard,
                                   panCardImage: panCard,

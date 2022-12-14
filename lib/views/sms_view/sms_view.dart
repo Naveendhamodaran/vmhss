@@ -40,6 +40,8 @@ class _SmsViewState extends State<SmsView> {
   var messageController = TextEditingController();
   var template1 =
       'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga eos quidem animi atque eveniet quos architecto consequuntur ut blanditiis, ratione odit ab tenetur placeat amet! Fuga qui consequatur impedit nostrum!';
+  var template2 =
+      ' ipsum dolor sit amet consectetur adipisicing elit. Fuga eos quidem animi atque eveniet quos architecto consequuntur ut blanditiis, ratione odit ab tenetur placeat amet! Fuga qui consequatur impedit nostrum!';
 
   List<String> smsList = ["Common to all", "Students", 'Staffs'];
   List<String> smsStudentList = ["Common to all", "Class"];
@@ -210,20 +212,31 @@ class _SmsViewState extends State<SmsView> {
                 height: size.height,
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: Container(
-                      // height: 1024,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 40.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             h30,
-                            const Text('Bulk SMS'),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'BULK SMS',
+                                  style: TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ],
+                            ),
+                            h20,
+                            Divider(),
                             h30,
                             Container(
                               height: 55,
@@ -544,7 +557,7 @@ class _SmsViewState extends State<SmsView> {
                                           color: Colors.white,
                                           borderRadius:
                                               BorderRadius.circular(5),
-                                          boxShadow: [
+                                          boxShadow: const [
                                             BoxShadow(
                                               color: Colors.black12,
                                             )
@@ -616,28 +629,28 @@ class _SmsViewState extends State<SmsView> {
                             Row(
                               children: [
                                 TemplateWidget(
-                                  template1: template1,
+                                  template: template1,
                                   onTap: () {
                                     messageController.text = template1;
                                   },
                                 ),
                                 w30,
                                 TemplateWidget(
-                                  template1: template1,
+                                  template: template2,
+                                  onTap: () {
+                                    messageController.text = template2;
+                                  },
+                                ),
+                                w30,
+                                TemplateWidget(
+                                  template: template1,
                                   onTap: () {
                                     messageController.text = template1;
                                   },
                                 ),
                                 w30,
                                 TemplateWidget(
-                                  template1: template1,
-                                  onTap: () {
-                                    messageController.text = template1;
-                                  },
-                                ),
-                                w30,
-                                TemplateWidget(
-                                  template1: template1,
+                                  template: template1,
                                   onTap: () {
                                     messageController.text = template1;
                                   },
@@ -652,7 +665,7 @@ class _SmsViewState extends State<SmsView> {
                                     height: 50,
                                     width: 100,
                                     decoration: BoxDecoration(
-                                        color: HexColor('#473871'),
+                                        color: HexColor('#0F2878'),
                                         borderRadius:
                                             BorderRadius.circular(10)),
                                     child: const Text(
@@ -680,11 +693,11 @@ class _SmsViewState extends State<SmsView> {
 class TemplateWidget extends StatelessWidget {
   const TemplateWidget({
     Key? key,
-    required this.template1,
+    required this.template,
     required this.onTap,
   }) : super(key: key);
 
-  final String template1;
+  final String template;
   final VoidCallback onTap;
 
   @override
@@ -696,7 +709,7 @@ class TemplateWidget extends StatelessWidget {
         width: 200,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: HexColor('#A9B4DF'),
+          color: HexColor('#A0B3F3'),
           boxShadow: const [
             BoxShadow(
               color: Colors.black26,
@@ -708,7 +721,7 @@ class TemplateWidget extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            template1,
+            template,
             style: TextStyle(color: HexColor('#000000')),
           ),
         ),
